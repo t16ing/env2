@@ -1,0 +1,14 @@
+[user]
+        name = t16ing
+        email = t16ing@users.noreply.github.com
+        signingkey = t16ing
+[color]
+        ui = true
+[alias]
+        comment = "commit --amend "
+[push]
+        default = matching
+[commit]
+        gpgsign = true
+[core]
+	editor = vim
