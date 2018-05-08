@@ -1,3 +1,14 @@
+store/
+makefile
+.Xauthority
+.cdhistory
+.config/
+.dbus/
+.local/
+.python_history
+.serverauth*
+.xsession-errors
+tmp/
 .lesshst
 .gnupg/
 .oh-my-zsh/
