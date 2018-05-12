@@ -1,4 +1,9 @@
+.config/
+.npm/
+.yarnrc
+*.log
 .samba/
+store
 store/
 .lesshst
 .gnupg/
