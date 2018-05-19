@@ -1,5 +1,9 @@
 .python*
 .git*
+.config/
+.npm/
+.yarnrc
+*.log
 .samba/
 store
 store/
