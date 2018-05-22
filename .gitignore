@@ -1,3 +1,5 @@
+.python*
+.git*
 .config/
 .npm/
 .yarnrc
