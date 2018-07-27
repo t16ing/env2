@@ -1,3 +1,5 @@
+.secret/
+.rnd
 .python*
 .git*
 .config/
