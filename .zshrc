@@ -67,6 +67,7 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 export GPG_TTY=$(tty)
+export TZ='Asia/Taipei'
 
 # export MANPATH="/usr/local/man:$MANPATH"
 

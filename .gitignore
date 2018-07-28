@@ -1,5 +1,5 @@
-bin/
-snap/
+.secret/
+.rnd
 .python*
 .git*
 .config/
