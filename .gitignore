@@ -1,3 +1,4 @@
+*.swp
 .kube/
 .secret/
 .rnd
