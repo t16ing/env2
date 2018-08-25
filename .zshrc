@@ -95,3 +95,4 @@ export TZ='Asia/Taipei'
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias ls=ls --group-directories-first
