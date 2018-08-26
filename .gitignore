@@ -1,5 +1,5 @@
-local/
 *.swp
+local/
 .kube/
 .secret/
 .rnd
@@ -9,8 +9,6 @@ local/
 .npm/
 .yarnrc
 *.log
-.samba/
-store
 store/
 .lesshst
 .gnupg/
@@ -18,7 +16,6 @@ store/
 .vim/
 .vim_mru_files
 .*.bak
-.zcompdump
 .zcompdump*
 .zsh-update
 .zsh_history
