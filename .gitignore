@@ -1,6 +1,5 @@
 *.swp
 local/
-*.swp
 .kube/
 .secret/
 .rnd
@@ -10,7 +9,6 @@ local/
 .npm/
 .yarnrc
 *.log
-.samba/
 store/
 .lesshst
 .gnupg/
