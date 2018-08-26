@@ -1,6 +1,6 @@
 *.swp
 local/
-secret/
+.kube/
 .secret/
 .rnd
 .python*
@@ -9,7 +9,6 @@ secret/
 .npm/
 .yarnrc
 *.log
-.samba/
 store
 store/
 .lesshst
