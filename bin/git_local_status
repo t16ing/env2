@@ -1,0 +1,3 @@
+#!/bin/bash
+
+find ~ -type d -name ".git" 2>/dev/null | grep -v "$HOME/.vim" | grep -v "$HOME/.oh-my-zsh/" | while read dir ; do sh -c "cd $dir/../ && echo \"(git)${dir//\.git/}\" && git status -s | tail -n 1" ; done | more
