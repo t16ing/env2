@@ -1,3 +1,11 @@
+.ICEauthority
+.gnome/
+.local/
+.mozilla/
+.pki/
+.xinputrc
+.cache/
+.config/
 *.swp
 local/
 .kube/
