@@ -9,3 +9,4 @@
         default = matching
 [core]
 	editor = vim
+	quotepath = false
