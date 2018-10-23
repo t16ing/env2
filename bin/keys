@@ -4,6 +4,6 @@ echo hostname:
 echo $(hostname)
 echo
 echo gpg key:
-gpg2 -k
+gpg -k
 echo ssh key:
 for f in ~/.ssh/*.pub ; do echo key: $f; ssh-keygen -l -E MD5 -f $f; ssh-keygen -l -E sha256 -f $f; done
