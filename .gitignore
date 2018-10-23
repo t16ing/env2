@@ -1,3 +1,5 @@
+.dbus/
+.presage/
 .vscode/
 .google_authenticator
 .hplip/
