@@ -76,6 +76,10 @@ if !exists(":DiffOrig")
 endif
 
 "=============================================================================
+" 20181105 - fix indent for yaml
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+"=============================================================================
 " 20131013 - append vimrc settings after vimrc example; most of them are for
 " plugins
 "
