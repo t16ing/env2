@@ -27,6 +27,7 @@
 *.swp
 *.log
 *.bak
+VirtualBox VMs/
 Documents/
 snap/
 Downloads/
