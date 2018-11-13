@@ -2,6 +2,7 @@
 .bash_*
 .c*
 .d*
+.e*
 .git*
 .gn*
 .go*
@@ -13,6 +14,7 @@
 .p*
 .r*
 .s*
+.t*
 .vs*
 .vim/
 .vim_*
