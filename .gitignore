@@ -2,6 +2,7 @@
 .bash_*
 .c*
 .d*
+.gim*
 .git*
 .gn*
 .go*
