@@ -9,6 +9,12 @@ echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/
 sudo apt-get update
 sudo apt-get install -y kubectl
 
+# Install kompose
+
+curl -L https://github.com/kubernetes/kompose/releases/download/v1.16.0/kompose-linux-amd64 -o kompose
+chmod +x kompose
+sudo mv ./kompose /usr/local/bin/kompose
+
 # Install minikube
 # https://github.com/kubernetes/minikube
 
