@@ -1,0 +1,12 @@
+#!/bin/bash
+
+USERID=$1
+[ "$USERID" == "" ] && USERID=`whoami`
+
+EMAIL=`gpg -k ${USERID} | grep uid | cut -d '<' -f 2 | cut -d '>' -f 1`
+[ "$EMAIL" == "" ] && EMAIL=${USERID}@localhost
+
+git config user.name ${USERID}
+git config user.email ${EMAIL}
+git config user.signingkey ${USERID}
+git config commit.gpgsign true
