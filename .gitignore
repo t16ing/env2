@@ -1,9 +1,12 @@
 .I*
+.X*
+.a*
 .bash_*
 .c*
 .d*
-.gim*
-.git*
+.e*
+.gc*
+.gi*
 .gn*
 .go*
 .k*
@@ -33,6 +36,7 @@ VirtualBox VMs/
 Documents/
 snap/
 Downloads/
+Pictures/
 local/
 store/
 src/
