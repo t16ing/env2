@@ -99,3 +99,4 @@ source $ZSH/oh-my-zsh.sh
 alias ls='ls --color=tty --group-directories-first'
 
 source /etc/zsh_command_not_found
+if [ /usr/bin/kubectl ]; then source <(kubectl completion zsh); fi
