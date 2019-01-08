@@ -32,11 +32,10 @@
 *.swp
 *.log
 *.bak
-VirtualBox VMs/
-Documents/
+Vir*/
+Do*/
+P*/
 snap/
-Downloads/
-Pictures/
 local/
 store/
 src/
