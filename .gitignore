@@ -33,7 +33,7 @@
 *.log
 *.bak
 Vir*/
-Do*/
+D*/
 P*/
 snap/
 local/
