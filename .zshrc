@@ -98,5 +98,9 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ls='ls --color=tty --group-directories-first'
 
+# for ./install/install-kubectl.sh
 source /etc/zsh_command_not_found
 if [ /usr/bin/kubectl ]; then source <(kubectl completion zsh); fi
+
+# for ./install/install-fail2cam.sh
+(ls /tmp/fail2cam-`hostname`-*.png) 2>/dev/null 1>/dev/null && ( echo "###FAIL2CAM WARNING###"; ls -al /tmp/fail2cam-`hostname`-*.png )
