@@ -15,15 +15,15 @@ case $1 in
 
 		cat << EOF | sudo tee /usr/local/bin/fail2cam
 #!/bin/bash
-IMAGE1=/tmp/"\`hostname\`-\`date +%Y%m%d-%H%M%S%N\`-1.png"
+IMAGE1=/tmp/fail2cam-"\`hostname\`-\`date +%Y%m%d-%H%M%S%N\`-1.png"
 fswebcam -r 640x480 --png 9 -S 12 --flip v --flip h \${IMAGE1}
-IMAGE2=/tmp/"\`hostname\`-\`date +%Y%m%d-%H%M%S%N\`-2.png"
+IMAGE2=/tmp/fail2cam-"\`hostname\`-\`date +%Y%m%d-%H%M%S%N\`-2.png"
 fswebcam -r 1600x1200 --png 9 -S 7 --flip v --flip h \${IMAGE2}
 
 TGBOTTOKEN=\`cat /etc/fail2cam/tg-bot-token\`
 TGCHATID=\`cat /etc/fail2cam/tg-chatid\`
-curl --silent --form chat_id=\${TGCHATID} --form photo="@\${IMAGE1}" --form caption="fail2cam-\${IMAGE1}" "https://api.telegram.org/bot\${TGBOTTOKEN}/sendPhoto"
-curl --silent --form chat_id=\${TGCHATID} --form photo="@\${IMAGE2}" --form caption="fail2cam-\${IMAGE2}" "https://api.telegram.org/bot\${TGBOTTOKEN}/sendPhoto"
+curl --silent --form chat_id=\${TGCHATID} --form photo="@\${IMAGE1}" --form caption="fail2cam-\${IMAGE1}" "https://api.telegram.org/bot\${TGBOTTOKEN}/sendPhoto" | grep -F '{"ok":true,' && rm \${IMAGE1}
+curl --silent --form chat_id=\${TGCHATID} --form photo="@\${IMAGE2}" --form caption="fail2cam-\${IMAGE2}" "https://api.telegram.org/bot\${TGBOTTOKEN}/sendPhoto" | grep -F '{"ok":true,' && rm \${IMAGE2}
 
 exit 0
 EOF
