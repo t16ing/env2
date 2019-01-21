@@ -1,0 +1,33 @@
+#!/bin/bash
+
+SERVER=$1
+DELAY=0
+
+if [[ "$SERVER" == "" ]] ; then
+	echo ssltest ip:port
+	exit 1
+fi
+
+protocols="-ssl2 -ssl3 -tls1 -tls1_1 -tls1_2"
+ciphers=$(openssl ciphers 'ALL:eNULL' | sed -e 's/:/ /g')
+
+echo Obtaining $SERVER cipher list from $(openssl version)
+
+for protocol in ${protocols[@]}
+do
+	for cipher in ${ciphers[@]}
+	do
+		result=$(echo -n | openssl s_client $protocol -cipher "$cipher" -connect $SERVER 2>&1)
+		if [[ "$result" =~ ":error:" ]] ; then
+			error=$(echo -n $result | cut -d':' -f6)
+		else
+			if [[ "$result" =~ "Cipher is ${cipher}" ]] ; then
+				echo -n Testing $protocol $cipher...
+				echo YES
+			else
+				echo -n
+			fi
+		fi
+		sleep $DELAY
+	done
+done
