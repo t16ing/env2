@@ -175,7 +175,8 @@ map ZZ <ESC>:wqa!<CR>
 " locale settings
 set encoding=utf-8
 set fileencoding=utf-8
-set termencoding=big5
+set fileencodings=utf-8,gb18030,utf-16,big5
+set termencoding=utf8
 
 " install vundle automatically
 
