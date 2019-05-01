@@ -11,14 +11,14 @@ find ~ -type d -name ".git" 2>/dev/null | \
 		do sh -c \
 			"cd $dir/../ && \
 			echo \"(git)${dir//\.git/}\" && \
+			(git remote update 2>&1 > /dev/null &) && \
 			git status -s && ( \
 				[ \"\$(git rev-list --count @{upstream}..HEAD)\" -gt \"0\" ] && \
 					echo \"\e[31m***not yet PUSH***\e[0m\" ; \
 				[ -z \"\$(git remote show)\" ] && \
 					echo \"\e[31m***Local Repo***\e[0m\" ; \
 				[ \"\$(git rev-list --count HEAD..@{upstream})\" -gt \"0\" ] && \
-					echo \"\e[31m***PULL required***\e[0m\" && \
-					git remote update 2>&1 > /dev/null \
+					echo \"\e[31m***PULL required***\e[0m\" \
 				)" \
 			2>/dev/null ; \
 		done
