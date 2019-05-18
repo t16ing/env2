@@ -17,7 +17,7 @@ find ~ -type d -name ".git" 2>/dev/null | \
 					echo \"\e[31m***not yet PUSH***\e[0m\" ; \
 				[ -z \"\$(git remote show)\" ] && \
 					echo \"\e[31m***Local Repo***\e[0m\" ; \
-				[ \"\$(git rev-list --count HEAD..@{upstream})\" -gt \"0\" ] && \
+				[ \"\$(git rev-list --count HEAD..@{origin})\" -gt \"0\" ] && \
 					echo \"\e[31m***PULL required***\e[0m\" \
 				)" \
 			2>/dev/null ; \
