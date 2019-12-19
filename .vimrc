@@ -425,22 +425,6 @@ VkhAdd '\ee end english spelling check.'
 "
 VkhAdd 'plugin MatchTag: highlights the matching HTML tag.'
 
-" plugin alternate for compile and run
-
-function MY_PROC_COMPILE_AND_RUN()
-  if &ft == "cpp"
-    execute '!g++ %'
-    execute '!./a.out | more'
-  else
-    execute '!gcc %'
-    execute '!./a.out | more'
-  endif
-endfunction
-
-map <f5> <ESC>:call MY_PROC_COMPILE_AND_RUN()<CR>
-
-VkhAdd '<f5> compile and run.'
-
 " alternate plugin for clean mode for copy/paste
 
 function MY_PROC_CLEAN_MODE_TOGGLE()
