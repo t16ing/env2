@@ -10,11 +10,11 @@ set nocompatible
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
-set nobackup		" do not keep a backup file
-set history=50		" keep 50 lines of command line history
-set ruler		" show the cursor position all the time
-set showcmd		" display incomplete commands
-set incsearch		" do incremental searching
+set nobackup   " do not keep a backup file
+set history=50 " keep 50 lines of command line history
+set ruler      " show the cursor position all the time
+set showcmd    " display incomplete commands
+set incsearch  " do incremental searching
 
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
 " let &guioptions = substitute(&guioptions, "t", "", "g")
@@ -63,7 +63,7 @@ if has("autocmd")
 
 else
 
-  set autoindent		" always set autoindenting on
+  set autoindent  " always set autoindenting on
 
 endif " has("autocmd")
 
@@ -71,8 +71,7 @@ endif " has("autocmd")
 " file it was loaded from, thus the changes you made.
 " Only define it when not defined already.
 if !exists(":DiffOrig")
-  command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
-		  \ | wincmd p | diffthis
+  command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
 endif
 
 "=============================================================================
@@ -89,51 +88,13 @@ set tags=./tags;../tags;../../tags;../../../tags;../../../../tags;../../../../..
 
 let g:my_vim_tmp_dir = $VIM_TMP
 if g:my_vim_tmp_dir == ""
-	let g:my_vim_tmp_dir = $HOME
-	exec "set backupdir=".g:my_vim_tmp_dir
-	exec "set dir=".g:my_vim_tmp_dir
+  let g:my_vim_tmp_dir = $HOME
+  exec "set backupdir=".g:my_vim_tmp_dir
+  exec "set dir=".g:my_vim_tmp_dir
 else
-	exec "set backupdir=".g:my_vim_tmp_dir.'/backup'
-	exec "set dir=".g:my_vim_tmp_dir.'/swap'
+  exec "set backupdir=".g:my_vim_tmp_dir.'/backup'
+  exec "set dir=".g:my_vim_tmp_dir.'/swap'
 endif
-
-" status line setting
-
-highlight StatusLine term=bold,reverse cterm=bold,reverse ctermbg=black ctermfg=green
-
-highlight User1 term=bold,reverse cterm=bold,reverse ctermbg=black ctermfg=darkcyan
-highlight User2 term=bold,reverse cterm=bold,reverse ctermbg=black ctermfg=green
-highlight User3 term=bold,reverse cterm=bold,reverse ctermbg=black ctermfg=brown
-highlight User4 term=bold,reverse cterm=bold,reverse ctermbg=black ctermfg=darkgreen
-highlight User5 term=bold,reverse cterm=bold,reverse ctermbg=black ctermfg=darkblue
-
-function MY_PROC_STATUS_LINE()
-	let statusline_1='%1*%<%f'
-	let statusline_2='%2*%m%='
-	let statusline_4='%4*%h%r %-19([%p%%] %3l,%02c%03V%)%5*%y'
-
-	let vbar_width=30
-
-	let toppad=(line('w0')-1)*(l:vbar_width)/line('$')
-	let botpad=max([l:vbar_width-line('w$')*(l:vbar_width)/line('$'),0])
-	let barwin=l:vbar_width-l:botpad-l:toppad
-
-	if l:barwin == 0
-		let l:barwin=1
-		if l:botpad > l:toppad
-			let l:botpad-=1
-		else
-			let l:toppad-=1
-		endif
-	endif
-
-	let l:vbar='%3*['.repeat('-',l:toppad).repeat('|',l:barwin).repeat('-',l:botpad).']'
-
-	return l:statusline_1.l:statusline_2.l:vbar.l:statusline_4
-endfunction
-
-set laststatus=2
-set statusline=%!MY_PROC_STATUS_LINE()
 
 " highlight unwanted space
 
@@ -182,11 +143,11 @@ set termencoding=utf8
 
 let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
 if !filereadable(vundle_readme)
-	echo "Installing Vundle.."
-	echo ""
-	silent !mkdir -p ~/.vim/bundle
-	silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
-	autocmd VimEnter * exec ":BundleInstall"
+  echo "Installing Vundle.."
+  echo ""
+  silent !mkdir -p ~/.vim/bundle
+  silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
+  autocmd VimEnter * exec ":BundleInstall"
 endif
 
 " plugin vundle
@@ -201,6 +162,7 @@ Bundle 'gmarik/vundle'
 
 Bundle 't16ing/vim-vandomkeyhint'
 Bundle 'mhinz/vim-startify'
+Bundle 'vim-airline/vim-airline'
 " code
 Bundle 'scrooloose/syntastic'
 	" Visible ERROR and warning
@@ -256,10 +218,10 @@ filetype plugin indent on
 " Has to be done here to avoid following "VkhAdd" from leading to error
 let vkh_readme=expand('~/.vim/bundle/vim-vandomkeyhint/README.md')
 if !filereadable(vkh_readme)
-	echo "Installing vandomkeyhint.."
-	echo ""
-	silent !mkdir -p ~/.vim/bundle/vim-vandomkeyhint
-	silent !git clone https://github.com/t16ing/vim-vandomkeyhint ~/.vim/bundle/vim-vandomkeyhint
+  echo "Installing vandomkeyhint.."
+  echo ""
+  silent !mkdir -p ~/.vim/bundle/vim-vandomkeyhint
+  silent !git clone https://github.com/t16ing/vim-vandomkeyhint ~/.vim/bundle/vim-vandomkeyhint
 endif
 set rtp+=~/.vim/bundle/vim-vandomkeyhint/
 call vandomkeyhint#rc()
@@ -435,22 +397,22 @@ VkhAdd '<\gl> brings up commit history.'
 " ~/.vim/bundle/vim-easy-align/EXAMPLES.md
 
 let g:easy_align_delimiters = {
-			\ '>': { 'pattern': '>>\|=>\|>' },
-			\ '/': { 'pattern': '//\+\|/\*\|\*/', 'ignore_groups': ['String'] },
-			\ '#': { 'pattern': '#\+', 'ignore_groups': ['String'] },
-			\ ']': {
-			\     'pattern':       '[[\]]',
-			\     'left_margin':   0,
-			\     'right_margin':  0,
-			\     'stick_to_left': 0
-			\   },
-			\ ')': {
-			\     'pattern':       '[()]',
-			\     'left_margin':   0,
-			\     'right_margin':  0,
-			\     'stick_to_left': 0
-			\   }
-			\ }
+      \ '>': { 'pattern': '>>\|=>\|>' },
+      \ '/': { 'pattern': '//\+\|/\*\|\*/', 'ignore_groups': ['String'] },
+      \ '#': { 'pattern': '#\+', 'ignore_groups': ['String'] },
+      \ ']': {
+      \     'pattern':       '[[\]]',
+      \     'left_margin':   0,
+      \     'right_margin':  0,
+      \     'stick_to_left': 0
+      \   },
+      \ ')': {
+      \     'pattern':       '[()]',
+      \     'left_margin':   0,
+      \     'right_margin':  0,
+      \     'stick_to_left': 0
+      \   }
+      \ }
 
 vnoremap <silent> <Enter> :LiveEasyAlign<Enter>
 
@@ -483,13 +445,13 @@ VkhAdd 'plugin MatchTag: highlights the matching HTML tag.'
 " plugin alternate for compile and run
 
 function MY_PROC_COMPILE_AND_RUN()
-	if &ft == "cpp"
-		execute '!g++ %'
-		execute '!./a.out | more'
-	else
-		execute '!gcc %'
-		execute '!./a.out | more'
-	endif
+  if &ft == "cpp"
+    execute '!g++ %'
+    execute '!./a.out | more'
+  else
+    execute '!gcc %'
+    execute '!./a.out | more'
+  endif
 endfunction
 
 map <f5> <ESC>:call MY_PROC_COMPILE_AND_RUN()<CR>
@@ -499,27 +461,27 @@ VkhAdd '<f5> compile and run.'
 " alternate plugin for clean mode for copy/paste
 
 function MY_PROC_CLEAN_MODE_TOGGLE()
-	if ! exists('g:my_clean_mode_toggle')
-		let g:my_clean_mode_toggle=0
-	endif
+  if ! exists('g:my_clean_mode_toggle')
+    let g:my_clean_mode_toggle=0
+  endif
 
-	if g:my_clean_mode_toggle == 0
-		set paste
-		set nonu
-		set nocursorline
-		syntax off
-		let g:my_clean_mode_toggle=1
+  if g:my_clean_mode_toggle == 0
+    set paste
+    set nonu
+    set nocursorline
+    syntax off
+    let g:my_clean_mode_toggle=1
 
-		silent! execute ":SyntasticToggleMode"
-	else
-		set nopaste
-		set nu
-		set cursorline
-		syntax on
-		let g:my_clean_mode_toggle=0
+    silent! execute ":SyntasticToggleMode"
+  else
+    set nopaste
+    set nu
+    set cursorline
+    syntax on
+    let g:my_clean_mode_toggle=0
 
-		silent! execute ":SyntasticToggleMode"
-	endif
+    silent! execute ":SyntasticToggleMode"
+  endif
 endfunction
 
 map <leader>cc <ESC>:call MY_PROC_CLEAN_MODE_TOGGLE()<CR>
@@ -538,6 +500,11 @@ VkhAdd '\ss open the fancy start screen for Vim.'
 map <leader><f3> <ESC>:SSave<CR>
 
 VkhAdd '\<f3> save session.'
+
+" plugin vim-airline
+" ~/.vim/bundle/vim-airline/README.md
+
+VkhAdd "plugin vim-airline: Lean & mean status/tabline for vim that's light as air."
 
 " plugin jedi-vim
 " ~/.vim/bundle/jedi-vim/doc/jedi-vim.txt
