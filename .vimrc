@@ -76,8 +76,8 @@ if !exists(":DiffOrig")
 endif
 
 "=============================================================================
-" 20181105 - fix indent for yaml
-autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+" 20191219 - modern indent
+autocmd FileType * setlocal ts=2 sts=2 sw=2 expandtab
 
 "=============================================================================
 " 20131013 - append vimrc settings after vimrc example; most of them are for
@@ -135,7 +135,7 @@ endfunction
 set laststatus=2
 set statusline=%!MY_PROC_STATUS_LINE()
 
-" hightlight unwanted space
+" highlight unwanted space
 
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
@@ -287,10 +287,9 @@ endfunction
 
 autocmd BufLeave * call MY_PROC_TABBAR_SAVELASTFOCUSEDTABNR()
 
-nmap <tab> <ESC>:tabn<CR>
-nmap <leader><tab> <ESC>:tabp<CR>
-nmap <leader><leader><tab> <ESC>:call MY_PROC_TABBAR_SWITCH()<CR>
-nmap <leader><leader><leader><tab> <ESC>:tab sball<CR>
+nmap gp gT
+nmap gb <ESC>:call MY_PROC_TABBAR_SWITCH()<CR>
+nmap gr <ESC>:tab sball<CR>
 noremap <leader>1 1gt
 noremap <leader>2 2gt
 noremap <leader>3 3gt
@@ -306,11 +305,12 @@ noremap <leader>0 <ESC>:tablast<CR>
 noremap gf <c-w>gf
 cabbrev e tabe
 
-VkhAdd '<tab> to move to next tab.'
-VkhAdd '\<tab> to move to previous tab.'
-VkhAdd '\\<tab> to move to last focused tab.'
-VkhAdd '\\\<tab> refresh tabs - unfold all buffers to tabs.'
+VkhAdd 'gt to move to next tab.'
+VkhAdd 'gp to move to previous tab.'
+VkhAdd 'gb to move to last focused tab.'
+VkhAdd 'gr refresh tabs - unfold all buffers to tabs.'
 VkhAdd '\[1-9] to move to tab n.'
+VkhAdd '<c-o> jump backward. <c-i> jump forward.'
 
 " plugin vim-signature
 " ~/.vim/bundle/vim-signature/doc/signature.txt
