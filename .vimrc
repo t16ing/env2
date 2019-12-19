@@ -250,6 +250,10 @@ call vandomkeyhint#rc()
 " an alternate tabbar plugin
 " ~/.vim/bundle/tabline.vim/plugin/tabline.vim
 
+hi TabLine      ctermfg=Black  ctermbg=Green     cterm=NONE
+hi TabLineFill  ctermfg=Black  ctermbg=Green     cterm=NONE
+hi TabLineSel   ctermfg=White  ctermbg=DarkBlue  cterm=NONE
+
 function MY_PROC_TABBAR_SWITCH()
        if exists('g:my_last_focused_tab_nr')
                exec "tabn ".g:my_last_focused_tab_nr
@@ -287,6 +291,11 @@ VkhAdd '\\<tab> to move to last focused tab.'
 VkhAdd '\\\<tab> refresh tabs - unfold all buffers to tabs.'
 VkhAdd '\[1-9] to move to tab n.'
 
+" plugin vim-signature
+" ~/.vim/bundle/vim-signature/doc/signature.txt
+
+" A plugin to toggle, display and navigate marks
+
 " plugin nerdtree
 " ~/.vim/bundle/nerdtree/autoload/nerdtree.vim
 
@@ -323,6 +332,7 @@ let g:ctrlp_clear_cache_on_exit=0
 VkhAdd '<c-p> open ctrlp window.'
 
 " plugin Gundo
+" ~/.vim/bundle/Gundo/doc/gundo.txt
 
 let g:gundo_close_on_revert=1
 
@@ -356,7 +366,8 @@ map <leader>tbar <ESC>:TagbarToggle<CR>
 VkhAdd '<\tbar> open Tagbar window.'
 
 " plugin vim-fugitive & plugin gitgutter
-" ~/.vim/bundle/vim-gitgutter/doc/gitgutter.txt
+" ~/.vim/bundle/vim-fugitive/doc/fugitive.txt' " for :Gblame
+" ~/.vim/bundle/vim-gitgutter/doc/gitgutter.txt " for git sign
 
 let g:gitgutter_enabled         = 1
 let g:gitgutter_highlight_lines = 0
@@ -409,11 +420,11 @@ VkhAdd '\eS remove word in user dictionary'
 
 " plugin MatchTag
 " ~/.vim/bundle/MatchTag/ftplugin/html.vim
+
 " no options, and only works on html/xml ft
-"
 " example: ~/.vim/bundle/MatchTag/test.html
 
-" alternate plugin for compile and run
+" plugin alternate for compile and run
 
 function MY_PROC_COMPILE_AND_RUN()
 	if &ft == "cpp"
