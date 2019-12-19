@@ -201,18 +201,18 @@ Bundle 'gmarik/vundle'
 
 Bundle 't16ing/vim-vandomkeyhint'
 Bundle 'mhinz/vim-startify'
-" ide
+" code
 Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-fugitive'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'majutsushi/tagbar'
+Bundle 'hushicai/tagbar-javascript.vim'
 Bundle 'vim-scripts/L9'
 Bundle 'othree/vim-autocomplpop'
 Bundle 'davidhalter/jedi-vim'
 " file
 Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
-Bundle 'vim-scripts/mru.vim'
 " navigation
 Bundle 't16ing/vim-vookmark'
 Bundle 'Lokaltog/vim-easymotion'
@@ -247,12 +247,16 @@ endif
 set rtp+=~/.vim/bundle/vim-vandomkeyhint/
 call vandomkeyhint#rc()
 
+VkhAdd 'plugin vandomkeyhint: Vim plugin to install and show user-defined hints.'
+
 " an alternate tabbar plugin
-" ~/.vim/bundle/tabline.vim/plugin/tabline.vim
+" ~/.vim/bundle/tabline.vim/README.md
 
 hi TabLine      ctermfg=Black  ctermbg=Green     cterm=NONE
 hi TabLineFill  ctermfg=Black  ctermbg=Green     cterm=NONE
 hi TabLineSel   ctermfg=White  ctermbg=DarkBlue  cterm=NONE
+
+VkhAdd 'plugin tabline.vim: Configure tab labels within Terminal Vim with a very succinct output.'
 
 function MY_PROC_TABBAR_SWITCH()
        if exists('g:my_last_focused_tab_nr')
@@ -294,33 +298,49 @@ VkhAdd '\[1-9] to move to tab n.'
 " plugin vim-signature
 " ~/.vim/bundle/vim-signature/doc/signature.txt
 
-" A plugin to toggle, display and navigate marks
+VkhAdd 'plugin vim-signature: A plugin to toggle, display and navigate vim marks.'
 
 " plugin nerdtree
-" ~/.vim/bundle/nerdtree/autoload/nerdtree.vim
+" ~/.vim/bundle/nerdtree/doc/NERDTree.txt
 
 let g:NERDTreeDirArrowExpandable="+"
 let g:NERDTreeDirArrowCollapsible="~"
 let g:NERDTreeQuitOnOpen=1
 
-map <leader>ntt <ESC>:NERDTreeToggle<CR>
-map <leader>ntf <ESC>:NERDTreeFind<CR>
+map <leader>nt <ESC>:NERDTreeToggle<CR>
+map <leader>nf <ESC>:NERDTreeFind<CR>
 
-VkhAdd '<\ntt> open nerdtree window.'
-VkhAdd '<\ntf> find current file in nerdtree.'
+VkhAdd 'plugin nerdtree: A tree explorer plugin to rule the Vim world.'
+VkhAdd '<\nt> open nerdtree window.'
+VkhAdd '<\nf> find current file in nerdtree.'
 
 " plugin vookmark
 " ~/.vim/bundle/vim-vookmark/plugin/vookmark.vim
 
 let g:vookmark_savepath=$VIM_HOME.'/vookmark'
 
-VkhAdd 'Vookmark: <mm> toggle a bookmark <mn> next <mp> previous <ma> clear all <ml> list.'
+VkhAdd 'plugin vim-vookmark: <mm> toggle a bookmark <mn> next <mp> previous <ma> clear all <ml> list.'
+
+" plugin vim-easymotion
+" ~/.vim/bundle/vim-easymotion/README.md
+
+VkhAdd 'plugin vim-easymotion: \\w jump forward \\b jump backward.'
+
+" plugin vim-expand-region
+" ~/.vim/bundle/vim-expand-region/README.md
+
+VkhAdd "plugin vim-expand-region: `+` to expand the visual selection and `_` to shrink it."
 
 " plugin autocomplpop
-" ~/.vim/bundle/vim-autocomplpop/README.markdown
+" ~/.vim/bundle/vim-autocomplpop/doc/acp.txt
+" L9 library must be installed
+" ~/.vim/bundle/L9/README
 
 highlight Pmenu term=reverse ctermbg=cyan ctermfg=black
 highlight PmenuSel term=reverse ctermbg=lightred ctermfg=black
+
+VkhAdd 'plugin vim-autocomplpop: Automatically opens popup menu for completions.'
+VkhAdd 'plugin L9: required by plugin acp.'
 
 " plugin ctrlp
 " ~/.vim/bundle/ctrlp.vim/doc/ctrlp.txt
@@ -329,6 +349,7 @@ let g:ctrlp_max_files=0
 let g:ctrlp_use_caching=1
 let g:ctrlp_clear_cache_on_exit=0
 
+VkhAdd 'plugin ctrlp.vim: Fuzzy file, buffer, mru, tag, ... finder.'
 VkhAdd '<c-p> open ctrlp window.'
 
 " plugin Gundo
@@ -338,6 +359,7 @@ let g:gundo_close_on_revert=1
 
 map <f6> <ESC>:GundoToggle<CR>
 
+VkhAdd 'plugin Gundo: Graph your undo tree so you can actually USE it. Requires python 2.4+.'
 VkhAdd '<f6> open Gundo window.'
 
 " alternate plugin for diff modifies and origins
@@ -355,19 +377,24 @@ let g:syntastic_check_on_open             = 1
 let g:syntastic_check_on_wq               = 1
 let g:syntastic_cpp_remove_include_errors = 1
 
+VkhAdd 'plugin syntastic: Syntax checking on the fly has never been so pimp.'
+
 " plugin tagbar
 " ~/.vim/bundle/tagbar/plugin/tagbar.vim
+" ~/.vim/bundle/tagbar-javascript.vim/README.md
 
 let g:tagbar_autofocus=1
 let g:tagbar_autoclose=1
 
-map <leader>tbar <ESC>:TagbarToggle<CR>
+map <leader>tb <ESC>:TagbarToggle<CR>
 
-VkhAdd '<\tbar> open Tagbar window.'
+VkhAdd "plugin tagbar: requires apt install exuberant-ctags."
+VkhAdd "plugin tagbar-javascript.vim: requires npm install -g esctags."
+VkhAdd '<\tb> open Tagbar window.'
 
 " plugin vim-fugitive & plugin gitgutter
-" ~/.vim/bundle/vim-fugitive/doc/fugitive.txt' " for :Gblame
-" ~/.vim/bundle/vim-gitgutter/doc/gitgutter.txt " for git sign
+" ~/.vim/bundle/vim-gitgutter/doc/gitgutter.txt
+" ~/.vim/bundle/vim-fugitive/doc/fugitive.txt
 
 let g:gitgutter_enabled         = 1
 let g:gitgutter_highlight_lines = 0
@@ -376,12 +403,18 @@ let g:my_git_view_type=''
 
 map <leader>gt <ESC>:GitGutterToggle<CR>
 map <leader>gb <ESC>:Gblame<CR>
+map <leader>gl <ESC>:Gllog<CR>
 
+VkhAdd "plugin vim-gitgutter: shows a git diff in the 'gutter' (sign column)"
 VkhAdd "<\gt> A Vim plugin which shows a git diff in the 'gutter' (sign column)."
 VkhAdd '<]c> for next hunk, <[c> for previous hunk.'
+
+VkhAdd 'plugin vim-fugitive: for Gblame and Glog'
 VkhAdd '<\gb> brings up an interactive vertical split with git blame output.'
+VkhAdd '<\gl> brings up commit history.'
 
 " plugin easy_align
+" ~/.vim/bundle/vim-easy-align/README.md
 " ~/.vim/bundle/vim-easy-align/EXAMPLES.md
 
 let g:easy_align_delimiters = {
@@ -404,7 +437,12 @@ let g:easy_align_delimiters = {
 
 vnoremap <silent> <Enter> :LiveEasyAlign<Enter>
 
-VkhAdd '<Enter> (visual mode) enter Live EasyAlign mode.'
+VkhAdd 'plugin vim-easy-align: (visual mode) <Enter>=='
+
+" plugin vim-commentary
+" ~/.vim/bundle/vim-commentary/README.markdown
+
+VkhAdd 'plugin vim-commentary: gcc for single line or gcap for a paragraph.'
 
 " plugin Engspchk
 " ~/.vim/bundle/Engspchk/doc/engspchk.txt
@@ -413,16 +451,17 @@ VkhAdd '<Enter> (visual mode) enter Live EasyAlign mode.'
 let g:spchksilent=1
 let g:spchkautonext=1
 
+VkhAdd 'plugin Engspchk: english spelling checker.'
 VkhAdd '\ec start english spelling check.'
 VkhAdd '\ee end english spelling check.'
-VkhAdd '\es add word in user dictionary'
-VkhAdd '\eS remove word in user dictionary'
 
 " plugin MatchTag
-" ~/.vim/bundle/MatchTag/ftplugin/html.vim
+" ~/.vim/bundle/MatchTag/README.mkd
 
 " no options, and only works on html/xml ft
 " example: ~/.vim/bundle/MatchTag/test.html
+"
+VkhAdd 'plugin MatchTag: highlights the matching HTML tag.'
 
 " plugin alternate for compile and run
 
@@ -471,9 +510,13 @@ map <leader>cc <ESC>:call MY_PROC_CLEAN_MODE_TOGGLE()<CR>
 VkhAdd '<\cc> enter/leave clean mode.'
 
 " plugin startify
-" ~/.vim/bundle/vim-startify/autoload/startify.vim
+" ~/.vim/bundle/vim-startify/doc/startify.txt
 
 let g:startify_session_persistence=1
+
+map <leader>ss <ESC>:Startify<CR>
+VkhAdd 'plugin vim-startify: The fancy start screen for Vim.'
+VkhAdd '\ss open the fancy start screen for Vim.'
 
 map <leader><f3> <ESC>:SSave<CR>
 
@@ -481,3 +524,6 @@ VkhAdd '\<f3> save session.'
 
 " plugin jedi-vim
 " ~/.vim/bundle/jedi-vim/doc/jedi-vim.txt
+
+VkhAdd 'plugin jedi-vim: awesome Python autocompletion with Vim'
+
