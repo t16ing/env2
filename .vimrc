@@ -337,6 +337,8 @@ highlight PmenuSel term=reverse ctermbg=lightred ctermfg=black
 " ~/.vim/bundle/ctrlp.vim/doc/ctrlp.txt
 
 let g:ctrlp_max_files=0
+let g:ctrlp_use_caching=1
+let g:ctrlp_clear_cache_on_exit=0
 
 VkhAdd '<c-p> open ctrlp window.'
 
