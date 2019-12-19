@@ -174,6 +174,9 @@ Bundle 'othree/vim-autocomplpop'
 Bundle 'davidhalter/jedi-vim'
 " file
 Bundle 'scrooloose/nerdtree'
+Bundle 'Xuyuanp/nerdtree-git-plugin'
+Bundle 'tiagofumo/vim-nerdtree-syntax-highlight'
+Bundle 'ryanoasis/vim-devicons'
 Bundle 'kien/ctrlp.vim'
 " navigation
 Bundle 't16ing/vim-vookmark'
@@ -232,29 +235,30 @@ endfunction
 
 autocmd BufLeave * call MY_PROC_TABBAR_SAVELASTFOCUSEDTABNR()
 
+nmap gn gt
 nmap gp gT
 nmap gb <ESC>:call MY_PROC_TABBAR_SWITCH()<CR>
 nmap gr <ESC>:tab sball<CR>
-noremap <leader>1 1gt
-noremap <leader>2 2gt
-noremap <leader>3 3gt
-noremap <leader>4 4gt
-noremap <leader>5 5gt
-noremap <leader>6 6gt
-noremap <leader>7 7gt
-noremap <leader>8 8gt
-noremap <leader>9 9gt
-noremap <leader>0 <ESC>:tablast<CR>
+noremap g1 1gt
+noremap g2 2gt
+noremap g3 3gt
+noremap g4 4gt
+noremap g5 5gt
+noremap g6 6gt
+noremap g7 7gt
+noremap g8 8gt
+noremap g9 9gt
+noremap g0 <ESC>:tablast<CR>
 
 " always open file under cursor (gf) in new tab
 noremap gf <c-w>gf
 cabbrev e tabe
 
-VkhAdd 'gt to move to next tab.'
+VkhAdd 'gt,gn to move to next tab.'
 VkhAdd 'gp to move to previous tab.'
 VkhAdd 'gb to move to last focused tab.'
 VkhAdd 'gr refresh tabs - unfold all buffers to tabs.'
-VkhAdd '\[1-9] to move to tab n.'
+VkhAdd 'g[1-9] to move to tab n.'
 VkhAdd '<c-o> jump backward. <c-i> jump forward.'
 
 " plugin vim-signature
@@ -265,9 +269,11 @@ VkhAdd 'plugin vim-signature: A plugin to toggle, display and navigate vim marks
 " plugin nerdtree
 " ~/.vim/bundle/nerdtree/doc/NERDTree.txt
 
-let g:NERDTreeDirArrowExpandable="+"
-let g:NERDTreeDirArrowCollapsible="~"
-let g:NERDTreeQuitOnOpen=1
+"let g:NERDTreeDirArrowExpandable="+"
+"let g:NERDTreeDirArrowCollapsible="~"
+let g:NERDTreeQuitOnOpen = 1
+let g:NERDTreeGitStatusWithFlags = 1
+let g:NERDTreeIgnore = ['^node_modules$']
 
 map <leader>nt <ESC>:NERDTreeToggle<CR>
 map <leader>nf <ESC>:NERDTreeFind<CR>
@@ -310,6 +316,7 @@ VkhAdd 'plugin L9: required by plugin acp.'
 let g:ctrlp_max_files=0
 let g:ctrlp_use_caching=1
 let g:ctrlp_clear_cache_on_exit=0
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 VkhAdd 'plugin ctrlp.vim: Fuzzy file, buffer, mru, tag, ... finder.'
 VkhAdd '<c-p> open ctrlp window.'
