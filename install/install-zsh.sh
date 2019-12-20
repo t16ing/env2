@@ -9,9 +9,12 @@ chsh
 echo "Install oh-my-zsh"
 sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/plugins/zsh-autosuggestions
-sed -i -e 's/^plugins=(/plugins=( zsh-autosuggestions ssh-agent/g' ~/.zshrc
+sed -i -e 's/^plugins=(/plugins=( zsh-autosuggestions ssh-agent autojump/g' ~/.zshrc
 echo "alias ls='ls --color=tty --group-directories-first'" >> ~/.zshrc
 cd ~/.oh-my-zsh/plugins/zsh-autosuggestions/ ; make
+
+echo "Install oh-my-zsh plugin dependency"
+sudo apt install autojump
 
 echo "Install powerlevel9k"
 sudo apt install powerline fonts-powerline
