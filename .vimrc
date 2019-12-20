@@ -424,7 +424,7 @@ VkhAdd '\<f3> save session.'
 " plugin vim-airline
 " ~/.vim/bundle/vim-airline/README.md
 
-let g:airline#extensions#tabline#enabled = 1
+let g:airline_extensions = ['branch', 'tabline', 'cursormode', 'hunks', 'quickfix', 'syntastic']
 let g:airline_theme                      = 'dark'
 let g:airline_highlighting_cache         = 1
 let g:airline_powerline_fonts            = 1
