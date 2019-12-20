@@ -240,6 +240,7 @@ VkhAdd 'plugin vandomkeyhint: Vim plugin to install and show user-defined hints.
 " an alternate tabbar plugin
 " ~/.vim/bundle/tabline.vim/README.md
 
+set showtabline=2
 hi TabLine      ctermfg=Black  ctermbg=Green     cterm=NONE
 hi TabLineFill  ctermfg=Black  ctermbg=Green     cterm=NONE
 hi TabLineSel   ctermfg=White  ctermbg=DarkBlue  cterm=NONE
