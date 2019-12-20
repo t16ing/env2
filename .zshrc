@@ -107,4 +107,7 @@ if [ /usr/bin/kubectl ]; then source <(kubectl completion zsh); fi
 
 # additional themes and plugins
 source /usr/share/powerlevel9k/powerlevel9k.zsh-theme
+POWERLEVEL9K_TIME_FORMAT="%D{%H:%M:%S %Y.%m.%d}"
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context os_icon load ram battery newline dir dir_writable vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time status root_indicator background_jobs history time)
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
