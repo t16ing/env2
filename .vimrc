@@ -105,18 +105,6 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
-" better coding view
-
-set t_Co=16
-set nu
-set cursorline
-highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
-highlight CursorLineNr term=bold cterm=bold ctermfg=yellow ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
-highlight CursorLine term=bold cterm=bold ctermfg=NONE ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
-highlight SignColumn term=NONE cterm=NONE ctermfg=NONE ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
-highlight Visual cterm=none ctermfg=0 ctermbg=white gui=none guifg=white guibg=darkgrey
-highlight Search term=reverse ctermfg=black ctermbg=yellow guifg=black guibg=Yellow
-
 " modeline only take effect in first 2 lines or last 2 lines
 
 set modeline
@@ -160,6 +148,7 @@ Bundle 't16ing/vim-vandomkeyhint'
 Bundle 'mhinz/vim-startify'
 Bundle 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'flazz/vim-colorschemes'
 "-----------------------------------------------------------------------------
 " code
 Bundle 'scrooloose/syntastic'
@@ -502,3 +491,10 @@ VkhAdd "plugin vim-airline: Lean & mean status/tabline for vim that's light as a
 
 VkhAdd 'plugin jedi-vim: awesome Python autocompletion with Vim'
 
+" plugin vim-colorschemes
+" ~/.vim/bundle/vim-colorschemes/README.md
+
+colorscheme gruvbox
+set bg=dark
+set nu
+set cursorline
