@@ -452,7 +452,7 @@ let g:airline_theme                      = 'dark'
 let g:airline_highlighting_cache         = 1
 let g:airline_powerline_fonts            = 1
 
-set showtabline = 2
+set showtabline=2
 
 function MY_PROC_TABBAR_SWITCH()
        if exists('g:my_last_focused_tab_nr')
