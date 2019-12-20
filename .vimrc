@@ -129,10 +129,6 @@ let &t_te.="\e[?7727l"
 noremap <Esc>O[ <Esc>
 noremap! <Esc>O[ <C-c>
 
-" ZZ to sure saving and leaving VIM
-
-map ZZ <ESC>:wqa!<CR>
-
 " locale settings
 set encoding=utf-8
 set fileencoding=utf-8
@@ -163,15 +159,16 @@ Bundle 'gmarik/vundle'
 Bundle 't16ing/vim-vandomkeyhint'
 Bundle 'mhinz/vim-startify'
 Bundle 'vim-airline/vim-airline'
+"-----------------------------------------------------------------------------
 " code
 Bundle 'scrooloose/syntastic'
 	" Visible ERROR and warning
 Bundle 'tpope/vim-fugitive'
-	" <\gb> git blame
+	" <\gb> git blame <\gl> git log
 Bundle 'airblade/vim-gitgutter'
 	" <\gt> Visible git sign <]c> for next hunk, <[c> for previous hunk.
 Bundle 'majutsushi/tagbar'
-	" <\tbar> open tag bar, ctags required
+	" <\tb> open tag bar, ctags required
 Bundle 'hushicai/tagbar-javascript.vim'
 	" tagbar for js
 Bundle 'vim-scripts/L9'
@@ -180,6 +177,7 @@ Bundle 'othree/vim-autocomplpop'
 	" Auto trigger complete popup menu.
 Bundle 'davidhalter/jedi-vim'
 	" Auto-complete for python
+"-----------------------------------------------------------------------------
 " file
 Bundle 'scrooloose/nerdtree'
 	" <\nt> open nerdtree window. <\nf> find current file in nerdtree.'
@@ -191,11 +189,12 @@ Bundle 'ryanoasis/vim-devicons'
 	" icons plugin for nerdtree
 Bundle 'ctrlpvim/ctrlp.vim'
 	" c-p
+"-----------------------------------------------------------------------------
 " navigation
 Bundle 't16ing/vim-vookmark'
-	" mm mn ml
+	" mm mn ml to toggle, move, list bookmarks
 Bundle 'Lokaltog/vim-easymotion'
-	" \\w \\b \\fc \\Fc
+	" \\w forward move \\b backward move
 Bundle 'terryma/vim-expand-region'
 	" Press + to expand the visual selection and _ to shrink it.
 Bundle 'gregsexton/MatchTag'
@@ -204,6 +203,7 @@ Bundle 'mkitt/tabline.vim'
 	" Visible tab labels
 Bundle 'kshenoy/vim-signature'
 	" Visible mark (m-*)
+"-----------------------------------------------------------------------------
 " edit
 Bundle 'vim-scripts/Gundo'
 	" F6 to toggle Gundo
@@ -212,12 +212,7 @@ Bundle 'vim-scripts/Engspchk'
 Bundle 'junegunn/vim-easy-align'
 	" select, ENTER, =, =
 Bundle 'tpope/vim-commentary'
-	" Use gcc to comment out a line, gc to comment out the target of a motion (for example, gcap to comment out a paragraph), gc in visual mode to comment out the selection, and gc in operator pending mode to target a comment.
-
-"......................................
-" non github repos
-" Bundle 'git://git.wincent.com/command-t.git'
-"......................................
+	" gcc to comment out a line, gcap to comment out a paragraph
 
 filetype plugin indent on
 
@@ -278,11 +273,8 @@ noremap g0 <ESC>:tablast<CR>
 noremap gf <c-w>gf
 cabbrev e tabe
 
-VkhAdd 'gt,gn to move to next tab.'
-VkhAdd 'gp to move to previous tab.'
-VkhAdd 'gb to move to last focused tab.'
-VkhAdd 'gr refresh tabs - unfold all buffers to tabs.'
-VkhAdd 'g[1-9] to move to tab n.'
+VkhAdd 'gt,gn to move to next tab, gp to move to previous tab, gb to move to last focused tab.'
+VkhAdd 'gr refresh tabs - unfold all buffers to tabs, g[1-9] to move to tab n.'
 VkhAdd '<c-o> jump backward. <c-i> jump forward.'
 
 " plugin vim-signature
@@ -293,8 +285,6 @@ VkhAdd 'plugin vim-signature: A plugin to toggle, display and navigate vim marks
 " plugin nerdtree
 " ~/.vim/bundle/nerdtree/doc/NERDTree.txt
 
-"let g:NERDTreeDirArrowExpandable="+"
-"let g:NERDTreeDirArrowCollapsible="~"
 let g:NERDTreeQuitOnOpen = 1
 let g:NERDTreeGitStatusWithFlags = 1
 let g:NERDTreeIgnore = ['^node_modules$']
