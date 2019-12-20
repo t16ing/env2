@@ -146,6 +146,8 @@ Bundle 'othree/vim-autocomplpop'
   " Auto trigger complete popup menu.
 Bundle 'davidhalter/jedi-vim'
   " Auto-complete for python
+Bundle 'moll/vim-node'
+  " gf in node.js require(...)
 "-----------------------------------------------------------------------------
 " file
 Bundle 'scrooloose/nerdtree'
