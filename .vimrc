@@ -163,55 +163,55 @@ Plugin 'vim-airline/vim-airline-themes'
 "-----------------------------------------------------------------------------
 " code
 Bundle 'scrooloose/syntastic'
-	" Visible ERROR and warning
+  " Visible ERROR and warning
 Bundle 'tpope/vim-fugitive'
-	" <\gb> git blame <\gl> git log
+  " <\gb> git blame <\gl> git log
 Bundle 'airblade/vim-gitgutter'
-	" <\gt> Visible git sign <]c> for next hunk, <[c> for previous hunk.
+  " <\gt> Visible git sign <]c> for next hunk, <[c> for previous hunk.
 Bundle 'majutsushi/tagbar'
-	" <\tb> open tag bar, ctags required
+  " <\tb> open tag bar, ctags required
 Bundle 'hushicai/tagbar-javascript.vim'
-	" tagbar for js
+  " tagbar for js
 Bundle 'vim-scripts/L9'
-	" required by vim-autocomplpop
+  " required by vim-autocomplpop
 Bundle 'othree/vim-autocomplpop'
-	" Auto trigger complete popup menu.
+  " Auto trigger complete popup menu.
 Bundle 'davidhalter/jedi-vim'
-	" Auto-complete for python
+  " Auto-complete for python
 "-----------------------------------------------------------------------------
 " file
 Bundle 'scrooloose/nerdtree'
-	" <\nt> open nerdtree window. <\nf> find current file in nerdtree.'
+  " <\nt> open nerdtree window. <\nf> find current file in nerdtree.'
 Bundle 'Xuyuanp/nerdtree-git-plugin'
-	" git notation for nerdtree
+  " git notation for nerdtree
 Bundle 'tiagofumo/vim-nerdtree-syntax-highlight'
-	" highlights for nerdtree
+  " highlights for nerdtree
 Bundle 'ryanoasis/vim-devicons'
-	" icons plugin for nerdtree
+  " icons plugin for nerdtree
 Bundle 'ctrlpvim/ctrlp.vim'
-	" c-p
+  " c-p
 "-----------------------------------------------------------------------------
 " navigation
 Bundle 't16ing/vim-vookmark'
-	" mm mn ml to toggle, move, list bookmarks
+  " mm mn ml to toggle, move, list bookmarks
 Bundle 'Lokaltog/vim-easymotion'
-	" \\w forward move \\b backward move
+  " \\w forward move \\b backward move
 Bundle 'terryma/vim-expand-region'
-	" Press + to expand the visual selection and _ to shrink it.
+  " Press + to expand the visual selection and _ to shrink it.
 Bundle 'gregsexton/MatchTag'
-	" Highlights the matching HTML tags
+  " Highlights the matching HTML tags
 Bundle 'kshenoy/vim-signature'
-	" Visible mark (m-*)
+  " Visible mark (m-*)
 "-----------------------------------------------------------------------------
 " edit
 Bundle 'vim-scripts/Gundo'
-	" F6 to toggle Gundo
+  " F6 to toggle Gundo
 Bundle 'vim-scripts/Engspchk'
-	" \ec start english spelling check. \ee end english spelling check.
+  " \ec start english spelling check. \ee end english spelling check.
 Bundle 'junegunn/vim-easy-align'
-	" select, ENTER, =, =
+  " select, ENTER, =, =
 Bundle 'tpope/vim-commentary'
-	" gcc to comment out a line, gcap to comment out a paragraph
+  " gcc to comment out a line, gcap to comment out a paragraph
 
 filetype plugin indent on
 
