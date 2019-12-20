@@ -8,7 +8,7 @@ export ZSH=$HOME/.oh-my-zsh
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="mytheme"
+ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -104,3 +104,10 @@ if [ /usr/bin/kubectl ]; then source <(kubectl completion zsh); fi
 
 # for ./install/install-fail2cam.sh
 (ls /tmp/fail2cam-`hostname`-*.png) 2>/dev/null 1>/dev/null && ( echo "###FAIL2CAM WARNING###"; ls -al /tmp/fail2cam-`hostname`-*.png )
+
+# additional themes and plugins
+source /usr/share/powerlevel9k/powerlevel9k.zsh-theme
+POWERLEVEL9K_TIME_FORMAT="%D{%H:%M:%S %Y.%m.%d}"
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context os_icon load ram battery newline dir dir_writable vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time status root_indicator background_jobs history time)
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

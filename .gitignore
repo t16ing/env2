@@ -10,6 +10,7 @@
 .gi*
 .gn*
 .go*
+.gt*
 .k*
 .l*
 .m*
@@ -35,7 +36,7 @@
 *.bak
 *.flv
 Vir*/
-Do*/
+D*/
 P*/
 go/
 snap/

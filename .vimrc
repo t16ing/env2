@@ -165,31 +165,54 @@ Bundle 'mhinz/vim-startify'
 Bundle 'vim-airline/vim-airline'
 " code
 Bundle 'scrooloose/syntastic'
+	" Visible ERROR and warning
 Bundle 'tpope/vim-fugitive'
+	" <\gb> git blame
 Bundle 'airblade/vim-gitgutter'
+	" <\gt> Visible git sign <]c> for next hunk, <[c> for previous hunk.
 Bundle 'majutsushi/tagbar'
+	" <\tbar> open tag bar, ctags required
 Bundle 'hushicai/tagbar-javascript.vim'
+	" tagbar for js
 Bundle 'vim-scripts/L9'
+	" required by vim-autocomplpop
 Bundle 'othree/vim-autocomplpop'
+	" Auto trigger complete popup menu.
 Bundle 'davidhalter/jedi-vim'
+	" Auto-complete for python
 " file
 Bundle 'scrooloose/nerdtree'
+	" <\nt> open nerdtree window. <\nf> find current file in nerdtree.'
 Bundle 'Xuyuanp/nerdtree-git-plugin'
+	" git notation for nerdtree
 Bundle 'tiagofumo/vim-nerdtree-syntax-highlight'
+	" highlights for nerdtree
 Bundle 'ryanoasis/vim-devicons'
-Bundle 'kien/ctrlp.vim'
+	" icons plugin for nerdtree
+Bundle 'ctrlpvim/ctrlp.vim'
+	" c-p
 " navigation
 Bundle 't16ing/vim-vookmark'
+	" mm mn ml
 Bundle 'Lokaltog/vim-easymotion'
+	" \\w \\b \\fc \\Fc
 Bundle 'terryma/vim-expand-region'
+	" Press + to expand the visual selection and _ to shrink it.
 Bundle 'gregsexton/MatchTag'
+	" Highlights the matching HTML tags
 Bundle 'mkitt/tabline.vim'
+	" Visible tab labels
 Bundle 'kshenoy/vim-signature'
+	" Visible mark (m-*)
 " edit
 Bundle 'vim-scripts/Gundo'
+	" F6 to toggle Gundo
 Bundle 'vim-scripts/Engspchk'
+	" \ec start english spelling check. \ee end english spelling check.
 Bundle 'junegunn/vim-easy-align'
+	" select, ENTER, =, =
 Bundle 'tpope/vim-commentary'
+	" Use gcc to comment out a line, gc to comment out the target of a motion (for example, gcap to comment out a paragraph), gc in visual mode to comment out the selection, and gc in operator pending mode to target a comment.
 
 "......................................
 " non github repos
