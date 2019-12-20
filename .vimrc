@@ -199,8 +199,6 @@ Bundle 'terryma/vim-expand-region'
 	" Press + to expand the visual selection and _ to shrink it.
 Bundle 'gregsexton/MatchTag'
 	" Highlights the matching HTML tags
-Bundle 'mkitt/tabline.vim'
-	" Visible tab labels
 Bundle 'kshenoy/vim-signature'
 	" Visible mark (m-*)
 "-----------------------------------------------------------------------------
@@ -231,51 +229,6 @@ set rtp+=~/.vim/bundle/vim-vandomkeyhint/
 call vandomkeyhint#rc()
 
 VkhAdd 'plugin vandomkeyhint: Vim plugin to install and show user-defined hints.'
-
-" an alternate tabbar plugin
-" ~/.vim/bundle/tabline.vim/README.md
-
-set showtabline=2
-hi TabLine      ctermfg=Black  ctermbg=Green     cterm=NONE
-hi TabLineFill  ctermfg=Black  ctermbg=Green     cterm=NONE
-hi TabLineSel   ctermfg=White  ctermbg=DarkBlue  cterm=NONE
-
-VkhAdd 'plugin tabline.vim: Configure tab labels within Terminal Vim with a very succinct output.'
-
-function MY_PROC_TABBAR_SWITCH()
-       if exists('g:my_last_focused_tab_nr')
-               exec "tabn ".g:my_last_focused_tab_nr
-       endif
-endfunction
-
-function MY_PROC_TABBAR_SAVELASTFOCUSEDTABNR()
-       let g:my_last_focused_tab_nr = tabpagenr()
-endfunction
-
-autocmd BufLeave * call MY_PROC_TABBAR_SAVELASTFOCUSEDTABNR()
-
-nmap gn gt
-nmap gp gT
-nmap gb <ESC>:call MY_PROC_TABBAR_SWITCH()<CR>
-nmap gr <ESC>:tab sball<CR>
-noremap g1 1gt
-noremap g2 2gt
-noremap g3 3gt
-noremap g4 4gt
-noremap g5 5gt
-noremap g6 6gt
-noremap g7 7gt
-noremap g8 8gt
-noremap g9 9gt
-noremap g0 <ESC>:tablast<CR>
-
-" always open file under cursor (gf) in new tab
-noremap gf <c-w>gf
-cabbrev e tabe
-
-VkhAdd 'gt,gn to move to next tab, gp to move to previous tab, gb to move to last focused tab.'
-VkhAdd 'gr refresh tabs - unfold all buffers to tabs, g[1-9] to move to tab n.'
-VkhAdd '<c-o> jump backward. <c-i> jump forward.'
 
 " plugin vim-signature
 " ~/.vim/bundle/vim-signature/doc/signature.txt
@@ -329,7 +282,7 @@ VkhAdd 'plugin L9: required by plugin acp.'
 
 let g:ctrlp_max_files=0
 let g:ctrlp_use_caching=1
-let g:ctrlp_clear_cache_on_exit=0
+let g:ctrlp_clear_cache_on_exit=1
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 VkhAdd 'plugin ctrlp.vim: Fuzzy file, buffer, mru, tag, ... finder.'
@@ -492,6 +445,43 @@ VkhAdd '\<f3> save session.'
 " plugin vim-airline
 " ~/.vim/bundle/vim-airline/README.md
 
+let g:airline#extensions#tabline#enabled = 1
+set showtabline=2
+
+function MY_PROC_TABBAR_SWITCH()
+       if exists('g:my_last_focused_tab_nr')
+               exec "tabn ".g:my_last_focused_tab_nr
+       endif
+endfunction
+
+function MY_PROC_TABBAR_SAVELASTFOCUSEDTABNR()
+       let g:my_last_focused_tab_nr = tabpagenr()
+endfunction
+
+autocmd BufLeave * call MY_PROC_TABBAR_SAVELASTFOCUSEDTABNR()
+
+nmap gn gt
+nmap gp gT
+nmap gb <ESC>:call MY_PROC_TABBAR_SWITCH()<CR>
+nmap gr <ESC>:tab sball<CR>
+noremap g1 1gt
+noremap g2 2gt
+noremap g3 3gt
+noremap g4 4gt
+noremap g5 5gt
+noremap g6 6gt
+noremap g7 7gt
+noremap g8 8gt
+noremap g9 9gt
+noremap g0 <ESC>:tablast<CR>
+
+" always open file under cursor (gf) in new tab
+noremap gf <c-w>gf
+cabbrev e tabe
+
+VkhAdd 'gt,gn to move to next tab, gp to move to previous tab, gb to move to last focused tab.'
+VkhAdd 'gr refresh tabs - unfold all buffers to tabs, g[1-9] to move to tab n.'
+VkhAdd '<c-o> jump backward. <c-i> jump forward.'
 VkhAdd "plugin vim-airline: Lean & mean status/tabline for vim that's light as air."
 
 " plugin jedi-vim
