@@ -243,6 +243,13 @@ let g:NERDTreeQuitOnOpen = 1
 let g:NERDTreeGitStatusWithFlags = 1
 let g:NERDTreeIgnore = ['^node_modules$']
 
+" nerdtree with vim-nerdtree-syntax-highlight is slow
+" try https://github.com/ryanoasis/vim-devicons/issues/263
+augroup nerdtreedisablecursorline
+  autocmd!
+  autocmd FileType nerdtree setlocal nocursorline
+augroup end
+
 map <leader>nt <ESC>:NERDTreeToggle<CR>
 map <leader>nf <ESC>:NERDTreeFind<CR>
 
