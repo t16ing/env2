@@ -159,6 +159,7 @@ Bundle 'gmarik/vundle'
 Bundle 't16ing/vim-vandomkeyhint'
 Bundle 'mhinz/vim-startify'
 Bundle 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 "-----------------------------------------------------------------------------
 " code
 Bundle 'scrooloose/syntastic'
@@ -444,6 +445,9 @@ VkhAdd '\<f3> save session.'
 " ~/.vim/bundle/vim-airline/README.md
 
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme = 'dark'
+let g:airline_highlighting_cache = 1
+let g:airline_powerline_fonts = 1
 set showtabline=2
 
 function MY_PROC_TABBAR_SWITCH()
