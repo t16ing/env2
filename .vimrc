@@ -479,4 +479,3 @@ colorscheme gruvbox
 set bg=dark
 set nu
 set cursorline
-hi Normal guibg=NONE ctermbg=NONE
