@@ -148,6 +148,8 @@ Bundle 'davidhalter/jedi-vim'
   " Auto-complete for python
 Bundle 'moll/vim-node'
   " gf in node.js require(...)
+Plugin 'luochen1990/rainbow'
+  " rainbow parentheses {[()]}
 "-----------------------------------------------------------------------------
 " file
 Bundle 'scrooloose/nerdtree'
@@ -479,3 +481,10 @@ colorscheme gruvbox
 set bg=dark
 set nu
 set cursorline
+
+" plugin rainbow
+" ~/.vim/bundle/rainbow/README.md
+
+let g:rainbow_active = 1
+
+VkhAdd 'plugin rainbow: help you read complex code by showing diff level of parentheses in diff color'
