@@ -20,10 +20,11 @@
 .r*
 .s*
 .t*
-.vs*
 .vim/
 .vim_*
 .vimi*
+.vo*
+.vs*
 .w*
 .x*
 .y*
