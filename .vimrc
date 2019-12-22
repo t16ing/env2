@@ -211,7 +211,7 @@ VkhAdd 'plugin vim-signature: A plugin to toggle, display and navigate vim marks
 " plugin nerdtree
 " ~/.vim/bundle/nerdtree/doc/NERDTree.txt
 
-let g:NERDTreeQuitOnOpen = 1
+let g:NERDTreeQuitOnOpen = 0
 let g:NERDTreeGitStatusWithFlags = 1
 let g:NERDTreeIgnore = ['^node_modules$']
 
@@ -298,7 +298,7 @@ VkhAdd 'plugin syntastic: Syntax checking on the fly has never been so pimp.'
 " ~/.vim/bundle/tagbar-javascript.vim/README.md
 
 let g:tagbar_autofocus   = 1
-let g:tagbar_autoclose   = 1
+let g:tagbar_autoclose   = 0
 let g:tagbar_autoshowtag = 1
 
 map <leader>tb <ESC>:TagbarToggle<CR>
@@ -443,10 +443,6 @@ nmap g8 <Plug>AirlineSelectTab8
 nmap g9 <Plug>AirlineSelectTab9
 
 set showtabline=2
-
-" always open file under cursor (gf) in new tab
-noremap gf <c-w>gf
-cabbrev e tabe
 
 VkhAdd 'gt,gn to move to next tab, gp to move to previous tab, gb to move to last focused tab.'
 VkhAdd 'gr refresh tabs - unfold all buffers to tabs, g[1-9] to move to tab n.'
