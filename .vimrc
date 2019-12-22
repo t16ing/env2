@@ -232,6 +232,8 @@ VkhAdd '<\nf> find current file in nerdtree.'
 " plugin vookmark
 " ~/.vim/bundle/vim-vookmark/plugin/vookmark.vim
 
+let g:vookmark_savepath=$HOME.'/.vim/vookmark'
+
 VkhAdd 'plugin vim-vookmark: <mm> toggle a bookmark <mn> next <mp> previous <ma> clear all <ml> list.'
 
 " plugin vim-easymotion
@@ -414,12 +416,9 @@ VkhAdd '<\cc> enter/leave clean mode.'
 let g:startify_session_persistence=1
 
 map <leader>ss <ESC>:Startify<CR>
+
 VkhAdd 'plugin vim-startify: The fancy start screen for Vim.'
-VkhAdd '\ss open the fancy start screen for Vim.'
-
-map <leader><f3> <ESC>:SSave<CR>
-
-VkhAdd '\<f3> save session.'
+VkhAdd '\ss open the fancy start screen for Vim. :SSave to save session.'
 
 " plugin vim-airline
 " ~/.vim/bundle/vim-airline/README.md
