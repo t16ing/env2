@@ -232,8 +232,6 @@ VkhAdd '<\nf> find current file in nerdtree.'
 " plugin vookmark
 " ~/.vim/bundle/vim-vookmark/plugin/vookmark.vim
 
-let g:vookmark_savepath=$VIM_HOME.'/vookmark'
-
 VkhAdd 'plugin vim-vookmark: <mm> toggle a bookmark <mn> next <mp> previous <ma> clear all <ml> list.'
 
 " plugin vim-easymotion
