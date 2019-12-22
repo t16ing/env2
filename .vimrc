@@ -431,34 +431,20 @@ let g:airline_theme                      = 'dark'
 let g:airline_highlighting_cache         = 1
 let g:airline_powerline_fonts            = 1
 
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+nmap gn <Plug>AirlineSelectNextTab
+nmap gp <Plug>AirlineSelectPrevTab
+nmap g1 <Plug>AirlineSelectTab1
+nmap g2 <Plug>AirlineSelectTab2
+nmap g3 <Plug>AirlineSelectTab3
+nmap g4 <Plug>AirlineSelectTab4
+nmap g5 <Plug>AirlineSelectTab5
+nmap g6 <Plug>AirlineSelectTab6
+nmap g7 <Plug>AirlineSelectTab7
+nmap g8 <Plug>AirlineSelectTab8
+nmap g9 <Plug>AirlineSelectTab9
+
 set showtabline=2
-
-function MY_PROC_TABBAR_SWITCH()
-       if exists('g:my_last_focused_tab_nr')
-               exec "tabn ".g:my_last_focused_tab_nr
-       endif
-endfunction
-
-function MY_PROC_TABBAR_SAVELASTFOCUSEDTABNR()
-       let g:my_last_focused_tab_nr = tabpagenr()
-endfunction
-
-autocmd BufLeave * call MY_PROC_TABBAR_SAVELASTFOCUSEDTABNR()
-
-nmap gn gt
-nmap gp gT
-nmap gb <ESC>:call MY_PROC_TABBAR_SWITCH()<CR>
-nmap gr <ESC>:tab sball<CR>
-noremap g1 1gt
-noremap g2 2gt
-noremap g3 3gt
-noremap g4 4gt
-noremap g5 5gt
-noremap g6 6gt
-noremap g7 7gt
-noremap g8 8gt
-noremap g9 9gt
-noremap g0 <ESC>:tablast<CR>
 
 " always open file under cursor (gf) in new tab
 noremap gf <c-w>gf
