@@ -150,6 +150,8 @@ Bundle 'moll/vim-node'
   " gf in node.js require(...)
 Plugin 'luochen1990/rainbow'
   " rainbow parentheses {[()]}
+Bundle 'nikvdp/ejs-syntax'
+  " syntax for ejs
 "-----------------------------------------------------------------------------
 " file
 Bundle 'scrooloose/nerdtree'
