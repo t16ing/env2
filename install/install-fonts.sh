@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "Install powerline fonts"
+sudo apt install fonts-powerline
+
 echo "Install nerd fonts for vim nerdtree plugin."
 URL=https://github.com/ryanoasis/nerd-fonts/releases/download/v2.0.0/Ubuntu.zip
 
