@@ -231,6 +231,20 @@ VkhAdd 'plugin nerdtree: A tree explorer plugin to rule the Vim world.'
 VkhAdd '<\nt> open nerdtree window.'
 VkhAdd '<\nf> find current file in nerdtree.'
 
+" plugin vim-devicons
+" ~/.vim/bundle/vim-devicons/README.md
+" issue:
+"  https://github.com/ryanoasis/vim-devicons/issues/274
+" screenshot:
+"  https://user-images.githubusercontent.com/24741314/60797287-939f2d80-a1a1-11e9-8e18-a19d3a5b1711.png
+" fix:
+"  https://github.com/ryanoasis/vim-devicons/issues/274#issuecomment-513560707
+let g:rainbow_conf = {
+      \    'separately': {
+      \       'nerdtree': 0
+      \    }
+      \}
+
 " plugin vookmark
 " ~/.vim/bundle/vim-vookmark/plugin/vookmark.vim
 
