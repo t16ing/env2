@@ -29,6 +29,7 @@
 .x*
 .y*
 .zc*
+.zo*
 .zsh-*
 .zsh_*
 .zshrc.*
