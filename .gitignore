@@ -30,6 +30,7 @@
 .x*
 .y*
 .zc*
+.zo*
 .zsh-*
 .zsh_*
 .zshrc.*
@@ -40,6 +41,7 @@
 Vir*/
 D*/
 P*/
+Q*/
 go/
 snap/
 local/
