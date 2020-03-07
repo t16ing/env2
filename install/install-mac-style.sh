@@ -6,3 +6,9 @@ sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/manuelschn
 curl https://download.opensuse.org/repositories/home:manuelschneid3r/xUbuntu_18.04/Release.key | sudo apt-key add -
 sudo apt-get update
 sudo apt-get install albert
+
+## integrted mac themes
+
+sudo add-apt-repository ppa:noobslab/macbuntu
+sudo apt-get update
+sudo apt-get install macbuntu-os-icons-v1804 macbuntu-os-ithemes-v1804
