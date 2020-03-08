@@ -214,6 +214,7 @@ VkhAdd 'plugin vim-signature: A plugin to toggle, display and navigate vim marks
 let g:NERDTreeQuitOnOpen = 0
 let g:NERDTreeGitStatusWithFlags = 1
 let g:NERDTreeIgnore = ['^node_modules$']
+let g:NERDTreeWinSize = 20
 
 " nerdtree with vim-nerdtree-syntax-highlight is slow
 " try https://github.com/ryanoasis/vim-devicons/issues/263
@@ -306,6 +307,7 @@ VkhAdd 'plugin syntastic: Syntax checking on the fly has never been so pimp.'
 let g:tagbar_autofocus   = 1
 let g:tagbar_autoclose   = 0
 let g:tagbar_autoshowtag = 1
+let g:tagbar_width = 20
 
 map <leader>tb <ESC>:TagbarToggle<CR>
 
