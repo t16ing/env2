@@ -9,7 +9,23 @@ sudo apt-get install apt-transport-https
 sudo apt-get update
 sudo apt-get install code # or code-insiders
 
-# for large workspace
+## for large workspace
 
 echo "fs.inotify.max_user_watches=524288" | sudo tee -a /etc/sysctl.conf
 sudo sysctl -p
+
+## transparent background
+## [ref] https://www.youtube.com/watch?v=PzObHq72Vug
+
+sudo apt install devilspie
+mkdir ~/.devlispie
+
+echo '
+(if (contains (window_class) "Code")
+	(begin
+		(spawn_async (str "xprop -id " (window_xid) " -f _KDE_NET_WM_BLUR_BEHIND_REGION 32c -set _KDE_NET_WM_BLUR_BEHIND_REGION 0 "))
+		(spawn_async (str "xprop -id " (window_xid) " -f _NET_WM_WINDOW_OPACITY 32c -set _NET_WM_WINDOW_OPACITY 0xD8000000"))
+	)
+)
+' > ~/.devilspie/vscode_transparent.ds
+
