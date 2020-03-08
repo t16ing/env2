@@ -174,12 +174,10 @@ Bundle 'terryma/vim-expand-region'
   " Press + to expand the visual selection and _ to shrink it.
 Bundle 'gregsexton/MatchTag'
   " Highlights the matching HTML tags
-Bundle 'kshenoy/vim-signature'
+Plugin 'kshenoy/vim-signature'
   " Visible mark (m-*)
 "-----------------------------------------------------------------------------
 " edit
-Bundle 'vim-scripts/Gundo'
-  " F6 to toggle Gundo
 Bundle 'vim-scripts/Engspchk'
   " \ec start english spelling check. \ee end english spelling check.
 Bundle 'junegunn/vim-easy-align'
@@ -283,16 +281,6 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 
 VkhAdd 'plugin ctrlp.vim: Fuzzy file, buffer, mru, tag, ... finder.'
 VkhAdd '<c-p> open ctrlp window.'
-
-" plugin Gundo
-" ~/.vim/bundle/Gundo/doc/gundo.txt
-
-let g:gundo_close_on_revert=1
-
-map <f6> <ESC>:GundoToggle<CR>
-
-VkhAdd 'plugin Gundo: Graph your undo tree so you can actually USE it. Requires python 2.4+.'
-VkhAdd '<f6> open Gundo window.'
 
 " alternate plugin for diff modifies and origins
 
