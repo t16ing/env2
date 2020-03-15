@@ -5,8 +5,9 @@ mkdir -p ~/local/src/wireshark
 pushd ~/local/src/wireshark
   wget https://1.as.dl.wireshark.org/src/wireshark-3.2.2.tar.xz
   tar xf wireshark-*.tar.xz
-  cd wireshark-3.2.2
-  cmake
+  mkdir wireshark-ninja
+  cd wireshark-ninja
+  cmake ../wireshark-3.2.2
   make
-  sudo make install
+  sudo checkinstall
 popd
