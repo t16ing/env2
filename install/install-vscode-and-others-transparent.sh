@@ -14,18 +14,18 @@ sudo apt-get install code # or code-insiders
 echo "fs.inotify.max_user_watches=524288" | sudo tee -a /etc/sysctl.conf
 sudo sysctl -p
 
-## transparent background
+## transparent background for Code and others
 ## [ref] https://www.youtube.com/watch?v=PzObHq72Vug
 
 sudo apt install devilspie
 mkdir ~/.devlispie
 
 echo '
-(if (contains (window_class) "Code")
+(if (contains (window_class) "Code|terminal|Nautilus|Qalculate")
 	(begin
 		(spawn_async (str "xprop -id " (window_xid) " -f _KDE_NET_WM_BLUR_BEHIND_REGION 32c -set _KDE_NET_WM_BLUR_BEHIND_REGION 0 "))
 		(spawn_async (str "xprop -id " (window_xid) " -f _NET_WM_WINDOW_OPACITY 32c -set _NET_WM_WINDOW_OPACITY 0xD8000000"))
 	)
 )
-' > ~/.devilspie/vscode_transparent.ds
+' > ~/.devilspie/transparent.ds
 
