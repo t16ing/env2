@@ -23,7 +23,7 @@ mkdir ~/.devlispie
 for window_class in Code terminal Nautilus Qalculate
 do
 echo '
-(if (contains (window_class) "'${windows_class}'")
+(if (contains (window_class) "'${window_class}'")
 	(begin
 		(spawn_async (str "xprop -id " (window_xid) " -f _KDE_NET_WM_BLUR_BEHIND_REGION 32c -set _KDE_NET_WM_BLUR_BEHIND_REGION 0 "))
 		(spawn_async (str "xprop -id " (window_xid) " -f _NET_WM_WINDOW_OPACITY 32c -set _NET_WM_WINDOW_OPACITY 0xD8000000"))
