@@ -1,0 +1,25 @@
+## apt
+
+tw.archive.ubuntu.com:80
+140.110.240.80
+
+security.ubuntu.com:80
+91.189.91.38
+91.189.88.152
+91.189.91.39
+91.189.88.142
+
+apt.kubernetes.io:8080
+34.107.204.206
+
+## docker
+## https://stackoverflow.com/questions/25399671/add-dockerhub-ip-addresses-on-whitelist
+## - Docker Hub doesn't have static IP that can be whitelist. Docker Hub is based on Amazon ELB, so they can change any time.
+## https://serverfault.com/questions/665191/whitelist-elastic-load-balancer-based-on-ip
+## https://docs.aws.amazon.com/general/latest/gr/aws-ip-ranges.html
+
+docker.io
+34.193.164.221
+34.237.62.81
+52.3.104.67
+
