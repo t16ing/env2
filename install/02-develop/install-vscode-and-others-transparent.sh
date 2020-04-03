@@ -18,7 +18,7 @@ sudo sysctl -p
 ## [ref] https://www.youtube.com/watch?v=PzObHq72Vug
 
 sudo apt install devilspie
-mkdir ~/.devlispie
+mkdir ~/.devilspie
 
 for window_class in Code terminal Nautilus Qalculate
 do
