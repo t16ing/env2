@@ -22,7 +22,11 @@ echo '''how to update grub background:
 
 ## update plymouth
 
-echo how to update plymouth:
-echo 1. choose a plymouth here: "https://www.gnome-look.org/browse/cat/108/order/latest/"
-echo 2. how to install a plymouth: "https://askubuntu.com/questions/770295/how-can-i-install-paw-ubuntu-plymouth-theme-on-ubuntu-16-04/870092#870092"
-
+echo '''how to update plymouth:
+1. choose a plymouth here: "https://www.gnome-look.org/browse/cat/108/order/latest/"
+2. how to install a plymouth: "https://askubuntu.com/questions/770295/how-can-i-install-paw-ubuntu-plymouth-theme-on-ubuntu-16-04/870092#870092"
+- sudo cp -a paw /usr/share/plymouth/themes
+- sudo update-alternatives --install /usr/share/plymouth/themes/default.plymouth default.plymouth /usr/share/plymouth/themes/paw/paw.plymouth 100
+- sudo update-alternatives --config default.plymouth
+- sudo update-initramfs -u
+'''
