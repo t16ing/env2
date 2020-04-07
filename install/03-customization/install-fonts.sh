@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "Install cns11643 fonts"
+sudo apt install fonts-cns11643-kai fonts-cns11643-sung
+
 echo "Install powerline fonts"
 sudo apt install fonts-powerline
 
