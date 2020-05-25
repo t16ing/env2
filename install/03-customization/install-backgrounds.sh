@@ -30,3 +30,10 @@ echo '''how to update plymouth:
 - sudo update-alternatives --config default.plymouth
 - sudo update-initramfs -u
 '''
+
+## update gdm login background periodically
+
+echo '''example to update gdm login background periodically:
+1. $ crontab -e
+2. 0 * * * * cd ~/Pictures/wallpapers/ ; rm lockDialogGroup.jpg ; ln -s `find -type f | sort -R | head -n1` lockDialogGroup.jpg
+'''
