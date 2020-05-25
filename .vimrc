@@ -152,6 +152,8 @@ Plugin 'luochen1990/rainbow'
   " rainbow parentheses {[()]}
 Bundle 'nikvdp/ejs-syntax'
   " syntax for ejs
+Plugin 'leafgarland/typescript-vim'
+  " syntax for ts
 "-----------------------------------------------------------------------------
 " file
 Bundle 'scrooloose/nerdtree'
