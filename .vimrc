@@ -127,7 +127,9 @@ Bundle 't16ing/vim-vandomkeyhint'
 Bundle 'mhinz/vim-startify'
 Bundle 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+  " airline theme dark
 Plugin 'flazz/vim-colorschemes'
+  " colorscheme gruvbox with dark background
 "-----------------------------------------------------------------------------
 " code
 Bundle 'scrooloose/syntastic'
