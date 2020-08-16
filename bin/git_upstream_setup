@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# examples:
+# $ git_upstream_setup https://github.com/go-gitea/gitea master
+# $ git_upstream_setup https://github.com/hackmdio/codimd develop
+
+DIRBASE=$(basename $(pwd))
+UPSTREAM=${1:-https://github.com/${DIRBASE}/${DIRBASE}}
+BRANCH=${2:-master}
+
+git remote add upstream ${UPSTREAM}
+git fetch upstream ${BRANCH}
+git merge upstream/${BRANCH}
+git push
