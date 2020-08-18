@@ -65,6 +65,7 @@ ZSH_THEME="robbyrussell"
 plugins=( zsh-autosuggestions ssh-agent autojump
   git
 )
+plugins+=(zsh-nvm)
 
 source $ZSH/oh-my-zsh.sh
 
