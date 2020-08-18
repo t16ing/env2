@@ -1,4 +1,3 @@
 #!/bin/bash
 
-curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-sudo apt install nodejs
+git clone https://github.com/lukechilds/zsh-nvm ~/.oh-my-zsh/custom/plugins/zsh-nvm
