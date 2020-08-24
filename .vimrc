@@ -301,6 +301,7 @@ let g:syntastic_warning_symbol            = 'wa'
 let g:syntastic_check_on_open             = 1
 let g:syntastic_check_on_wq               = 1
 let g:syntastic_cpp_remove_include_errors = 1
+let g:syntastic_python_checkers           = ["pylint","python"]
 
 VkhAdd 'plugin syntastic: Syntax checking on the fly has never been so pimp.'
 
