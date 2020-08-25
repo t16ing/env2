@@ -170,8 +170,8 @@ Bundle 'ctrlpvim/ctrlp.vim'
   " c-p
 "-----------------------------------------------------------------------------
 " navigation
-Bundle 't16ing/vim-vookmark'
-  " mm mn ml to toggle, move, list bookmarks
+Bundle 'MattesGroeger/vim-bookmarks'
+  " mm mn mp ma to toggle, move, list bookmarks
 Bundle 'Lokaltog/vim-easymotion'
   " \\w forward move \\b backward move
 Bundle 'terryma/vim-expand-region'
@@ -248,12 +248,13 @@ let g:rainbow_conf = {
       \    }
       \}
 
-" plugin vookmark
-" ~/.vim/bundle/vim-vookmark/plugin/vookmark.vim
+" plugin bookmark
+" ~/.vim/bundle/vim-bookmarks/doc/bookmarks.txt
 
-let g:vookmark_savepath=$HOME.'/.vim/vookmark'
+let g:bookmark_auto_save_file = $HOME.'/.vim/bookmark'
+let g:bookmark_location_list  = 1
 
-VkhAdd 'plugin vim-vookmark: <mm> toggle a bookmark <mn> next <mp> previous <ma> clear all <ml> list.'
+VkhAdd 'plugin vim-bookmark: <mm> toggle a bookmark <mn> next <mp> previous <ma> list <mc> clear.'
 
 " plugin vim-easymotion
 " ~/.vim/bundle/vim-easymotion/README.md
