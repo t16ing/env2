@@ -9,3 +9,5 @@
 	quotepath = false
 [commit]
 	gpgsign = true
+[diff]
+	tool = vimdiff
