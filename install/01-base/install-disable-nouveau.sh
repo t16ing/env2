@@ -9,3 +9,5 @@ alias lbm-nouveau off
 "
 
 echo "${conf}" | sudo tee /etc/modprobe.d/blacklist-nouveau.conf
+
+sudo update-initramfs -u
