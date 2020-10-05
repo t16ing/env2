@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:$HOME/local/bin:/usr/local/bin:$PATH
 
@@ -8,7 +15,7 @@ export ZSH=$HOME/.oh-my-zsh
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -62,9 +69,12 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=( zsh-autosuggestions ssh-agent autojump
-  git
+plugins=( zsh-autosuggestions
 )
+plugins+=(ssh-agent)
+plugins+=(autojump)
+export NVM_COMPLETION=true
+export NVM_LAZY_LOAD=true
 plugins+=(zsh-nvm)
 
 source $ZSH/oh-my-zsh.sh
@@ -82,6 +92,7 @@ source $ZSH/oh-my-zsh.sh
 # else
 #   export EDITOR='mvim'
 # fi
+export EDITOR=vim
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -99,16 +110,29 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ls='ls --color=tty --group-directories-first'
 
-# for ./install/install-kubectl.sh
+# Configuring to detect if a command does not exist, suggest installation
 source /etc/zsh_command_not_found
-if [ /usr/bin/kubectl ]; then source <(kubectl completion zsh); fi
+
+# for ./install/install-kubectl.sh
+function kubectl() {
+    if ! type __start_kubectl >/dev/null 2>&1; then
+        source <(command kubectl completion zsh)
+    fi
+
+    command kubectl "$@"
+}
 
 # for ./install/install-fail2cam.sh
-(ls /tmp/fail2cam-`hostname`-*.png) 2>/dev/null 1>/dev/null && ( echo "###FAIL2CAM WARNING###"; ls -al /tmp/fail2cam-`hostname`-*.png )
+[[ -a /tmp/fail2cam-`hostname`-*.png ]] && ( echo "###FAIL2CAM WARNING###"; ls -al /tmp/fail2cam-`hostname`-*.png )
 
-# additional themes and plugins
-source /usr/share/powerlevel9k/powerlevel9k.zsh-theme
+# highlight zsh syntax, eg: for ... do ... echo ... done
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+#[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# lagacy powerlevel9k prompt
 POWERLEVEL9K_TIME_FORMAT="%D{%H:%M:%S %Y-%m-%d}"
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(virtualenv dir dir_writable vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time status root_indicator background_jobs history time ram battery)
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+POWERLEVEL9K_PROMPT_ADD_NEWLINE=true

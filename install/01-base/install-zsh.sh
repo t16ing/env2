@@ -16,7 +16,8 @@ cd ~/.oh-my-zsh/plugins/zsh-autosuggestions/ ; make
 echo "Install oh-my-zsh plugin dependency"
 sudo apt install autojump
 
-echo "Install powerlevel9k"
+echo "Install powerlevel10k"
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
 sudo apt install powerline fonts-powerline
-sudo apt install zsh-theme-powerlevel9k
 sudo apt install zsh-syntax-highlighting
+
