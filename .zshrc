@@ -75,6 +75,7 @@ plugins+=(autojump)
 export NVM_COMPLETION=true
 export NVM_LAZY_LOAD=true
 plugins+=(zsh-nvm)
+plugins+=(vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -135,5 +136,5 @@ source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # lagacy powerlevel9k prompt
 POWERLEVEL9K_TIME_FORMAT="%D{%H:%M:%S %Y-%m-%d}"
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(virtualenv dir dir_writable vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time status root_indicator background_jobs history time ram battery)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vi_mode command_execution_time status root_indicator background_jobs history time ram battery)
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
