@@ -133,8 +133,11 @@ source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 #[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# lagacy powerlevel9k prompt
+# customization for powerlevel9k
 POWERLEVEL9K_TIME_FORMAT="%D{%H:%M:%S %Y-%m-%d}"
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(virtualenv dir dir_writable vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vi_mode command_execution_time status root_indicator background_jobs history time ram battery)
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=1
+POWERLEVEL9K_TIME_UPDATE_ON_COMMAND=true
+POWERLEVEL9K_EXPERIMENTAL_TIME_REALTIME=true
