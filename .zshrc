@@ -69,8 +69,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=( zsh-autosuggestions
-)
+plugins=()
 plugins+=(ssh-agent)
 plugins+=(autojump)
 export NVM_COMPLETION=true
@@ -125,8 +124,9 @@ function kubectl() {
 # for ./install/install-fail2cam.sh
 [[ -a /tmp/fail2cam-`hostname`-*.png ]] && ( echo "###FAIL2CAM WARNING###"; ls -al /tmp/fail2cam-`hostname`-*.png )
 
-# highlight zsh syntax, eg: for ... do ... echo ... done
+# plugins by apt install
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 #[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
