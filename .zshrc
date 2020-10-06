@@ -81,6 +81,8 @@ bindkey '^f' autosuggest-accept
 plugins+=(zsh-autosuggestions)
 plugins+=(command-not-found)
 plugins+=(kubectl)
+plugins+=(safe-paste)
+plugins+=(history-substring-search)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -114,6 +116,10 @@ export EDITOR=vim
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ls='ls --color=tty --group-directories-first'
+
+# for history-substring-search post-configuration
+bindkey '^P' history-substring-search-up
+bindkey '^N' history-substring-search-down
 
 # for ./install/install-fail2cam.sh
 [[ -a /tmp/fail2cam-`hostname`-*.png ]] && ( echo "###FAIL2CAM WARNING###"; ls -al /tmp/fail2cam-`hostname`-*.png )
