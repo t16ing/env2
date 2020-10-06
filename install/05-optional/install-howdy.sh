@@ -34,7 +34,6 @@ then
   pam_howdy="auth [success=4 default=ignore] pam_python.so \/lib\/security\/howdy\/pam.py"
 else
   pam_howdy="auth [success=1 default=ignore] pam_python.so \/lib\/security\/howdy\/pam.py"
-else
 fi
 pam_howdy2cam_fail="auth [default=ignore] pam_exec.so seteuid \/usr\/local\/bin\/howdy2cam 'FAILED'"
 pam_howdy2cam_login="auth [default=ignore] pam_exec.so seteuid \/usr\/local\/bin\/howdy2cam 'LOGIN'"
