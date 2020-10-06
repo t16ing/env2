@@ -76,7 +76,8 @@ export NVM_COMPLETION=true
 export NVM_LAZY_LOAD=true
 plugins+=(zsh-nvm)
 plugins+=(vi-mode)
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=red'
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=red'
+bindkey '^f' autosuggest-accept
 plugins+=(zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
