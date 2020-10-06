@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "NOTICE: fail2cam is required."
+SKIP_PASSWORD=${1:-skip_password}
 
 ## Install howdy package
 
@@ -29,7 +29,13 @@ sudo chmod +x /usr/local/bin/howdy2cam
 ## Configure pam for howdy and howdy2cam
 
 pam_auth_file="/etc/pam.d/common-auth"
-pam_howdy="auth [success=4 default=ignore] pam_python.so \/lib\/security\/howdy\/pam.py"
+if [[ "${SKIP_PASSWORD}" == "skip_password" ]]
+then
+  pam_howdy="auth [success=4 default=ignore] pam_python.so \/lib\/security\/howdy\/pam.py"
+else
+  pam_howdy="auth [success=1 default=ignore] pam_python.so \/lib\/security\/howdy\/pam.py"
+else
+fi
 pam_howdy2cam_fail="auth [default=ignore] pam_exec.so seteuid \/usr\/local\/bin\/howdy2cam 'FAILED'"
 pam_howdy2cam_login="auth [default=ignore] pam_exec.so seteuid \/usr\/local\/bin\/howdy2cam 'LOGIN'"
 
@@ -37,6 +43,7 @@ grep fail2cam ${pam_auth_file} || {
   echo "FAILED: fail2cam not found in pam."
   exit 1
 }
-sudo sed -i "/pam_unix.so nullok_secure/i ${pam_howdy}\n${pam_howdy2cam}" ${pam_auth_file}
-sudo sed -i "/pam_permit.so/i ${pam_howdy2cam}" ${pam_auth_file}
+
+sudo sed -i "/pam_unix.so nullok_secure/i ${pam_howdy}\n${pam_howdy2cam_fail}" ${pam_auth_file}
+sudo sed -i "/pam_permit.so/i ${pam_howdy2cam_login}" ${pam_auth_file}
 
