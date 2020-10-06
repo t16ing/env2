@@ -76,6 +76,8 @@ export NVM_COMPLETION=true
 export NVM_LAZY_LOAD=true
 plugins+=(zsh-nvm)
 plugins+=(vi-mode)
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=red'
+plugins+=(zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -127,17 +129,12 @@ function kubectl() {
 
 # plugins by apt install
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=red'
-source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-#[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # customization for powerlevel9k
 POWERLEVEL9K_TIME_FORMAT="%D{%H:%M:%S %Y-%m-%d}"
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(virtualenv dir dir_writable vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vi_mode command_execution_time status root_indicator background_jobs history time ram battery)
-POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
-POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=1
-POWERLEVEL9K_TIME_UPDATE_ON_COMMAND=true
+#POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(virtualenv dir dir_writable vcs)
+#POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vi_mode command_execution_time status root_indicator background_jobs history time ram battery)
 POWERLEVEL9K_EXPERIMENTAL_TIME_REALTIME=true
