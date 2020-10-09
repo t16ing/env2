@@ -82,7 +82,6 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=red'
 bindkey '^f' autosuggest-accept
 plugins+=(zsh-autosuggestions)
 plugins+=(command-not-found)
-plugins+=(kubectl)
 plugins+=(safe-paste)
 plugins+=(history-substring-search)
 plugins+=(fzf)
@@ -131,6 +130,14 @@ zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:
 
 # plugins by apt install
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# for kubectl completion
+function kubectl() {
+  if ! type __start_kubectl >/dev/null 2>&1; then
+    source <(command kubectl completion zsh)
+  fi
+  command kubectl "$@"
+}
 
 # Login Messages
 
