@@ -83,6 +83,7 @@ plugins+=(command-not-found)
 plugins+=(kubectl)
 plugins+=(safe-paste)
 plugins+=(history-substring-search)
+plugins+=(fzf)
 
 source $ZSH/oh-my-zsh.sh
 
