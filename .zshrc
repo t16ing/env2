@@ -86,7 +86,6 @@ plugins+=(kubectl)
 plugins+=(safe-paste)
 plugins+=(history-substring-search)
 plugins+=(fzf)
-plugins+=(gitfast)
 
 source $ZSH/oh-my-zsh.sh
 
