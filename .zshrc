@@ -139,4 +139,5 @@ source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # customization for powerlevel9k
 POWERLEVEL9K_TIME_FORMAT="%D{%H:%M:%S %Y-%m-%d}"
-POWERLEVEL9K_EXPERIMENTAL_TIME_REALTIME=true
+POWERLEVEL9K_TIME_UPDATE_ON_COMMAND=true
+#POWERLEVEL9K_EXPERIMENTAL_TIME_REALTIME=true
