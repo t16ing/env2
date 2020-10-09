@@ -121,6 +121,8 @@ export EDITOR=vim
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ls='ls --color=tty --group-directories-first'
 
+# Plugin Sections
+
 # for history-substring-search post-configuration
 bindkey '^P' history-substring-search-up
 bindkey '^N' history-substring-search-down
@@ -128,11 +130,15 @@ bindkey '^N' history-substring-search-down
 # for color partial tab completions
 zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:t)(?)*==34=34}:${(s.:.)LS_COLORS}")';
 
+# plugins by apt install
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Login Messages
+
 # for ./install/install-fail2cam.sh
 [[ -a /tmp/fail2cam-`hostname`-*.png ]] && ( echo "###FAIL2CAM WARNING###"; ls -al /tmp/fail2cam-`hostname`-*.png )
 
-# plugins by apt install
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# Powerlevel10k Customization
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
