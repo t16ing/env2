@@ -10,11 +10,12 @@ echo "Install oh-my-zsh"
 sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 
 echo "Install oh-my-zsh plugin dependency"
-sudo apt install autojump
-git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+sudo apt install -y autojump
+sudo apt install -y fzf
+sudo apt install -y zsh-autosuggestions
+sudo apt install -y zsh-syntax-highlighting
 
 echo "Install powerlevel10k"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
 sudo apt install -y powerline fonts-powerline
-sudo apt install -y zsh-syntax-highlighting
 
