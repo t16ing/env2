@@ -100,10 +100,10 @@
     taskwarrior             # taskwarrior task count (https://taskwarrior.org/)
     history
     time                    # current time
-    ram                   # free RAM
-    battery               # internal battery
+    #ram                   # free RAM
+    #battery               # internal battery
     #ip                    # ip address and bandwidth usage for a specified network interface
-    public_ip             # public IP address
+    #public_ip             # public IP address
     # =========================[ Line #2 ]=========================
     newline
     # proxy                 # system-wide http/https/ftp proxy
@@ -349,7 +349,7 @@
   # typeset -g POWERLEVEL9K_VCS_LOADING_BACKGROUND=8
 
   # Branch icon. Set this parameter to '\uF126 ' for the popular Powerline branch icon.
-  typeset -g POWERLEVEL9K_VCS_BRANCH_ICON=
+  typeset -g POWERLEVEL9K_VCS_BRANCH_ICON='\ue725 '
 
   # Untracked files icon. It's really a question mark, your font isn't broken.
   # Change the value of this parameter to show a different icon.
@@ -376,9 +376,10 @@
     # Styling for different parts of Git status.
     local       meta='%7F' # white foreground
     local      clean='%0F' # black foreground
-    local   modified='%0F' # black foreground
-    local  untracked='%0F' # black foreground
+    local   modified='%1F' # red foreground
+    local  untracked='%1F' # red foreground
     local conflicted='%1F' # red foreground
+    local   messaged='%5F' # purple foreground
 
     local res
     local where  # branch or tag
@@ -399,7 +400,7 @@
 
     # Display the current Git commit if there is no branch or tag.
     # Tip: To always display the current Git commit, remove `[[ -z $where ]] &&` from the next line.
-    [[ -z $where ]] && res+="${meta}@${clean}${VCS_STATUS_COMMIT[1,8]}"
+    res+="${meta}@${clean}${VCS_STATUS_COMMIT[1,7]}"
 
     # Show tracking branch name if it differs from local branch.
     if [[ -n ${VCS_STATUS_REMOTE_BRANCH:#$VCS_STATUS_LOCAL_BRANCH} ]]; then
@@ -436,6 +437,10 @@
     # in the repository config. The number of staged and untracked files may also be unknown
     # in this case.
     (( VCS_STATUS_HAS_UNSTAGED == -1 )) && res+=" ${modified}─"
+
+    local commit_message
+    commit_message=$(git log -1 --pretty=%B)
+    res+=" ${messaged}${commit_message:0:12}..."
 
     typeset -g my_git_format=$res
   }
