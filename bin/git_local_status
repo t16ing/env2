@@ -1,9 +1,11 @@
 #!/bin/bash
 
+TARGET=${1:-~}
+
 # bring the remote refs up to date in background, since this task takes long time
 # show pendings immediately; remote refs diffs may not show this time
 
-find ~ -type d -name ".git" 2>/dev/null | \
+find ${TARGET} -type d -name ".git" 2>/dev/null | \
 	grep -v "$HOME/.vim" | \
 	grep -v "$HOME/.oh-my-zsh/" | \
 	grep -v "$HOME/.local/" | \
