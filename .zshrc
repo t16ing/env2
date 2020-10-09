@@ -125,6 +125,9 @@ alias ls='ls --color=tty --group-directories-first'
 bindkey '^P' history-substring-search-up
 bindkey '^N' history-substring-search-down
 
+# for color partial tab completions
+zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:t)(?)*==34=34}:${(s.:.)LS_COLORS}")';
+
 # for ./install/install-fail2cam.sh
 [[ -a /tmp/fail2cam-`hostname`-*.png ]] && ( echo "###FAIL2CAM WARNING###"; ls -al /tmp/fail2cam-`hostname`-*.png )
 
