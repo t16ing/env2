@@ -84,6 +84,7 @@ plugins+=(kubectl)
 plugins+=(safe-paste)
 plugins+=(history-substring-search)
 plugins+=(fzf)
+plugins+=(gitfast)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -133,6 +134,4 @@ source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # customization for powerlevel9k
 POWERLEVEL9K_TIME_FORMAT="%D{%H:%M:%S %Y-%m-%d}"
-#POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(virtualenv dir dir_writable vcs)
-#POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vi_mode command_execution_time status root_indicator background_jobs history time ram battery)
 POWERLEVEL9K_EXPERIMENTAL_TIME_REALTIME=true
