@@ -152,4 +152,3 @@ function kubectl() {
 # customization for powerlevel9k
 POWERLEVEL9K_TIME_FORMAT="%D{%H:%M:%S %Y-%m-%d}"
 POWERLEVEL9K_TIME_UPDATE_ON_COMMAND=true
-#POWERLEVEL9K_EXPERIMENTAL_TIME_REALTIME=true
