@@ -307,6 +307,13 @@ set -s escape-time 0
 bind -r C-p previous-window
 bind -r C-n next-window
 
+# Remap clipboard keys to fix conflict from keys for next/prev window
+unbind b
+unbind p
+unbind P
+bind p choose-buffer
+bind P choose-buffer
+
 # -- custom variables ----------------------------------------------------------
 # to define a custom #{foo} variable, define a POSIX shell function between the
 # '# EOF' and the '# "$@"' lines. Please note that the opening brace { character
