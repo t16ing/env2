@@ -50,9 +50,6 @@
   # last prompt line gets hidden if it would overlap with left prompt.
   typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
     # =========================[ Line #1 ]=========================
-    status                  # exit code of the last command
-    command_execution_time  # duration of the last command
-    background_jobs         # presence of background jobs
     asdf                    # asdf version manager (https://github.com/asdf-vm/asdf)
     anaconda                # conda environment (https://conda.io/)
     pyenv                   # python environment (https://github.com/pyenv/pyenv)
@@ -98,16 +95,19 @@
     todo                    # todo items (https://github.com/todotxt/todo.txt-cli)
     timewarrior             # timewarrior tracking status (https://timewarrior.net/)
     taskwarrior             # taskwarrior task count (https://taskwarrior.org/)
-    history
-    time                    # current time
     ram                   # free RAM
     battery               # internal battery
     #ip                    # ip address and bandwidth usage for a specified network interface
     public_ip             # public IP address
+    wifi                  # wifi speed
     # =========================[ Line #2 ]=========================
     newline
+    status                  # exit code of the last command
+    command_execution_time  # duration of the last command
+    background_jobs         # presence of background jobs
+    history
+    time                    # current time
     # proxy                 # system-wide http/https/ftp proxy
-    # wifi                  # wifi speed
     # example               # example user-defined segment (see prompt_example function below)
   )
 
@@ -440,7 +440,7 @@
 
     local commit_message
     commit_message=$(git log -1 --pretty=%B)
-    res+=" ${messaged}${commit_message:0:20}..."
+    res+=" ${messaged}${commit_message:0:48}..."
 
     typeset -g my_git_format=$res
   }
