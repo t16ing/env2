@@ -35,11 +35,11 @@
     os_icon               # os identifier
     direnv                  # direnv status (https://direnv.net/)
     virtualenv              # python virtual environment (https://docs.python.org/3/library/venv.html)
-    dir                     # current directory
-    dir_writable            # powerlevel9k style dir writable state
     vcs                     # git status
     # =========================[ Line #2 ]=========================
     newline                 # \n
+    dir                     # current directory
+    dir_writable            # powerlevel9k style dir writable state
     vi_mode               # vi mode (you don't need this if you've enabled prompt_char)
     prompt_char             # prompt symbol
   )
@@ -100,10 +100,10 @@
     taskwarrior             # taskwarrior task count (https://taskwarrior.org/)
     history
     time                    # current time
-    #ram                   # free RAM
-    #battery               # internal battery
+    ram                   # free RAM
+    battery               # internal battery
     #ip                    # ip address and bandwidth usage for a specified network interface
-    #public_ip             # public IP address
+    public_ip             # public IP address
     # =========================[ Line #2 ]=========================
     newline
     # proxy                 # system-wide http/https/ftp proxy
