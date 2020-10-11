@@ -439,7 +439,7 @@
     (( VCS_STATUS_HAS_UNSTAGED == -1 )) && res+=" ${modified}─"
 
     local commit_message
-    commit_message=$(git log -1 --pretty=%B)
+    commit_message=$(git log -1 --pretty=%B | head -1)
     res+=" ${messaged}${commit_message:0:48}..."
 
     typeset -g my_git_format=$res
