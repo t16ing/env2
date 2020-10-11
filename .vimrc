@@ -253,6 +253,7 @@ let g:rainbow_conf = {
 
 let g:bookmark_auto_save_file = $HOME.'/.vim/bookmark'
 let g:bookmark_location_list  = 1
+let g:bookmark_highlight_lines = 1
 
 VkhAdd 'plugin vim-bookmark: <mm> toggle a bookmark <mn> next <mp> previous <ma> list <mc> clear.'
 
