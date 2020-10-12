@@ -170,8 +170,8 @@ Bundle 'ctrlpvim/ctrlp.vim'
   " c-p
 "-----------------------------------------------------------------------------
 " navigation
-Bundle 'MattesGroeger/vim-bookmarks'
-  " mm mn mp ma to toggle, move, list bookmarks
+Bundle 't16ing/vim-vookmark'
+  " mm mn mp ml to toggle, move, list bookmarks
 Bundle 'Lokaltog/vim-easymotion'
   " \\w forward move \\b backward move
 Bundle 'terryma/vim-expand-region'
