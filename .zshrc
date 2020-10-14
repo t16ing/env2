@@ -86,6 +86,7 @@ plugins+=(command-not-found)
 plugins+=(safe-paste)
 plugins+=(history-substring-search)
 plugins+=(fzf)
+plugins+=(pipenv)
 
 source $ZSH/oh-my-zsh.sh
 
