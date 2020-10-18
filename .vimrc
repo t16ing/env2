@@ -60,39 +60,32 @@ if !exists(":DiffOrig")
 endif
 
 " modern indent
-
 autocmd FileType * setlocal ts=2 sts=2 sw=2 expandtab
 
 " set line to cursor
-
 set so=7
 
 " Turn on the Wild menu
-
 set wildmenu
 
 " Toggle paste mode on and off
-
 map <leader>pp :setlocal paste!<cr>
 
 " Alternate leader keys: \ ,
-
 nmap , \
 
-" set vim working dir
-
+" set vim working dir for backup, swap, and persistent undo
 let g:my_vim_tmp_dir = $VIM_TMP
 if g:my_vim_tmp_dir == ""
-  let g:my_vim_tmp_dir = $HOME
-  exec "set backupdir=".g:my_vim_tmp_dir
-  exec "set dir=".g:my_vim_tmp_dir
-else
-  exec "set backupdir=".g:my_vim_tmp_dir.'/backup'
-  exec "set dir=".g:my_vim_tmp_dir.'/swap'
+  let g:my_vim_tmp_dir = $HOME.'/.vim'
+  silent !mkdir -p ~/.vim/{backup,swap,undodir}
 endif
+exec "set backupdir=".g:my_vim_tmp_dir.'/backup'
+exec "set dir=".g:my_vim_tmp_dir.'/swap'
+exec "set undodir=".g:my_vim_tmp_dir.'/undodir'
+set undofile
 
 " highlight unwanted space
-
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
@@ -101,12 +94,10 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
 " modeline only take effect in first 2 lines or last 2 lines
-
 set modeline
 set modelines=2
 
 " Avoiding escape timeout issues in vim
-
 let &t_ti.="\e[?7727h"
 let &t_te.="\e[?7727l"
 noremap <Esc>O[ <Esc>
@@ -178,8 +169,6 @@ Bundle 'scrooloose/nerdtree'
   " <\nn> open nerdtree window. <\nf> find current file in nerdtree.'
 Bundle 'Xuyuanp/nerdtree-git-plugin'
   " git notation for nerdtree
-Bundle 'tiagofumo/vim-nerdtree-syntax-highlight'
-  " highlights for nerdtree
 Bundle 'ryanoasis/vim-devicons'
   " icons plugin for nerdtree
 Bundle 'ctrlpvim/ctrlp.vim'
@@ -237,13 +226,6 @@ let g:NERDTreeQuitOnOpen = 0
 let g:NERDTreeGitStatusWithFlags = 1
 let g:NERDTreeIgnore = ['^node_modules$']
 let g:NERDTreeWinSize = 20
-
-" nerdtree with vim-nerdtree-syntax-highlight is slow
-" try https://github.com/ryanoasis/vim-devicons/issues/263
-augroup nerdtreedisablecursorline
-  autocmd!
-  autocmd FileType nerdtree setlocal nocursorline
-augroup end
 
 map <leader>nn <ESC>:NERDTreeToggle<CR>
 map <leader>nf <ESC>:NERDTreeFind<CR>
