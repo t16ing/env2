@@ -139,7 +139,7 @@ Plugin 'flazz/vim-colorschemes'
   " colorscheme gruvbox with dark background
 "-----------------------------------------------------------------------------
 " code
-Bundle 'scrooloose/syntastic'
+Plugin 'dense-analysis/ale'
   " Visible ERROR and warning
 Bundle 'tpope/vim-fugitive'
   " <\gb> git blame <\gl> git log
@@ -172,7 +172,9 @@ Bundle 'Xuyuanp/nerdtree-git-plugin'
 Bundle 'ryanoasis/vim-devicons'
   " icons plugin for nerdtree
 Bundle 'ctrlpvim/ctrlp.vim'
-  " c-p
+  " c-p for ctrlp, \p for MRU, \o for buffer window
+Bundle 'mileszs/ack.vim'
+  " \g code search tool
 "-----------------------------------------------------------------------------
 " navigation
 Bundle 't16ing/vim-vookmark'
@@ -185,8 +187,6 @@ Bundle 'gregsexton/MatchTag'
   " Highlights the matching HTML tags
 Plugin 'kshenoy/vim-signature'
   " Visible mark (m-*)
-Plugin 'vim-scripts/bufexplorer.zip'
-  " \o to open buffer window
 "-----------------------------------------------------------------------------
 " edit
 Bundle 'vim-scripts/Engspchk'
@@ -312,8 +312,12 @@ let g:ctrlp_use_caching=1
 let g:ctrlp_clear_cache_on_exit=1
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
+let MRU_Max_Entries = 400
+map <leader>p :CtrlPMRUFiles<CR>
+map <leader>o :CtrlPBuffer<CR>
+ 
 VkhAdd 'plugin ctrlp.vim: Fuzzy file, buffer, mru, tag, ... finder.'
-VkhAdd '<c-p> open ctrlp window.'
+VkhAdd '<c-p> open ctrlp window. \p open MRU window. \o open buffer window.'
 
 " alternate plugin for diff modifies and origins
 
@@ -321,17 +325,25 @@ map <leader><f6> <ESC>:DiffOrig<CR>
 
 VkhAdd '\<f6> open DiffOrig window (vim feature to compare modifies and origins).'
 
-" plugin syntastic
-" ~/.vim/bundle/syntastic/doc/syntastic.txt
+" plugin ale
+" ~/.vim/bundle/ale/README.md
 
-let g:syntastic_error_symbol              = 'ER'
-let g:syntastic_warning_symbol            = 'wa'
-let g:syntastic_check_on_open             = 0
-let g:syntastic_check_on_wq               = 1
-let g:syntastic_cpp_remove_include_errors = 1
-let g:syntastic_python_checkers           = ["pylint","python"]
+let g:ale_linters = {
+\   'javascript': ['jshint'],
+\   'python': ['pylint'],
+\   'go': ['go', 'golint', 'errcheck']
+\}
 
-VkhAdd 'plugin syntastic: Syntax checking on the fly has never been so pimp.'
+nmap <silent> <leader>a <Plug>(ale_next_wrap)
+
+" Disabling highlighting
+let g:ale_set_highlights = 0
+
+" Only run linting when saving the file
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 0
+
+VkhAdd 'plugin ale: Syntax checking.'
 
 " plugin tagbar
 " ~/.vim/bundle/tagbar/doc/tagbar.txt
@@ -462,10 +474,10 @@ VkhAdd '\ss open the fancy start screen for Vim. :SSave to save session.'
 " plugin vim-airline
 " ~/.vim/bundle/vim-airline/README.md
 
-let g:airline_extensions = ['branch', 'tabline', 'cursormode', 'hunks', 'quickfix', 'syntastic']
-let g:airline_theme                      = 'dark'
-let g:airline_highlighting_cache         = 1
-let g:airline_powerline_fonts            = 1
+let g:airline_extensions         = ['branch', 'tabline', 'cursormode', 'hunks', 'quickfix', 'ale']
+let g:airline_theme              = 'dark'
+let g:airline_highlighting_cache = 1
+let g:airline_powerline_fonts    = 1
 
 nmap gn <Plug>AirlineSelectNextTab
 nmap gp <Plug>AirlineSelectPrevTab
@@ -509,14 +521,10 @@ let g:rainbow_active = 1
 
 VkhAdd 'plugin rainbow: help you read complex code by showing diff level of parentheses in diff color'
 
-" plugin bufexplorer.zip
-" ~/.vim/bundle/bufexplorer.zip/README
+" plugin ack.vim
+" ~/.vim/bundle/ack.vim/README.md
 
-let g:bufExplorerDefaultHelp      = 0
-let g:bufExplorerShowRelativePath = 1
-let g:bufExplorerFindActive       = 1
-let g:bufExplorerSortBy           = 'name'
-map <leader>o :BufExplorer<cr>
+map <leader>g :Ack 
 
-VkhAdd '\o to open buffer window'
-VkhAdd 'plugin bufexplorer.zip: quickly and easily switch between buffers'
+VkhAdd '\g to search code.'
+VkhAdd 'plugin ack.vim: source code search tool.'
