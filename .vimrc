@@ -59,9 +59,25 @@ if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
 endif
 
-"=============================================================================
-" 20191219 - modern indent
+" modern indent
+
 autocmd FileType * setlocal ts=2 sts=2 sw=2 expandtab
+
+" set line to cursor
+
+set so=7
+
+" Turn on the Wild menu
+
+set wildmenu
+
+" Toggle paste mode on and off
+
+map <leader>pp :setlocal paste!<cr>
+
+" Alternate leader keys: \ ,
+
+nmap , \
 
 " set vim working dir
 
@@ -139,7 +155,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'airblade/vim-gitgutter'
   " <\gt> Visible git sign <]c> for next hunk, <[c> for previous hunk.
 Bundle 'majutsushi/tagbar'
-  " <\tb> open tag bar, ctags required
+  " <\tt> open tag bar, ctags required
 Bundle 'hushicai/tagbar-javascript.vim'
   " tagbar for js
 Bundle 'vim-scripts/L9'
@@ -159,7 +175,7 @@ Plugin 'leafgarland/typescript-vim'
 "-----------------------------------------------------------------------------
 " file
 Bundle 'scrooloose/nerdtree'
-  " <\nt> open nerdtree window. <\nf> find current file in nerdtree.'
+  " <\nn> open nerdtree window. <\nf> find current file in nerdtree.'
 Bundle 'Xuyuanp/nerdtree-git-plugin'
   " git notation for nerdtree
 Bundle 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -180,6 +196,8 @@ Bundle 'gregsexton/MatchTag'
   " Highlights the matching HTML tags
 Plugin 'kshenoy/vim-signature'
   " Visible mark (m-*)
+Plugin 'vim-scripts/bufexplorer.zip'
+  " \o to open buffer window
 "-----------------------------------------------------------------------------
 " edit
 Bundle 'vim-scripts/Engspchk'
@@ -227,12 +245,11 @@ augroup nerdtreedisablecursorline
   autocmd FileType nerdtree setlocal nocursorline
 augroup end
 
-map <leader>nt <ESC>:NERDTreeToggle<CR>
+map <leader>nn <ESC>:NERDTreeToggle<CR>
 map <leader>nf <ESC>:NERDTreeFind<CR>
 
 VkhAdd 'plugin nerdtree: A tree explorer plugin to rule the Vim world.'
-VkhAdd '<\nt> open nerdtree window.'
-VkhAdd '<\nf> find current file in nerdtree.'
+VkhAdd '<\nn> open nerdtree window. <\nf> find current file in nerdtree.'
 
 " plugin vim-devicons
 " ~/.vim/bundle/vim-devicons/README.md
@@ -316,11 +333,11 @@ let g:tagbar_autoclose   = 0
 let g:tagbar_autoshowtag = 1
 let g:tagbar_width = 20
 
-map <leader>tb <ESC>:TagbarToggle<CR>
+map <leader>tt <ESC>:TagbarToggle<CR>
 
 VkhAdd "plugin tagbar: requires apt install exuberant-ctags."
 VkhAdd "plugin tagbar-javascript.vim: requires npm install -g esctags."
-VkhAdd '<\tb> open Tagbar window.'
+VkhAdd '<\tt> open Tagbar window.'
 
 " plugin vim-fugitive & plugin gitgutter
 " ~/.vim/bundle/vim-gitgutter/doc/gitgutter.txt
@@ -441,7 +458,6 @@ let g:airline_theme                      = 'dark'
 let g:airline_highlighting_cache         = 1
 let g:airline_powerline_fonts            = 1
 
-let g:airline#extensions#tabline#buffer_idx_mode = 1
 nmap gn <Plug>AirlineSelectNextTab
 nmap gp <Plug>AirlineSelectPrevTab
 nmap g1 <Plug>AirlineSelectTab1
@@ -456,9 +472,12 @@ nmap g9 <Plug>AirlineSelectTab9
 
 set showtabline=2
 
-VkhAdd 'gt,gn to move to next tab, gp to move to previous tab, gb to move to last focused tab.'
+VkhAdd 'gn to move to next tab, gp to move to previous tab, [0-9]gt to move to tab n.'
 VkhAdd 'gr refresh tabs - unfold all buffers to tabs, g[1-9] to move to tab n.'
 VkhAdd '<c-o> jump backward. <c-i> jump forward.'
+VkhAdd ':tabe to create new tab. :tabc to close current tab.'
+VkhAdd 'gf to open file in the same tab. <c-w>gf to open file in new tab. <c-w>f to open file in new window.'
+VkhAdd '<c-w>s to splie window. <c-w>q to close window.'
 VkhAdd "plugin vim-airline: Lean & mean status/tabline for vim that's light as air."
 
 " plugin jedi-vim
@@ -480,3 +499,15 @@ set cursorline
 let g:rainbow_active = 1
 
 VkhAdd 'plugin rainbow: help you read complex code by showing diff level of parentheses in diff color'
+
+" plugin bufexplorer.zip
+" ~/.vim/bundle/bufexplorer.zip/README
+
+let g:bufExplorerDefaultHelp      = 0
+let g:bufExplorerShowRelativePath = 1
+let g:bufExplorerFindActive       = 1
+let g:bufExplorerSortBy           = 'name'
+map <leader>o :BufExplorer<cr>
+
+VkhAdd '\o to open buffer window'
+VkhAdd 'plugin bufexplorer.zip: quickly and easily switch between buffers'
