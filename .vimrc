@@ -169,6 +169,8 @@ Bundle 'scrooloose/nerdtree'
   " <\nn> open nerdtree window. <\nf> find current file in nerdtree.'
 Bundle 'Xuyuanp/nerdtree-git-plugin'
   " git notation for nerdtree
+Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
+  " highlights for nerdtree
 Bundle 'ryanoasis/vim-devicons'
   " icons plugin for nerdtree
 Bundle 'ctrlpvim/ctrlp.vim'
@@ -222,37 +224,45 @@ VkhAdd 'plugin vim-signature: A plugin to toggle, display and navigate vim marks
 " plugin nerdtree
 " ~/.vim/bundle/nerdtree/doc/NERDTree.txt
 
-let g:NERDTreeQuitOnOpen = 0
+let g:NERDTreeQuitOnOpen = 1
 let g:NERDTreeGitStatusWithFlags = 1
 let g:NERDTreeIgnore = ['^node_modules$']
 let g:NERDTreeWinSize = 20
 
+" plugin vim-nerdtree-syntax-highlight
+" ~/.vim/bundle/vim-nerdtree-syntax-highlight/README.md
 " nerdtree with vim-nerdtree-syntax-highlight is slow
 " try https://github.com/ryanoasis/vim-devicons/issues/263 instead
-
-" NERDTrees File highlighting
-function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
- exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
- exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
-endfunction
-call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
-call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
-call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
-call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
-call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
-call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
-call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
-call NERDTreeHighlightFile('ds_store', 'Gray', 'none', '#686868', '#151515')
-call NERDTreeHighlightFile('gitconfig', 'Gray', 'none', '#686868', '#151515')
-call NERDTreeHighlightFile('gitignore', 'Gray', 'none', '#686868', '#151515')
-call NERDTreeHighlightFile('bashrc', 'Gray', 'none', '#686868', '#151515')
-call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', '#151515')
+let g:NERDTreeLimitedSyntax = 1
+let g:NERDTreeHighlightCursorline = 0
+let g:NERDTreeSyntaxDisableDefaultExtensions = 1
+let g:NERDTreeSyntaxDisableDefaultExactMatches = 1
+let g:NERDTreeSyntaxDisableDefaultPatternMatches = 1
+let g:NERDTreeSyntaxEnabledExtensions = [
+  \ 'bmp',
+  \ 'c',
+  \ 'cpp',
+  \ 'cs',
+  \ 'css',
+  \ 'go',
+  \ 'html',
+  \ 'java',
+  \ 'jpg',
+  \ 'js',
+  \ 'json',
+  \ 'jsx',
+  \ 'less',
+  \ 'markdown',
+  \ 'md',
+  \ 'php',
+  \ 'png',
+  \ 'py',
+  \ 'scss',
+  \ 'sh',
+  \ 'sql',
+  \ 'vim',
+\]
+let g:NERDTreeSyntaxEnabledExactMatches = ['node_modules', 'favicon.ico'] " enabled exact matches with default colors
 
 map <leader>nn <ESC>:NERDTreeToggle<CR>
 map <leader>nf <ESC>:NERDTreeFind<CR>
@@ -524,7 +534,7 @@ VkhAdd 'plugin rainbow: help you read complex code by showing diff level of pare
 " plugin ack.vim
 " ~/.vim/bundle/ack.vim/README.md
 
-map <leader>g :Ack 
+map <expr> <leader>g ':Ack '.expand('<cword>').'<cr>'
 
 VkhAdd '\g to search code.'
 VkhAdd 'plugin ack.vim: source code search tool.'
