@@ -59,24 +59,33 @@ if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
 endif
 
-"=============================================================================
-" 20191219 - modern indent
+" modern indent
 autocmd FileType * setlocal ts=2 sts=2 sw=2 expandtab
 
-" set vim working dir
+" set line to cursor
+set so=7
 
+" Turn on the Wild menu
+set wildmenu
+
+" Toggle paste mode on and off
+map <leader>pp :setlocal paste!<cr>
+
+" Alternate leader keys: \ ,
+nmap , \
+
+" set vim working dir for backup, swap, and persistent undo
 let g:my_vim_tmp_dir = $VIM_TMP
 if g:my_vim_tmp_dir == ""
-  let g:my_vim_tmp_dir = $HOME
-  exec "set backupdir=".g:my_vim_tmp_dir
-  exec "set dir=".g:my_vim_tmp_dir
-else
-  exec "set backupdir=".g:my_vim_tmp_dir.'/backup'
-  exec "set dir=".g:my_vim_tmp_dir.'/swap'
+  let g:my_vim_tmp_dir = $HOME.'/.vim'
+  silent !mkdir -p ~/.vim/{backup,swap,undodir}
 endif
+exec "set backupdir=".g:my_vim_tmp_dir.'/backup'
+exec "set dir=".g:my_vim_tmp_dir.'/swap'
+exec "set undodir=".g:my_vim_tmp_dir.'/undodir'
+set undofile
 
 " highlight unwanted space
-
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
@@ -85,12 +94,10 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
 " modeline only take effect in first 2 lines or last 2 lines
-
 set modeline
 set modelines=2
 
 " Avoiding escape timeout issues in vim
-
 let &t_ti.="\e[?7727h"
 let &t_te.="\e[?7727l"
 noremap <Esc>O[ <Esc>
@@ -132,14 +139,14 @@ Plugin 'flazz/vim-colorschemes'
   " colorscheme gruvbox with dark background
 "-----------------------------------------------------------------------------
 " code
-Bundle 'scrooloose/syntastic'
+Plugin 'dense-analysis/ale'
   " Visible ERROR and warning
 Bundle 'tpope/vim-fugitive'
   " <\gb> git blame <\gl> git log
 Bundle 'airblade/vim-gitgutter'
   " <\gt> Visible git sign <]c> for next hunk, <[c> for previous hunk.
 Bundle 'majutsushi/tagbar'
-  " <\tb> open tag bar, ctags required
+  " <\tt> open tag bar, ctags required
 Bundle 'hushicai/tagbar-javascript.vim'
   " tagbar for js
 Bundle 'vim-scripts/L9'
@@ -159,15 +166,17 @@ Plugin 'leafgarland/typescript-vim'
 "-----------------------------------------------------------------------------
 " file
 Bundle 'scrooloose/nerdtree'
-  " <\nt> open nerdtree window. <\nf> find current file in nerdtree.'
+  " <\nn> open nerdtree window. <\nf> find current file in nerdtree.'
 Bundle 'Xuyuanp/nerdtree-git-plugin'
   " git notation for nerdtree
-Bundle 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
   " highlights for nerdtree
 Bundle 'ryanoasis/vim-devicons'
   " icons plugin for nerdtree
 Bundle 'ctrlpvim/ctrlp.vim'
-  " c-p
+  " c-p for ctrlp, \p for MRU, \o for buffer window
+Bundle 'mileszs/ack.vim'
+  " \g code search tool
 "-----------------------------------------------------------------------------
 " navigation
 Bundle 't16ing/vim-vookmark'
@@ -215,24 +224,51 @@ VkhAdd 'plugin vim-signature: A plugin to toggle, display and navigate vim marks
 " plugin nerdtree
 " ~/.vim/bundle/nerdtree/doc/NERDTree.txt
 
-let g:NERDTreeQuitOnOpen = 0
+let g:NERDTreeQuitOnOpen = 1
 let g:NERDTreeGitStatusWithFlags = 1
 let g:NERDTreeIgnore = ['^node_modules$']
 let g:NERDTreeWinSize = 20
 
+" plugin vim-nerdtree-syntax-highlight
+" ~/.vim/bundle/vim-nerdtree-syntax-highlight/README.md
 " nerdtree with vim-nerdtree-syntax-highlight is slow
-" try https://github.com/ryanoasis/vim-devicons/issues/263
-augroup nerdtreedisablecursorline
-  autocmd!
-  autocmd FileType nerdtree setlocal nocursorline
-augroup end
+" try https://github.com/ryanoasis/vim-devicons/issues/263 instead
+let g:NERDTreeLimitedSyntax = 1
+let g:NERDTreeHighlightCursorline = 0
+let g:NERDTreeSyntaxDisableDefaultExtensions = 1
+let g:NERDTreeSyntaxDisableDefaultExactMatches = 1
+let g:NERDTreeSyntaxDisableDefaultPatternMatches = 1
+let g:NERDTreeSyntaxEnabledExtensions = [
+  \ 'bmp',
+  \ 'c',
+  \ 'cpp',
+  \ 'cs',
+  \ 'css',
+  \ 'go',
+  \ 'html',
+  \ 'java',
+  \ 'jpg',
+  \ 'js',
+  \ 'json',
+  \ 'jsx',
+  \ 'less',
+  \ 'markdown',
+  \ 'md',
+  \ 'php',
+  \ 'png',
+  \ 'py',
+  \ 'scss',
+  \ 'sh',
+  \ 'sql',
+  \ 'vim',
+\]
+let g:NERDTreeSyntaxEnabledExactMatches = ['node_modules', 'favicon.ico'] " enabled exact matches with default colors
 
-map <leader>nt <ESC>:NERDTreeToggle<CR>
+map <leader>nn <ESC>:NERDTreeToggle<CR>
 map <leader>nf <ESC>:NERDTreeFind<CR>
 
 VkhAdd 'plugin nerdtree: A tree explorer plugin to rule the Vim world.'
-VkhAdd '<\nt> open nerdtree window.'
-VkhAdd '<\nf> find current file in nerdtree.'
+VkhAdd '<\nn> open nerdtree window. <\nf> find current file in nerdtree.'
 
 " plugin vim-devicons
 " ~/.vim/bundle/vim-devicons/README.md
@@ -286,8 +322,12 @@ let g:ctrlp_use_caching=1
 let g:ctrlp_clear_cache_on_exit=1
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
+let MRU_Max_Entries = 400
+map <leader>p :CtrlPMRUFiles<CR>
+map <leader>o :CtrlPBuffer<CR>
+ 
 VkhAdd 'plugin ctrlp.vim: Fuzzy file, buffer, mru, tag, ... finder.'
-VkhAdd '<c-p> open ctrlp window.'
+VkhAdd '<c-p> open ctrlp window. \p open MRU window. \o open buffer window.'
 
 " alternate plugin for diff modifies and origins
 
@@ -295,17 +335,25 @@ map <leader><f6> <ESC>:DiffOrig<CR>
 
 VkhAdd '\<f6> open DiffOrig window (vim feature to compare modifies and origins).'
 
-" plugin syntastic
-" ~/.vim/bundle/syntastic/doc/syntastic.txt
+" plugin ale
+" ~/.vim/bundle/ale/README.md
 
-let g:syntastic_error_symbol              = 'ER'
-let g:syntastic_warning_symbol            = 'wa'
-let g:syntastic_check_on_open             = 0
-let g:syntastic_check_on_wq               = 1
-let g:syntastic_cpp_remove_include_errors = 1
-let g:syntastic_python_checkers           = ["pylint","python"]
+let g:ale_linters = {
+\   'javascript': ['jshint'],
+\   'python': ['pylint'],
+\   'go': ['go', 'golint', 'errcheck']
+\}
 
-VkhAdd 'plugin syntastic: Syntax checking on the fly has never been so pimp.'
+nmap <silent> <leader>a <Plug>(ale_next_wrap)
+
+" Disabling highlighting
+let g:ale_set_highlights = 0
+
+" Only run linting when saving the file
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 0
+
+VkhAdd 'plugin ale: Syntax checking.'
 
 " plugin tagbar
 " ~/.vim/bundle/tagbar/doc/tagbar.txt
@@ -316,11 +364,11 @@ let g:tagbar_autoclose   = 0
 let g:tagbar_autoshowtag = 1
 let g:tagbar_width = 20
 
-map <leader>tb <ESC>:TagbarToggle<CR>
+map <leader>tt <ESC>:TagbarToggle<CR>
 
 VkhAdd "plugin tagbar: requires apt install exuberant-ctags."
 VkhAdd "plugin tagbar-javascript.vim: requires npm install -g esctags."
-VkhAdd '<\tb> open Tagbar window.'
+VkhAdd '<\tt> open Tagbar window.'
 
 " plugin vim-fugitive & plugin gitgutter
 " ~/.vim/bundle/vim-gitgutter/doc/gitgutter.txt
@@ -436,12 +484,11 @@ VkhAdd '\ss open the fancy start screen for Vim. :SSave to save session.'
 " plugin vim-airline
 " ~/.vim/bundle/vim-airline/README.md
 
-let g:airline_extensions = ['branch', 'tabline', 'cursormode', 'hunks', 'quickfix', 'syntastic']
-let g:airline_theme                      = 'dark'
-let g:airline_highlighting_cache         = 1
-let g:airline_powerline_fonts            = 1
+let g:airline_extensions         = ['branch', 'tabline', 'cursormode', 'hunks', 'quickfix', 'ale']
+let g:airline_theme              = 'dark'
+let g:airline_highlighting_cache = 1
+let g:airline_powerline_fonts    = 1
 
-let g:airline#extensions#tabline#buffer_idx_mode = 1
 nmap gn <Plug>AirlineSelectNextTab
 nmap gp <Plug>AirlineSelectPrevTab
 nmap g1 <Plug>AirlineSelectTab1
@@ -456,9 +503,12 @@ nmap g9 <Plug>AirlineSelectTab9
 
 set showtabline=2
 
-VkhAdd 'gt,gn to move to next tab, gp to move to previous tab, gb to move to last focused tab.'
+VkhAdd 'gn to move to next tab, gp to move to previous tab, [0-9]gt to move to tab n.'
 VkhAdd 'gr refresh tabs - unfold all buffers to tabs, g[1-9] to move to tab n.'
 VkhAdd '<c-o> jump backward. <c-i> jump forward.'
+VkhAdd ':tabe to create new tab. :tabc to close current tab.'
+VkhAdd 'gf to open file in the same tab. <c-w>gf to open file in new tab. <c-w>f to open file in new window.'
+VkhAdd '<c-w>s to splie window. <c-w>q to close window.'
 VkhAdd "plugin vim-airline: Lean & mean status/tabline for vim that's light as air."
 
 " plugin jedi-vim
@@ -480,3 +530,11 @@ set cursorline
 let g:rainbow_active = 1
 
 VkhAdd 'plugin rainbow: help you read complex code by showing diff level of parentheses in diff color'
+
+" plugin ack.vim
+" ~/.vim/bundle/ack.vim/README.md
+
+map <expr> <leader>g ':Ack '.expand('<cword>').'<cr>'
+
+VkhAdd '\g to search code.'
+VkhAdd 'plugin ack.vim: source code search tool.'

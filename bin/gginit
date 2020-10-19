@@ -6,7 +6,9 @@ USERID=$1
 EMAIL=`gpg -k ${USERID} | grep uid | cut -d '<' -f 2 | cut -d '>' -f 1`
 [ "$EMAIL" == "" ] && EMAIL=${USERID}@localhost
 
+GPGKEY=`gpg -k ${USERID} | grep -v '^[pus]' | sed 's/[ \t]\+//g' | grep -v '^$' | tail -1`
+
 git config user.name ${USERID}
 git config user.email ${EMAIL}
-git config user.signingkey ${USERID}
+git config user.signingkey ${GPGKEY}
 git config commit.gpgsign true
