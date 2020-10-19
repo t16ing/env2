@@ -71,9 +71,6 @@ set wildmenu
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
-" Alternate leader keys: \ ,
-nmap , \
-
 " set vim working dir for backup, swap, and persistent undo
 let g:my_vim_tmp_dir = $VIM_TMP
 if g:my_vim_tmp_dir == ""
