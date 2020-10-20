@@ -123,7 +123,7 @@
         map <silent> <leader><Space> :noh<cr>
 
     " }
-
+ 
     " Move around between lines, buffers, windows, tabs {
 
         " allow backspacing over everything in insert mode
@@ -165,7 +165,7 @@
     set smartindent
     set wrap
 
-    " modern indent: 1 tab = 4 spaces, use space indeaj
+    " modern indent: 1 tab = 4 spaces, use space instead
     set expandtab
     set tabstop=4
     set softtabstop=4
