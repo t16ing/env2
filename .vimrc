@@ -1,31 +1,101 @@
-" When started as "evim", evim.vim will already have done these settings.
-if v:progname =~? "evim"
-  finish
-endif
+" Modeline and Metadata
+" vim: set shiftwidth=4 tabstop=4 softtabstop=4 expandtab smarttab textwidth=78 foldmarker={,} foldlevel=0 foldmethod=marker spell:
+"
+" Maintainer:
+"           ____  __   _   ____  _  _  ___
+"          (_  _)/  ) / ) (_  _)( \( )/ __)
+"            )(   )( / _ \ _)(_  )  (( (_-.
+"           (__) (__)\___/(____)(_)\_)\___/
+"
+" Description:
+"
+"   This is a single installation of .vimrc for general configurations, plugins bundles, themes, and more.
+"   It makes a sensible, powerful, and comfortable vim environment.
+"   Inspired by amix vimrc, spf13-vim, and SpaceVim.
+"
 
-" Use Vim settings, rather than Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
-set nocompatible
+" General {
+
+    " Use Vim settings, rather than Vi settings (much better!).
+    " This must be first, because it changes other options as a side effect.
+    set nocompatible
+
+    " Sets how many lines of history VIM has to remember
+    set history=1000
+
+    " Enable filetype plugins
+    filetype plugin on
+    filetype indent on
+
+    " Switch syntax highlighting on
+    syntax on
+
+    " Encoding settings, compatible with Windows files in Chinese
+    set encoding=utf-8
+    set fileencoding=utf-8
+    set fileencodings=utf-8,gb18030,utf-16,big5
+    set termencoding=utf8
+
+    " Set to auto read when a file is changed from the outside
+    set autoread
+    au FocusGained,BufEnter * checktime
+
+    " A buffer becomes hidden when it is abandoned
+    set hid
+
+	" Don't redraw while executing macros (good performance config)
+	set lazyredraw
+
+    " With a map leader it's possible to do extra key combinations
+    let mapleader = ","
+
+" }
+
+" User Interface {
+
+    " set line to cursor
+    set so=7
+
+    " show the cursor position all the time
+    set ruler
+
+    " Set to 1 to add a bit extra margin to the left
+    set foldcolumn=0
+
+    " Turn on the Wild menu
+    set wildmenu
+
+    " Ignore case when searching
+    set ignorecase
+
+    " When searching try to be smart about cases
+    set smartcase
+
+    " Also switch on highlighting the last used search pattern.
+    set hlsearch
+
+    " do incremental searching
+    set incsearch
+
+    " For regular expressions turn magic on
+    set magic
+
+    " Show matching brackets when text indicator is over them
+    set showmatch
+    " How many tenths of a second to blink when matching brackets
+    set mat=2
+
+" }
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
+set whichwrap+=<,>,h,l
 
 set nobackup   " do not keep a backup file
-set history=50 " keep 50 lines of command line history
-set ruler      " show the cursor position all the time
 set showcmd    " display incomplete commands
-set incsearch  " do incremental searching
-syntax on      " Switch syntax highlighting on
-set hlsearch   " Also switch on highlighting the last used search pattern.
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
-
-  " Enable file type detection.
-  " Use the default filetype settings, so that mail gets 'tw' set to 72,
-  " 'cindent' is on in C files, etc.
-  " Also load indent files, to automatically do language-dependent indenting.
-  filetype plugin indent on
 
   " Put these in an autocmd group, so that we can delete them easily.
   augroup vimrcEx
@@ -60,13 +130,7 @@ if !exists(":DiffOrig")
 endif
 
 " modern indent
-autocmd FileType * setlocal ts=2 sts=2 sw=2 expandtab
-
-" set line to cursor
-set so=7
-
-" Turn on the Wild menu
-set wildmenu
+autocmd FileType * setlocal ts=4 sts=4 sw=4 expandtab
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
@@ -99,12 +163,6 @@ let &t_ti.="\e[?7727h"
 let &t_te.="\e[?7727l"
 noremap <Esc>O[ <Esc>
 noremap! <Esc>O[ <C-c>
-
-" locale settings
-set encoding=utf-8
-set fileencoding=utf-8
-set fileencodings=utf-8,gb18030,utf-16,big5
-set termencoding=utf8
 
 " install vundle automatically
 
@@ -516,8 +574,9 @@ VkhAdd 'plugin jedi-vim: awesome Python autocompletion with Vim'
 " plugin vim-colorschemes
 " ~/.vim/bundle/vim-colorschemes/README.md
 
+set t_Co=256
 colorscheme gruvbox
-set bg=dark
+set background=dark
 set nu
 set cursorline
 
