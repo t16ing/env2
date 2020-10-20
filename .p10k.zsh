@@ -440,7 +440,7 @@
 
     local commit_message
     commit_message=$(git log -1 --pretty=%B | head -1)
-    res+=" ${messaged}${commit_message:0:48}..."
+    res+=" ${messaged}${commit_message:0:40}..."
 
     typeset -g my_git_format=$res
   }
