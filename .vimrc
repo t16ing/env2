@@ -119,8 +119,8 @@
             let @" = l:saved_reg
         endfunction " }
 
-        " Disable highlight when <leader><cr> is pressed
-        map <silent> <leader><cr> :noh<cr>
+        " Disable highlight when <leader><Space> is pressed
+        map <silent> <leader><Space> :noh<cr>
 
     " }
 
