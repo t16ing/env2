@@ -23,13 +23,6 @@
     " Sets how many lines of history VIM has to remember
     set history=1000
 
-    " Enable filetype plugins
-    filetype plugin on
-    filetype indent on
-
-    " Switch syntax highlighting on
-    syntax on
-
     " Encoding settings, compatible with Windows files in Chinese
     set encoding=utf-8
     set fileencoding=utf-8
@@ -39,6 +32,9 @@
     " Set to auto read when a file is changed from the outside
     set autoread
     au FocusGained,BufEnter * checktime
+
+    " do not keep a backup file
+    set nobackup
 
     " A buffer becomes hidden when it is abandoned
     set hid
@@ -53,116 +49,136 @@
 
 " User Interface {
 
-    " set line to cursor
-    set so=7
+    " Display {
 
-    " show the cursor position all the time
-    set ruler
+        " set line to cursor
+        set so=7
 
-    " Set to 1 to add a bit extra margin to the left
-    set foldcolumn=0
+        " precede each line with its line number
+        set nu
 
-    " Turn on the Wild menu
-    set wildmenu
+        " show the cursor position all the time
+        set ruler
 
-    " Ignore case when searching
-    set ignorecase
+        " Highlight the text line of the cursor.
+        set cursorline
 
-    " When searching try to be smart about cases
-    set smartcase
+        " Set to 1 to add a bit extra margin to the left
+        set foldcolumn=0
 
-    " Also switch on highlighting the last used search pattern.
-    set hlsearch
+        " Turn on the Wild menu
+        set wildmenu
 
-    " do incremental searching
-    set incsearch
+    " }
 
-    " For regular expressions turn magic on
-    set magic
+    " Search {
 
-    " Show matching brackets when text indicator is over them
-    set showmatch
-    " How many tenths of a second to blink when matching brackets
-    set mat=2
+        " Ignore case when searching
+        set ignorecase
+
+        " When searching try to be smart about cases
+        set smartcase
+
+        " Also switch on highlighting the last used search pattern.
+        set hlsearch
+
+        " do incremental searching
+        set incsearch
+
+        " For regular expressions turn magic on
+        set magic
+
+        " Show matching brackets when text indicator is over them
+        set showmatch
+        " How many tenths of a second to blink when matching brackets
+        set mat=2
+
+    " }
+
+    " Move {
+
+        " allow backspacing over everything in insert mode
+        set backspace=indent,eol,start
+        set whichwrap+=<,>,h,l
+
+        " When editing a file, always jump to the last known cursor position.
+        " Don't do it when the position is invalid or when inside an event handler
+        " (happens when dropping a file on gvim).
+        " Also don't do it when the mark is in the first line, that is the default
+        " position when opening a file.
+        autocmd BufReadPost *
+        \ if line("'\"") > 1 && line("'\"") <= line("$") |
+        \   exe "normal! g`\"" |
+        \ endif
+
+    " }
+" }
+
+" Formatting {
+
+    " Enable filetype plugins
+    filetype plugin on
+    filetype indent on
+
+    " Switch syntax highlighting on
+    syntax on
+
+    " always set autoindenting on
+    set autoindent
+    set smartindent
+    set wrap
+
+    " modern indent
+    autocmd FileType * setlocal ts=4 sts=4 sw=4 expandtab
+
+    " For all text files set 'textwidth' to 78 characters.
+    autocmd FileType text setlocal textwidth=78
+
+    " modeline only take effect in first 2 lines or last 2 lines
+    set modeline
+    set modelines=2
+
+    " highlight unwanted space
+    highlight ExtraWhitespace ctermbg=red guibg=red
+    match ExtraWhitespace /\s\+$/
+    autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+    autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+    autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+    autocmd BufWinLeave * call clearmatches()   
 
 " }
 
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
-set whichwrap+=<,>,h,l
+" Editing {
 
-set nobackup   " do not keep a backup file
-set showcmd    " display incomplete commands
+    " Convenient command to see the difference between the current buffer and the
+    " file it was loaded from, thus the changes you made.
+    " Only define it when not defined already.
+    if !exists(":DiffOrig")
+        command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
+    endif
+    map <leader>dd :DiffOrig<cr>
 
-" Only do this part when compiled with support for autocommands.
-if has("autocmd")
+    " Toggle paste mode on and off
+    map <leader>pp :setlocal paste!<cr>
 
-  " Put these in an autocmd group, so that we can delete them easily.
-  augroup vimrcEx
-  au!
+    " set persistent undo
+    if !isdirectory("~/.vim/undodir")
+        silent !mkdir -p ~/.vim/undodir
+    endif
+    set undodir="~/.vim/undodir"
+    set undofile
 
-  " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
+" }
 
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it when the position is invalid or when inside an event handler
-  " (happens when dropping a file on gvim).
-  " Also don't do it when the mark is in the first line, that is the default
-  " position when opening a file.
-  autocmd BufReadPost *
-    \ if line("'\"") > 1 && line("'\"") <= line("$") |
-    \   exe "normal! g`\"" |
-    \ endif
+" Misc {
 
-  augroup END
+    " Avoiding escape timeout issues in vim
+    let &t_ti.="\e[?7727h"
+    let &t_te.="\e[?7727l"
+    noremap <Esc>O[ <Esc>
+    noremap! <Esc>O[ <C-c>
 
-else
-
-  set autoindent  " always set autoindenting on
-
-endif " has("autocmd")
-
-" Convenient command to see the difference between the current buffer and the
-" file it was loaded from, thus the changes you made.
-" Only define it when not defined already.
-if !exists(":DiffOrig")
-  command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
-endif
-
-" modern indent
-autocmd FileType * setlocal ts=4 sts=4 sw=4 expandtab
-
-" Toggle paste mode on and off
-map <leader>pp :setlocal paste!<cr>
-
-" set vim working dir for backup, swap, and persistent undo
-let g:my_vim_tmp_dir = $VIM_TMP
-if g:my_vim_tmp_dir == ""
-  let g:my_vim_tmp_dir = $HOME.'/.vim'
-  silent !mkdir -p ~/.vim/{backup,swap,undodir}
-endif
-exec "set backupdir=".g:my_vim_tmp_dir.'/backup'
-exec "set dir=".g:my_vim_tmp_dir.'/swap'
-exec "set undodir=".g:my_vim_tmp_dir.'/undodir'
-set undofile
-
-" highlight unwanted space
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
-
-" modeline only take effect in first 2 lines or last 2 lines
-set modeline
-set modelines=2
-
-" Avoiding escape timeout issues in vim
-let &t_ti.="\e[?7727h"
-let &t_te.="\e[?7727l"
-noremap <Esc>O[ <Esc>
-noremap! <Esc>O[ <C-c>
+" }
 
 " install vundle automatically
 
@@ -177,7 +193,7 @@ endif
 
 " plugin vundle
 
-filetype off                    " required!
+filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
@@ -252,8 +268,6 @@ Bundle 'junegunn/vim-easy-align'
   " select, ENTER, =, =
 Bundle 'tpope/vim-commentary'
   " gcc to comment out a line, gcap to comment out a paragraph
-
-filetype plugin indent on
 
 " plugin vandomkeyhint
 " ~/.vim/bundle/vim-vandomkeyhint/autoload/vandomkeyhint.vim
@@ -577,8 +591,6 @@ VkhAdd 'plugin jedi-vim: awesome Python autocompletion with Vim'
 set t_Co=256
 colorscheme gruvbox
 set background=dark
-set nu
-set cursorline
 
 " plugin rainbow
 " ~/.vim/bundle/rainbow/README.md
