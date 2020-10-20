@@ -146,11 +146,8 @@ function kubectl() {
 # for ./install/install-fail2cam.sh
 [[ -a /tmp/fail2cam-`hostname`-*.png ]] && ( echo "###FAIL2CAM WARNING###"; ls -al /tmp/fail2cam-`hostname`-*.png )
 
-# Powerlevel10k Customization
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# customization for powerlevel9k
-POWERLEVEL9K_TIME_FORMAT="%D{%H:%M:%S %Y-%m-%d}"
-POWERLEVEL9K_TIME_UPDATE_ON_COMMAND=true
+# Powerlevel10k Personal Customization
+[[ ! -f ~/.p10k.local.zsh ]] || source ~/.p10k.local.zsh
