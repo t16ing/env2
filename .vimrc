@@ -49,7 +49,7 @@
 
 " User Interface {
 
-    " Display {
+    " Display options {
 
         " set line to cursor
         set so=7
@@ -71,7 +71,7 @@
 
     " }
 
-    " Search {
+    " Search matches and patterns {
 
         " Ignore case when searching
         set ignorecase
@@ -93,9 +93,38 @@
         " How many tenths of a second to blink when matching brackets
         set mat=2
 
+        " Visual mode pressing * or # searches for the current selection
+        vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
+        vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
+
+        " helper function for current selection {
+		function! CmdLine(str)
+			call feedkeys(":" . a:str)
+		endfunction
+
+        function! VisualSelection(direction, extra_filter) range
+            let l:saved_reg = @"
+            execute "normal! vgvy"
+
+            let l:pattern = escape(@", "\\/.*'$^~[]")
+            let l:pattern = substitute(l:pattern, "\n$", "", "")
+
+            if a:direction == 'gv'
+                call CmdLine("Ack '" . l:pattern . "' " )
+            elseif a:direction == 'replace'
+                call CmdLine("%s" . '/'. l:pattern . '/')
+            endif
+
+            let @/ = l:pattern
+            let @" = l:saved_reg
+        endfunction " }
+
+        " Disable highlight when <leader><cr> is pressed
+        map <silent> <leader><cr> :noh<cr>
+
     " }
 
-    " Move {
+    " Move around between lines, buffers, windows, tabs {
 
         " allow backspacing over everything in insert mode
         set backspace=indent,eol,start
@@ -111,25 +140,37 @@
         \   exe "normal! g`\"" |
         \ endif
 
+        " switch between buffers, useful with multi-tabs
+        map <leader>l :bn<cr>
+        map <leader>h :bp<cr>
+
+        " Always show tabline = 2
+        set showtabline=2
+
     " }
+
 " }
 
 " Formatting {
 
+    " Switch syntax highlighting on
+    syntax on
+
     " Enable filetype plugins
     filetype plugin on
     filetype indent on
-
-    " Switch syntax highlighting on
-    syntax on
 
     " always set autoindenting on
     set autoindent
     set smartindent
     set wrap
 
-    " modern indent
-    autocmd FileType * setlocal ts=4 sts=4 sw=4 expandtab
+    " modern indent: 1 tab = 4 spaces, use space indeaj
+    set expandtab
+    set tabstop=4
+    set softtabstop=4
+    set shiftwidth=4
+    set smarttab
 
     " For all text files set 'textwidth' to 78 characters.
     autocmd FileType text setlocal textwidth=78
@@ -145,6 +186,7 @@
     autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
     autocmd InsertLeave * match ExtraWhitespace /\s\+$/
     autocmd BufWinLeave * call clearmatches()   
+
 
 " }
 
@@ -168,6 +210,18 @@
     set undodir="~/.vim/undodir"
     set undofile
 
+    " Pressing ,ss will toggle and untoggle spell checking
+    map <leader>ss :setlocal spell!<cr>
+
+    " sn: next typo
+    map <leader>sn ]s
+    " sp: previous typo
+    map <leader>sp [s
+    " sa: add typo to dict
+    map <leader>sa zg
+    " s?: list all typo
+    map <leader>s? z=
+
 " }
 
 " Misc {
@@ -180,34 +234,69 @@
 
 " }
 
-" install vundle automatically
+" Plugins {
 
-let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
-if !filereadable(vundle_readme)
-  echo "Installing Vundle.."
-  echo ""
-  silent !mkdir -p ~/.vim/bundle
-  silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
-  autocmd VimEnter * exec ":BundleInstall"
-endif
+	" initialization {
 
-" plugin vundle
+		" install vundle automatically
+		let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
+		if !filereadable(vundle_readme)
+		  echo "Installing Vundle.."
+		  echo ""
+		  silent !mkdir -p ~/.vim/bundle
+		  silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
+		  autocmd VimEnter * exec ":BundleInstall"
+		endif
 
-filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+		" vundle#rc
+		filetype off
+		set rtp+=~/.vim/bundle/vundle/
+		call vundle#rc()
 
-" let Vundle manage Vundle
+	" }
 
-Bundle 'gmarik/vundle'
+    " Plugins - General {
 
-Bundle 't16ing/vim-vandomkeyhint'
-Bundle 'mhinz/vim-startify'
-Bundle 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-  " airline theme dark
-Plugin 'flazz/vim-colorschemes'
-  " colorscheme gruvbox with dark background
+        " let Vundle manage Vundle
+        Plugin 'gmarik/vundle'
+        Plugin 't16ing/vim-vandomkeyhint'
+		Plugin 'vim-airline/vim-airline'
+
+    " }
+
+	" Plugins - Files {
+
+		Plugin 'mhinz/vim-startify'
+		Plugin 'scrooloose/nerdtree'
+		  " <\nn> open nerdtree window. <\nf> find current file in nerdtree.'
+		Plugin 'Xuyuanp/nerdtree-git-plugin'
+		  " git notation for nerdtree
+		Plugin 'ctrlpvim/ctrlp.vim'
+		  " c-p for ctrlp, \p for MRU, \o for buffer window
+		Plugin 'mileszs/ack.vim'
+		  " \g code search tool
+
+	" }
+
+	" Plugins - Coding {
+	" }
+
+	" Plugins - Themes {
+
+		Plugin 'vim-airline/vim-airline-themes'
+		  " airline theme dark
+		Plugin 'flazz/vim-colorschemes'
+		  " colorscheme gruvbox with dark background
+		Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
+		  " highlights for nerdtree
+		Plugin 'ryanoasis/vim-devicons'
+		  " icons plugin for nerdtree
+
+	" }
+
+	" Plugins - filetypes {
+	" }
+
 "-----------------------------------------------------------------------------
 " code
 Plugin 'dense-analysis/ale'
@@ -234,20 +323,6 @@ Bundle 'nikvdp/ejs-syntax'
   " syntax for ejs
 Plugin 'leafgarland/typescript-vim'
   " syntax for ts
-"-----------------------------------------------------------------------------
-" file
-Bundle 'scrooloose/nerdtree'
-  " <\nn> open nerdtree window. <\nf> find current file in nerdtree.'
-Bundle 'Xuyuanp/nerdtree-git-plugin'
-  " git notation for nerdtree
-Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
-  " highlights for nerdtree
-Bundle 'ryanoasis/vim-devicons'
-  " icons plugin for nerdtree
-Bundle 'ctrlpvim/ctrlp.vim'
-  " c-p for ctrlp, \p for MRU, \o for buffer window
-Bundle 'mileszs/ack.vim'
-  " \g code search tool
 "-----------------------------------------------------------------------------
 " navigation
 Bundle 't16ing/vim-vookmark'
@@ -391,8 +466,7 @@ let g:ctrlp_use_caching=1
 let g:ctrlp_clear_cache_on_exit=1
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
-let MRU_Max_Entries = 400
-map <leader>p :CtrlPMRUFiles<CR>
+map <leader>s :Startify<CR>
 map <leader>o :CtrlPBuffer<CR>
  
 VkhAdd 'plugin ctrlp.vim: Fuzzy file, buffer, mru, tag, ... finder.'
@@ -545,8 +619,6 @@ VkhAdd '<\cc> enter/leave clean mode.'
 
 let g:startify_session_persistence=1
 
-map <leader>ss <ESC>:Startify<CR>
-
 VkhAdd 'plugin vim-startify: The fancy start screen for Vim.'
 VkhAdd '\ss open the fancy start screen for Vim. :SSave to save session.'
 
@@ -569,8 +641,6 @@ nmap g6 <Plug>AirlineSelectTab6
 nmap g7 <Plug>AirlineSelectTab7
 nmap g8 <Plug>AirlineSelectTab8
 nmap g9 <Plug>AirlineSelectTab9
-
-set showtabline=2
 
 VkhAdd 'gn to move to next tab, gp to move to previous tab, [0-9]gt to move to tab n.'
 VkhAdd 'gr refresh tabs - unfold all buffers to tabs, g[1-9] to move to tab n.'
