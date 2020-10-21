@@ -13,10 +13,11 @@
 "   It makes a sensible, powerful, and comfortable vim environment.
 "   Inspired by amix vimrc, spf13-vim, and SpaceVim.
 "
+" References:
+"
 
 " General {
 
-    " Use Vim settings, rather than Vi settings (much better!).
     " This must be first, because it changes other options as a side effect.
     set nocompatible
 
@@ -36,7 +37,7 @@
     " do not keep a backup file
     set nobackup
 
-    " A buffer becomes hidden when it is abandoned
+    " opening a new file when the current buffer has unsaved changes causes files to be hidden instead of closed
     set hid
 
     " Don't redraw while executing macros (good performance config)
@@ -49,7 +50,7 @@
 
 " User Interface {
 
-    " Display options {
+    " Display options; cursor, line, column, menu, etc... {
 
         " set line to cursor
         set so=7
@@ -181,12 +182,12 @@
 
     " highlight unwanted space
     highlight ExtraWhitespace ctermbg=red guibg=red
+    autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
     match ExtraWhitespace /\s\+$/
     autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
     autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
     autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-    autocmd BufWinLeave * call clearmatches()   
-
+    autocmd BufWinLeave * call clearmatches()
 
 " }
 
@@ -201,6 +202,8 @@
     endif
     set undodir="~/.vim/undodir"
     set undofile
+    set undolevels=1000
+    set undoreload=10000
 
     " Pressing \ss will toggle and untoggle spell checking
     map <leader>ss :setlocal spell!<cr>
@@ -213,16 +216,6 @@
     map <leader>sa zg
     " s?: list all typo
     map <leader>s? z=
-
-" }
-
-" Misc {
-
-    " Avoiding escape timeout issues in vim
-    let &t_ti.="\e[?7727h"
-    let &t_te.="\e[?7727l"
-    noremap <Esc>O[ <Esc>
-    noremap! <Esc>O[ <C-c>
 
 " }
 
@@ -316,8 +309,6 @@
 
     " Plugins - Editing {
 
-        Bundle 'vim-scripts/Engspchk'
-          " \ec start english spelling check. \ee end english spelling check.
         Bundle 'junegunn/vim-easy-align'
           " select, ENTER, =, =
         Bundle 'tpope/vim-commentary'
@@ -381,7 +372,7 @@
     VkhAdd 'plugin nerdtree: A tree explorer plugin to rule the Vim world.'
     VkhAdd '<\nn> open nerdtree window. <\nf> find current file in nerdtree.'
     " }
-    
+
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     " plugin vim-nerdtree-syntax-highlight {
     " ~/.vim/bundle/vim-nerdtree-syntax-highlight/README.md
@@ -578,17 +569,6 @@
     " plugin vim-commentary {
     " ~/.vim/bundle/vim-commentary/README.markdown
     VkhAdd 'plugin vim-commentary: gcc for single line or gcap for a paragraph.'
-    " }
-
-    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-    " plugin Engspchk {
-    " ~/.vim/bundle/Engspchk/doc/engspchk.txt
-    " ~/.vim/bundle/Engspchk/CVIMSYN/engspchk.usr
-
-    let g:spchksilent   = 1
-    let g:spchkautonext = 1
-
-    VkhAdd 'plugin Engspchk: english spelling checker, \ec start english spelling check, \ee end english spelling check.'
     " }
 
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
