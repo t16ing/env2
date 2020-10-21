@@ -7,7 +7,24 @@ typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
   vcs                     # git status
   # =========================[ Line #2 ]=========================
   newline                 # \n
+  direnv                  # direnv status (https://direnv.net/)
+  asdf                    # asdf version manager (https://github.com/asdf-vm/asdf)
   virtualenv              # python virtual environment (https://docs.python.org/3/library/venv.html)
+  anaconda                # conda environment (https://conda.io/)
+  pyenv                   # python environment (https://github.com/pyenv/pyenv)
+  goenv                   # go environment (https://github.com/syndbg/goenv)
+  kubecontext             # current kubernetes context (https://kubernetes.io/)
+  terraform               # terraform workspace (https://www.terraform.io)
+  aws                     # aws profile (https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html)
+  aws_eb_env              # aws elastic beanstalk environment (https://aws.amazon.com/elasticbeanstalk/)
+  azure                   # azure account name (https://docs.microsoft.com/en-us/cli/azure)
+  gcloud                  # google cloud cli account and project (https://cloud.google.com/)
+  google_app_cred         # google application credentials (https://cloud.google.com/docs/authentication/production)
+  ranger                  # ranger shell (https://github.com/ranger/ranger)
+  nnn                     # nnn shell (https://github.com/jarun/nnn)
+  vim_shell               # vim shell indicator (:sh)
+  midnight_commander      # midnight commander shell (https://midnight-commander.org/)
+  nix_shell               # nix shell (https://nixos.org/nixos/nix-pills/developing-with-nix-shell.html)
   vi_mode                 # vi mode (you don't need this if you've enabled prompt_char)
   prompt_char             # prompt symbol
 )
@@ -18,15 +35,6 @@ typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
 # last prompt line gets hidden if it would overlap with left prompt.
 typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
   # =========================[ Line #1 ]=========================
-  status                  # exit code of the last command
-  command_execution_time  # duration of the last command
-  history
-  background_jobs         # presence of background jobs
-  direnv                  # direnv status (https://direnv.net/)
-  asdf                    # asdf version manager (https://github.com/asdf-vm/asdf)
-  anaconda                # conda environment (https://conda.io/)
-  pyenv                   # python environment (https://github.com/pyenv/pyenv)
-  goenv                   # go environment (https://github.com/syndbg/goenv)
   nodenv                  # node.js version from nodenv (https://github.com/nodenv/nodenv)
   nvm                     # node.js version from nvm (https://github.com/nvm-sh/nvm)
   nodeenv                 # node.js environment (https://github.com/ekalinin/nodeenv)
@@ -47,37 +55,29 @@ typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
   phpenv                  # php version from phpenv (https://github.com/phpenv/phpenv)
   scalaenv                # scala version from scalaenv (https://github.com/scalaenv/scalaenv)
   haskell_stack           # haskell version from stack (https://haskellstack.org/)
-  kubecontext             # current kubernetes context (https://kubernetes.io/)
-  terraform               # terraform workspace (https://www.terraform.io)
-  aws                     # aws profile (https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html)
-  aws_eb_env              # aws elastic beanstalk environment (https://aws.amazon.com/elasticbeanstalk/)
-  azure                   # azure account name (https://docs.microsoft.com/en-us/cli/azure)
-  gcloud                  # google cloud cli account and project (https://cloud.google.com/)
-  google_app_cred         # google application credentials (https://cloud.google.com/docs/authentication/production)
   context                 # user@hostname
   nordvpn                 # nordvpn connection status, linux only (https://nordvpn.com/)
-  ranger                  # ranger shell (https://github.com/ranger/ranger)
-  nnn                     # nnn shell (https://github.com/jarun/nnn)
-  vim_shell               # vim shell indicator (:sh)
-  midnight_commander      # midnight commander shell (https://midnight-commander.org/)
-  nix_shell               # nix shell (https://nixos.org/nixos/nix-pills/developing-with-nix-shell.html)
   # vpn_ip                # virtual private network indicator
+  todo                    # todo items (https://github.com/todotxt/todo.txt-cli)
+  timewarrior             # timewarrior tracking status (https://timewarrior.net/)
+  taskwarrior             # taskwarrior task count (https://taskwarrior.org/)
+  ip                    # ip address and bandwidth usage for a specified network interface
+  public_ip             # public IP address
+  wifi                  # wifi speed
+  # =========================[ Line #2 ]=========================
+  newline
+  status                  # exit code of the last command
+  command_execution_time  # duration of the last command
+  history
+  background_jobs         # presence of background jobs
+  # proxy                 # system-wide http/https/ftp proxy
   # load                  # CPU load
   # disk_usage            # disk usage
   ram                   # free RAM
   # swap                  # used swap
-  wifi                  # wifi speed
-  todo                    # todo items (https://github.com/todotxt/todo.txt-cli)
-  timewarrior             # timewarrior tracking status (https://timewarrior.net/)
-  taskwarrior             # taskwarrior task count (https://taskwarrior.org/)
-  time                    # current time
-  # =========================[ Line #2 ]=========================
-  newline
-  ip                    # ip address and bandwidth usage for a specified network interface
-  public_ip             # public IP address
-  # proxy                 # system-wide http/https/ftp proxy
   # battery               # internal battery
   # example               # example user-defined segment (see prompt_example function below)
+  time                    # current time
 )
 
 # Defines character set used by powerlevel10k. It's best to let `p10k configure` set it for you.
@@ -118,7 +118,8 @@ typeset -g POWERLEVEL9K_STATUS_OK_PIPE=true
 # it will signify error by turning red.
 typeset -g POWERLEVEL9K_STATUS_ERROR=true
 
-# Status when the last command was terminated by a signal.  typeset -g POWERLEVEL9K_STATUS_ERROR_SIGNAL=true
+# Status when the last command was terminated by a signal.
+typeset -g POWERLEVEL9K_STATUS_ERROR_SIGNAL=true
 # Use terse signal names: "INT" instead of "SIGINT(2)".
 typeset -g POWERLEVEL9K_STATUS_VERBOSE_SIGNAME=true
 
@@ -127,7 +128,6 @@ typeset -g POWERLEVEL9K_STATUS_VERBOSE_SIGNAME=true
 typeset -g POWERLEVEL9K_STATUS_ERROR_PIPE=true
 
 ###################[ command_execution_time: duration of the last command ]###################
-# Execution time color.
 # Show duration of the last command if takes at least this many seconds.
 typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=1
 # Show this many fractional digits. Zero means round to seconds.
@@ -137,7 +137,7 @@ typeset -g POWERLEVEL9K_COMMAND_EXECUTION_TIME_PRECISION=3
 # Show the number of background jobs.
 typeset -g POWERLEVEL9K_BACKGROUND_JOBS_VERBOSE=true
 # Custom icon.
-#typeset -g POWERLEVEL9K_BACKGROUND_JOBS_VISUAL_IDENTIFIER_EXPANSION='≡'
+typeset -g POWERLEVEL9K_BACKGROUND_JOBS_VISUAL_IDENTIFIER_EXPANSION='≡'
 
 ###########[ vi_mode: vi mode (you don't need this if you've enabled prompt_char) ]###########
 # Text and color for insert vi mode.
