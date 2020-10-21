@@ -2,13 +2,12 @@
 typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
   # =========================[ Line #1 ]=========================
   os_icon                 # os identifier
-  direnv                  # direnv status (https://direnv.net/)
-  virtualenv              # python virtual environment (https://docs.python.org/3/library/venv.html)
   dir                     # current directory
   dir_writable            # powerlevel9k style dir writable state
   vcs                     # git status
   # =========================[ Line #2 ]=========================
   newline                 # \n
+  virtualenv              # python virtual environment (https://docs.python.org/3/library/venv.html)
   vi_mode                 # vi mode (you don't need this if you've enabled prompt_char)
   prompt_char             # prompt symbol
 )
@@ -19,7 +18,11 @@ typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
 # last prompt line gets hidden if it would overlap with left prompt.
 typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
   # =========================[ Line #1 ]=========================
-  commit_message
+  status                  # exit code of the last command
+  command_execution_time  # duration of the last command
+  history
+  background_jobs         # presence of background jobs
+  direnv                  # direnv status (https://direnv.net/)
   asdf                    # asdf version manager (https://github.com/asdf-vm/asdf)
   anaconda                # conda environment (https://conda.io/)
   pyenv                   # python environment (https://github.com/pyenv/pyenv)
@@ -61,23 +64,19 @@ typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
   # vpn_ip                # virtual private network indicator
   # load                  # CPU load
   # disk_usage            # disk usage
+  ram                   # free RAM
   # swap                  # used swap
+  wifi                  # wifi speed
   todo                    # todo items (https://github.com/todotxt/todo.txt-cli)
   timewarrior             # timewarrior tracking status (https://timewarrior.net/)
   taskwarrior             # taskwarrior task count (https://taskwarrior.org/)
-  ram                   # free RAM
-  battery               # internal battery
-  ip                    # ip address and bandwidth usage for a specified network interface
-  wifi                  # wifi speed
-  public_ip             # public IP address
+  time                    # current time
   # =========================[ Line #2 ]=========================
   newline
-  status                  # exit code of the last command
-  command_execution_time  # duration of the last command
-  background_jobs         # presence of background jobs
-  history
-  time                    # current time
+  ip                    # ip address and bandwidth usage for a specified network interface
+  public_ip             # public IP address
   # proxy                 # system-wide http/https/ftp proxy
+  # battery               # internal battery
   # example               # example user-defined segment (see prompt_example function below)
 )
 
