@@ -55,6 +55,9 @@
         " precede each line with its line number
         set nu
 
+        " Show the line number relative to the line with the cursor
+        set rnu
+
         " show the cursor position all the time
         set ruler
 
@@ -376,38 +379,16 @@
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     " plugin vim-nerdtree-syntax-highlight {
     " ~/.vim/bundle/vim-nerdtree-syntax-highlight/README.md
+
     " nerdtree with vim-nerdtree-syntax-highlight is slow
-    " try https://github.com/ryanoasis/vim-devicons/issues/263 instead
-    let g:NERDTreeLimitedSyntax = 1
-    let g:NERDTreeHighlightCursorline = 0
-    let g:NERDTreeSyntaxDisableDefaultExtensions = 1
-    let g:NERDTreeSyntaxDisableDefaultExactMatches = 1
-    let g:NERDTreeSyntaxDisableDefaultPatternMatches = 1
-    let g:NERDTreeSyntaxEnabledExtensions = [
-      \ 'bmp',
-      \ 'c',
-      \ 'cpp',
-      \ 'cs',
-      \ 'css',
-      \ 'go',
-      \ 'html',
-      \ 'java',
-      \ 'jpg',
-      \ 'js',
-      \ 'json',
-      \ 'jsx',
-      \ 'less',
-      \ 'markdown',
-      \ 'md',
-      \ 'php',
-      \ 'png',
-      \ 'py',
-      \ 'scss',
-      \ 'sh',
-      \ 'sql',
-      \ 'vim',
-    \]
-    let g:NERDTreeSyntaxEnabledExactMatches = ['node_modules', 'favicon.ico'] " enabled exact matches with default colors
+    " try https://github.com/tiagofumo/vim-nerdtree-syntax-highlight/issues/17
+    " and https://github.com/tiagofumo/vim-nerdtree-syntax-highlight/issues/6
+
+    " To improve syntax highlighting scroll performance, try this
+    " https://github.com/vim/vim/issues/1735
+    set ttyfast
+    set regexpengine=1
+    set synmaxcol=200
     " }
 
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
