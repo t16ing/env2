@@ -13,8 +13,6 @@
 "   It makes a sensible, powerful, and comfortable vim environment.
 "   Inspired by amix vimrc, spf13-vim, and SpaceVim.
 "
-" References:
-"
 
 " General {
 
@@ -200,10 +198,13 @@
     if !isdirectory("~/.vim/undodir")
         silent !mkdir -p ~/.vim/undodir
     endif
-    set undodir="~/.vim/undodir"
-    set undofile
-    set undolevels=1000
-    set undoreload=10000
+    try
+        set undodir=~/.vim/undodir
+        set undofile
+        set undolevels=1000
+        set undoreload=10000
+    catch
+    endtry
 
     " Pressing \ss will toggle and untoggle spell checking
     map <leader>ss :setlocal spell!<cr>
