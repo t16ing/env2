@@ -9,9 +9,8 @@
 "
 " Description:
 "
-"   This is a single installation of .vimrc for general configurations, plugins bundles, themes, and more.
-"   It makes a sensible, powerful, and comfortable vim environment.
-"   Inspired by amix vimrc, spf13-vim, and SpaceVim.
+"   A single, self-satisfied, personal .vimrc for general configurations, plugins bundles, themes, and more.
+"   Customization for a sensible, comfortable, light and powerful editor environment.
 "
 
 " General {
@@ -122,7 +121,7 @@
         map <silent> <leader><Space> :noh<cr>
 
     " }
- 
+
     " Move around between lines, buffers, windows, tabs {
 
         " allow backspacing over everything in insert mode
