@@ -367,7 +367,7 @@
     let g:NERDTreeQuitOnOpen = 1
     let g:NERDTreeGitStatusWithFlags = 1
     let g:NERDTreeIgnore = ['^node_modules$']
-    let g:NERDTreeWinSize = 20
+    let g:NERDTreeWinSize = 32
 
     map <leader>nn <ESC>:NERDTreeToggle<CR>
     map <leader>nf <ESC>:NERDTreeFind<CR>
@@ -386,9 +386,7 @@
 
     " To improve syntax highlighting scroll performance, try this
     " https://github.com/vim/vim/issues/1735
-    set ttyfast
     set regexpengine=1
-    set synmaxcol=200
     " }
 
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
