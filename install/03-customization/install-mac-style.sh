@@ -1,5 +1,9 @@
 #!/bin/bash
 
+## for mac style dock
+
+sudo apt install plank -y
+
 ## for mac style spotlight
 
 sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_20.04/ /' > /etc/apt/sources.list.d/home:manuelschneid3r.list"
