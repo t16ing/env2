@@ -215,6 +215,9 @@
     catch
     endtry
 
+    " Turn on spell checking
+    set spell
+
     " Pressing \ss will toggle and untoggle spell checking
     map <leader>ss :setlocal spell!<cr>
 
@@ -334,7 +337,7 @@
           " airline theme dark/onedark
         Plug 'flazz/vim-colorschemes'
           " colorscheme gruvbox/PaperColor with dark background
-        "Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+        " TODO: a lag-fixed fork of 'tiagofumo/vim-nerdtree-syntax-highlight', change back to upstream if PR is merged.
         Plug 'tarlety/vim-nerdtree-syntax-highlight'
           " color highlights for nerdtree
         Plug 'ryanoasis/vim-devicons'
@@ -390,15 +393,14 @@
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     " plugin vim-nerdtree-syntax-highlight {
     " ~/.vim/bundle/vim-nerdtree-syntax-highlight/README.md
-    "let g:NERDTreeFileExtensionHighlightFullName = 1
-    "let g:NERDTreeExactMatchHighlightFullName = 1
-    "let g:NERDTreePatternMatchHighlightFullName = 1
-    "let g:NERDTreeHighlightFolders = 1
-    "let g:NERDTreeHighlightFoldersFullName = 1
 
     " nerdtree with vim-nerdtree-syntax-highlight is slow
     " try https://github.com/tiagofumo/vim-nerdtree-syntax-highlight/issues/17
     " and https://github.com/tiagofumo/vim-nerdtree-syntax-highlight/issues/6
+    augroup nerdtreedisablecursorline
+        autocmd!
+        autocmd FileType nerdtree setlocal nocursorline
+    augroup end
 
     " To improve syntax highlighting scroll performance, try this
     " https://github.com/vim/vim/issues/1735
