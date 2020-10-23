@@ -81,7 +81,6 @@ export NVM_LAZY_LOAD=true
 plugins+=(zsh-nvm)
 plugins+=(vi-mode)
 bindkey '^f' autosuggest-accept
-plugins+=(zsh-autosuggestions)
 plugins+=(command-not-found)
 plugins+=(safe-paste)
 plugins+=(history-substring-search)
@@ -131,6 +130,7 @@ bindkey '^N' history-substring-search-down
 zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:t)(?)*==34=34}:${(s.:.)LS_COLORS}")';
 
 # plugins by apt install
+source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # for kubectl completion

@@ -16,5 +16,5 @@ sudo apt install -y krita
 sudo apt install -y mypaint
 sudo apt install -y inkscape
 
-## Productive
+## Productivity
 sudo apt install -y umbrello
