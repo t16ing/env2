@@ -12,6 +12,10 @@
 "   A single, self-satisfied, personal .vimrc for general configurations, plugins bundles, themes, and more.
 "   Customization for a sensible, comfortable, light and powerful editor environment.
 "
+" References:
+"
+"   - https://vi.stackexchange.com/questions/16037/vim-swap-file-best-practices
+"
 
 " General {
 
@@ -33,6 +37,9 @@
 
     " do not keep a backup file
     set nobackup
+
+    " set swap folder to .vim/swap
+    set directory^=$HOME/.vim//
 
     " opening a new file when the current buffer has unsaved changes causes files to be hidden instead of closed
     set hid
@@ -256,7 +263,7 @@
           " git notation for nerdtree
         Plug 'ctrlpvim/ctrlp.vim'
           " c-p for ctrlp, \p for MRU, \o for buffer window
-        Plug 'mileszs/ack.vim'
+        Plug 'mileszs/ack.vim', {'on': 'Ack'}
           " \g code search tool
 
     " }
@@ -382,6 +389,11 @@
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     " plugin vim-nerdtree-syntax-highlight {
     " ~/.vim/bundle/vim-nerdtree-syntax-highlight/README.md
+    "let g:NERDTreeFileExtensionHighlightFullName = 1
+    "let g:NERDTreeExactMatchHighlightFullName = 1
+    "let g:NERDTreePatternMatchHighlightFullName = 1
+    "let g:NERDTreeHighlightFolders = 1
+    "let g:NERDTreeHighlightFoldersFullName = 1
 
     " nerdtree with vim-nerdtree-syntax-highlight is slow
     " try https://github.com/tiagofumo/vim-nerdtree-syntax-highlight/issues/17
