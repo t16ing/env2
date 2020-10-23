@@ -222,116 +222,119 @@
 
 " }
 
-" Plugins {
+" Plugins manager: vim-plug {
 
-    " initialization {
+    " Benefits: on-demand loading, parallel installation/update
+    " https://github.com/junegunn/vim-plug
+    " ~/.vim/autoload/plug.vim
 
-        " install vundle automatically
-        let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
-        if !filereadable(vundle_readme)
-          echo "Installing Vundle.."
-          echo ""
-          silent !mkdir -p ~/.vim/bundle
-          silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
-          autocmd VimEnter * exec ":BundleInstall"
+    " install vim-plug automatically {
+
+        if empty(glob('~/.vim/autoload/plug.vim'))
+            silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+            autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
         endif
-
-        " vundle#rc
-        filetype off
-        set rtp+=~/.vim/bundle/vundle/
-        call vundle#rc()
 
     " }
 
+    call plug#begin('~/.vim/bundle')
+
     " Plugins - General {
 
-        " let Vundle manage Vundle
-        Plugin 'gmarik/vundle'
-        Plugin 't16ing/vim-vandomkeyhint'
-        Plugin 'vim-airline/vim-airline'
+        Plug 't16ing/vim-vandomkeyhint'
+        Plug 'vim-airline/vim-airline'
+        Plug 'mhinz/vim-startify'
 
     " }
 
     " Plugins - Files {
 
-        Plugin 'mhinz/vim-startify'
-        Plugin 'scrooloose/nerdtree'
+        Plug 'scrooloose/nerdtree'
           " <\nn> open nerdtree window. <\nf> find current file in nerdtree.'
-        Plugin 'Xuyuanp/nerdtree-git-plugin'
+        Plug 'Xuyuanp/nerdtree-git-plugin'
           " git notation for nerdtree
-        Plugin 'ctrlpvim/ctrlp.vim'
+        Plug 'ctrlpvim/ctrlp.vim'
           " c-p for ctrlp, \p for MRU, \o for buffer window
-        Plugin 'mileszs/ack.vim'
+        Plug 'mileszs/ack.vim'
           " \g code search tool
 
     " }
 
     " Plugins - Navigation {
 
-        Bundle 't16ing/vim-vookmark'
+        Plug 't16ing/vim-vookmark'
           " mm mn mp ml to toggle, move, list bookmarks
-        Bundle 'Lokaltog/vim-easymotion'
+        Plug 'Lokaltog/vim-easymotion'
           " \\w forward move \\b backward move
-        Bundle 'terryma/vim-expand-region'
+        Plug 'terryma/vim-expand-region'
           " Press + to expand the visual selection and _ to shrink it.
-        Bundle 'gregsexton/MatchTag'
+        Plug 'gregsexton/MatchTag'
           " Highlights the matching HTML tags
-        Plugin 'kshenoy/vim-signature'
+        Plug 'kshenoy/vim-signature'
           " Visible mark (m-*)
 
     " }
 
     " Plugins - Coding {
 
-        Plugin 'dense-analysis/ale'
+        Plug 'dense-analysis/ale'
           " Visible ERROR and warning
-        Bundle 'tpope/vim-fugitive'
+        Plug 'tpope/vim-fugitive'
           " <\gb> git blame <\gl> git log
-        Bundle 'airblade/vim-gitgutter'
+        Plug 'airblade/vim-gitgutter'
           " <\gt> Visible git sign <]c> for next hunk, <[c> for previous hunk.
-        Bundle 'majutsushi/tagbar'
+        Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle'}
           " <\tt> open tag bar, ctags required
-        Bundle 'hushicai/tagbar-javascript.vim'
-          " tagbar for js
-        Bundle 'vim-scripts/L9'
+        Plug 'vim-scripts/L9'
           " required by vim-autocomplpop
-        Bundle 'othree/vim-autocomplpop'
+        Plug 'othree/vim-autocomplpop'
           " Auto trigger complete popup menu.
-        Bundle 'davidhalter/jedi-vim'
-          " Auto-complete for python
-        Bundle 'moll/vim-node'
-          " gf in node.js require(...)
-        Plugin 'luochen1990/rainbow'
+        Plug 'luochen1990/rainbow'
           " rainbow parentheses {[()]}
-        Bundle 'nikvdp/ejs-syntax'
+
+        Plug 'davidhalter/jedi-vim', { 'for': 'py' }
+          " Auto-complete for python
+
+        Plug 'hushicai/tagbar-javascript.vim', { 'for': 'js' }
+          " tagbar for js
+        Plug 'moll/vim-node', { 'for': 'js' }
+          " gf in node.js require(...)
+
+    " }
+
+    " Plugins - filetypes {
+
+        Plug 'nikvdp/ejs-syntax', { 'for': 'ejs' }
           " syntax for ejs
-        Plugin 'leafgarland/typescript-vim'
+        Plug 'leafgarland/typescript-vim', { 'for': 'ts' }
           " syntax for ts
 
     " }
 
     " Plugins - Editing {
 
-        Bundle 'junegunn/vim-easy-align'
+        Plug 'junegunn/vim-easy-align'
           " select, ENTER, =, =
-        Bundle 'tpope/vim-commentary'
+        Plug 'tpope/vim-commentary'
           " gcc to comment out a line, gcap to comment out a paragraph
 
     " }
 
     " Plugins - Themes {
 
-        Plugin 'vim-airline/vim-airline-themes'
+        Plug 'vim-airline/vim-airline-themes'
           " airline theme dark/onedark
-        Plugin 'flazz/vim-colorschemes'
+        Plug 'flazz/vim-colorschemes'
           " colorscheme gruvbox/PaperColor with dark background
-        Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
+        Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
           " color highlights for nerdtree
-        Plugin 'ryanoasis/vim-devicons'
+        Plug 'ryanoasis/vim-devicons'
           " icons plugin for nerdtree
 
     " }
 
+    call plug#end()
 "}
 
 " Plugins Configs {
@@ -450,7 +453,7 @@
     let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
     map <leader>o :CtrlPBuffer<CR>
-     
+
     VkhAdd 'ctrlp.vim: <c-p> open ctrlp window. \o open buffer window.'
     " }
 
