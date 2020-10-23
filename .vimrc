@@ -334,7 +334,8 @@
           " airline theme dark/onedark
         Plug 'flazz/vim-colorschemes'
           " colorscheme gruvbox/PaperColor with dark background
-        Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+        "Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+        Plug 'tarlety/vim-nerdtree-syntax-highlight'
           " color highlights for nerdtree
         Plug 'ryanoasis/vim-devicons'
           " icons plugin for nerdtree
