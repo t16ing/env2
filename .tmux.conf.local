@@ -302,6 +302,8 @@ bind | split-window -h
 
 # address vim mode switching delay (http://superuser.com/a/252717/65504)
 set -s escape-time 0
+# Some people have also had some good luck with
+set -g status-interval 0
 
 # easier and faster switching between next/prev window
 bind -r C-p previous-window
