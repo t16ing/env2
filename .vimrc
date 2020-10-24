@@ -127,8 +127,8 @@
             let @" = l:saved_reg
         endfunction " }
 
-        " Disable highlight when <leader><Space> is pressed
-        map <silent> <leader><Space> :noh<cr>
+        " Disable highlight by <leader>/
+        map <silent> <leader>/ :noh<cr>
 
     " }
 
@@ -218,7 +218,7 @@
     " Turn on spell checking
     set spell
 
-    " Pressing \ss will toggle and untoggle spell checking
+    " Pressing <leader>ss will toggle and untoggle spell checking
     map <leader>ss :setlocal spell!<cr>
 
     " sn: next typo
@@ -261,13 +261,13 @@
     " Plugins - Files {
 
         Plug 'scrooloose/nerdtree'
-          " <\nn> open nerdtree window. <\nf> find current file in nerdtree.'
+          " <leader>nn open nerdtree window. <leader>nf find current file in nerdtree.'
         Plug 'Xuyuanp/nerdtree-git-plugin'
           " git notation for nerdtree
         Plug 'ctrlpvim/ctrlp.vim'
-          " c-p for ctrlp, \p for MRU, \o for buffer window
+          " c-p for ctrlp, <leader>p for MRU, <leader>o for buffer window
         Plug 'mileszs/ack.vim', {'on': 'Ack'}
-          " \g code search tool
+          " <leader>g code search tool
 
     " }
 
@@ -276,7 +276,7 @@
         Plug 't16ing/vim-vookmark'
           " mm mn mp ml to toggle, move, list bookmarks
         Plug 'Lokaltog/vim-easymotion'
-          " \\w forward move \\b backward move
+          " <leader><leader>w forward move <leader><leader>b backward move
         Plug 'terryma/vim-expand-region'
           " Press + to expand the visual selection and _ to shrink it.
         Plug 'gregsexton/MatchTag'
@@ -291,11 +291,11 @@
         Plug 'dense-analysis/ale'
           " Visible ERROR and warning
         Plug 'tpope/vim-fugitive'
-          " <\gb> git blame <\gl> git log
+          " <leader>gb git blame <leader>gl git log
         Plug 'airblade/vim-gitgutter'
-          " <\gt> Visible git sign <]c> for next hunk, <[c> for previous hunk.
+          " <leader>gt Visible git sign <]c> for next hunk, <[c> for previous hunk.
         Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle'}
-          " <\tt> open tag bar, ctags required
+          " <leader>tt open tag bar, ctags required
         Plug 'vim-scripts/L9'
           " required by vim-autocomplpop
         Plug 'othree/vim-autocomplpop'
@@ -387,7 +387,7 @@
     map <leader>nf <ESC>:NERDTreeFind<CR>
 
     VkhAdd 'plugin nerdtree: A tree explorer plugin to rule the Vim world.'
-    VkhAdd '<\nn> open nerdtree window. <\nf> find current file in nerdtree.'
+    VkhAdd '<leader>nn open nerdtree window. <leader>nf find current file in nerdtree.'
     " }
 
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -437,7 +437,7 @@
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     " plugin vim-easymotion {
     " ~/.vim/bundle/vim-easymotion/README.md
-    VkhAdd 'plugin vim-easymotion: \\w jump forward \\b jump backward.'
+    VkhAdd 'plugin vim-easymotion: <leader><leader>w jump forward <leader><leader>b jump backward.'
     " }
 
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -469,7 +469,7 @@
 
     map <leader>o :CtrlPBuffer<CR>
 
-    VkhAdd 'ctrlp.vim: <c-p> open ctrlp window. \o open buffer window.'
+    VkhAdd 'ctrlp.vim: <c-p> open ctrlp window. <leader>o open buffer window.'
     " }
 
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -508,7 +508,7 @@
 
     map <leader>tt <ESC>:TagbarToggle<CR>
 
-    VkhAdd '\tt to open Tagbar window.'
+    VkhAdd '<leader>tt to open Tagbar window.'
     " }
 
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -526,12 +526,12 @@
     map <leader>gl <ESC>:Gllog<CR>
 
     VkhAdd "plugin vim-gitgutter: shows a git diff in the 'gutter' (sign column)"
-    VkhAdd "<\gt> A Vim plugin which shows a git diff in the 'gutter' (sign column)."
+    VkhAdd "<leader>gt A Vim plugin which shows a git diff in the 'gutter' (sign column)."
     VkhAdd '<]c> for next hunk, <[c> for previous hunk.'
 
     VkhAdd 'plugin vim-fugitive: for Gblame and Glog'
-    VkhAdd '<\gb> brings up an interactive vertical split with git blame output.'
-    VkhAdd '<\gl> brings up commit history.'
+    VkhAdd '<leader>gb brings up an interactive vertical split with git blame output.'
+    VkhAdd '<leader>gl brings up commit history.'
     " }
 
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -601,7 +601,7 @@
 
     map <leader>cc <ESC>:call MY_PROC_CLEAN_MODE_TOGGLE()<CR>
 
-    VkhAdd '<\cc> enter/leave clean mode.'
+    VkhAdd '<leader>cc enter/leave clean mode.'
     " }
 
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -611,7 +611,7 @@
     let g:startify_session_persistence=1
     map <leader>s :Startify<CR>
 
-    VkhAdd 'plugin vim-startify: \ss open the fancy start screen for Vim. :SSave to save session.'
+    VkhAdd 'plugin vim-startify: <leader>ss open the fancy start screen for Vim. :SSave to save session.'
     " }
 
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -674,7 +674,7 @@
 
     map <expr> <leader>g ':Ack '.expand('<cword>').'<cr>'
 
-    VkhAdd 'plugin ack.vim: source code search tool. \g to search code.'
+    VkhAdd 'plugin ack.vim: source code search tool. <leader>g to search code.'
     " }
 
 " }
