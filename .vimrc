@@ -294,7 +294,7 @@
           " <leader>gb git blame <leader>gl git log
         Plug 'airblade/vim-gitgutter'
           " <leader>gt Visible git sign <]c> for next hunk, <[c> for previous hunk.
-        Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle'}
+        Plug 'majutsushi/tagbar'
           " <leader>tt open tag bar, ctags required
         Plug 'vim-scripts/L9'
           " required by vim-autocomplpop
@@ -303,22 +303,23 @@
         Plug 'luochen1990/rainbow'
           " rainbow parentheses {[()]}
 
-        Plug 'davidhalter/jedi-vim', { 'for': 'py' }
-          " Auto-complete for python
-
-        Plug 'hushicai/tagbar-javascript.vim', { 'for': 'js' }
-          " tagbar for js
-        Plug 'moll/vim-node', { 'for': 'js' }
-          " gf in node.js require(...)
-
     " }
 
     " Plugins - filetypes {
 
-        Plug 'nikvdp/ejs-syntax', { 'for': 'ejs' }
+        Plug 'davidhalter/jedi-vim', {'for': 'python'}
+          " Auto-complete for python
+
+        Plug 'nikvdp/ejs-syntax', {'for': 'ejs'}
           " syntax for ejs
-        Plug 'leafgarland/typescript-vim', { 'for': 'ts' }
+        Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
           " syntax for ts
+
+        " have to load early, otherwise not working
+        Plug 'hushicai/tagbar-javascript.vim'
+          " tagbar for js
+        Plug 'moll/vim-node'
+          " gf in node.js require(...)
 
     " }
 
