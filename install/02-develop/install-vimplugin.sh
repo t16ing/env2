@@ -4,4 +4,5 @@
 sudo apt-get install -y exuberant-ctags
 
 # required for tagbar-javascript
+sudo apt install npm
 sudo npm install -g esctags
