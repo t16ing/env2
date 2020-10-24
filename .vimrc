@@ -397,10 +397,6 @@
     " nerdtree with vim-nerdtree-syntax-highlight is slow
     " try https://github.com/tiagofumo/vim-nerdtree-syntax-highlight/issues/17
     " and https://github.com/tiagofumo/vim-nerdtree-syntax-highlight/issues/6
-    augroup nerdtreedisablecursorline
-        autocmd!
-        autocmd FileType nerdtree setlocal nocursorline
-    augroup end
 
     " To improve syntax highlighting scroll performance, try this
     " https://github.com/vim/vim/issues/1735
