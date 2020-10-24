@@ -500,7 +500,7 @@
     let g:tagbar_autofocus   = 1
     let g:tagbar_autoclose   = 0
     let g:tagbar_autoshowtag = 1
-    let g:tagbar_width = 20
+    let g:tagbar_width = 32
 
     map <leader>tt <ESC>:TagbarToggle<CR>
 
