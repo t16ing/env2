@@ -18,7 +18,7 @@
 "
 
 " Skip all configurations and plugins for vim.tiny {
-	if !1 | finish | endif
+    if !1 | finish | endif
 " }
 
 " General {
@@ -162,13 +162,26 @@
         map <leader>l :bn<cr>
         map <leader>h :bp<cr>
 
+        " Windows creation and deletion
+        map <c-w>- :set splitbelow<cr>:split<cr>
+        map <c-w>\| :set splitright<cr>:vsplit<cr>
+        map Q <c-w>q
+
         " Always show tabline = 2
         set showtabline=2
 
-        " Windows creation and deletion
-        map <leader>- :set splitbelow<cr>:split<cr>
-        map <leader>\| :set splitright<cr>:vsplit<cr>
-        map Q <c-w>q
+        " Tab movement
+        nmap gn :tabn<cr>
+        nmap gp :tabp<cr>
+        nmap g1 1gt
+        nmap g2 2gt
+        nmap g3 3gt
+        nmap g4 4gt
+        nmap g5 5gt
+        nmap g6 6gt
+        nmap g7 7gt
+        nmap g8 8gt
+        nmap g9 9gt
 
     " }
 
@@ -271,8 +284,16 @@
     " Plugins - General {
 
         Plug 't16ing/vim-vandomkeyhint'
-        Plug 'vim-airline/vim-airline'
         Plug 'mhinz/vim-startify'
+
+    " }
+
+    " Plugins - lightline family {
+
+        Plug 'itchyny/lightline.vim'
+        Plug 'mengelbrecht/lightline-bufferline'
+        Plug 'sinetoami/lightline-hunks'
+        Plug 'maximbaz/lightline-ale'
 
     " }
 
@@ -307,7 +328,7 @@
     " Plugins - Coding {
 
         Plug 'dense-analysis/ale'
-          " Visible ERROR and warning
+          " Visible ERROR and warning, <c-j> for next error, <c-k> for previous error.
         Plug 'tpope/vim-fugitive'
           " <leader>gb git blame <leader>gl git log
         Plug 'airblade/vim-gitgutter'
@@ -354,8 +375,6 @@
 
     " Plugins - Themes {
 
-        Plug 'vim-airline/vim-airline-themes'
-          " airline theme dark/onedark
         Plug 'flazz/vim-colorschemes'
           " colorscheme gruvbox/PaperColor with dark background
         " TODO: a lag-fixed fork of 'tiagofumo/vim-nerdtree-syntax-highlight', change back to upstream if PR is merged.
@@ -443,9 +462,7 @@
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     " plugin bookmark {
     " ~/.vim/bundle/vim-vookmark/README.md
-
     let g:vookmark_savepath = $HOME.'/.vim/vookmark'
-
     VkhAdd 'plugin vim-vookmark: <mm> toggle a bookmark <mn> next <mp> previous <ml> list'
     " }
 
@@ -466,10 +483,6 @@
     " ~/.vim/bundle/vim-autocomplpop/doc/acp.txt
     " L9 library must be installed
     " ~/.vim/bundle/L9/README
-
-    highlight Pmenu term=reverse ctermbg=cyan ctermfg=black
-    highlight PmenuSel term=reverse ctermbg=lightred ctermfg=black
-
     VkhAdd 'plugin vim-autocomplpop: Automatically opens popup menu for completions, requires L9.'
     " }
 
@@ -492,21 +505,23 @@
     " ~/.vim/bundle/ale/README.md
 
     let g:ale_linters = {
-    \   'javascript': ['jshint'],
-    \   'python': ['pylint'],
-    \   'go': ['go', 'golint', 'errcheck']
+    \ 'javascript': ['jshint'],
+    \ 'python': ['pylint', 'python'],
+    \ 'go': ['go', 'golint', 'errcheck'],
     \}
 
-    nmap <silent> <leader>a <Plug>(ale_next_wrap)
+    " navigate between errors quickly
+    nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+    nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
-    " Disabling highlighting
-    let g:ale_set_highlights = 0
+    " specify what text should be used for signs
+    let g:ale_sign_error = 'ER'
+    let g:ale_sign_warning = 'WA'
 
-    " Only run linting when saving the file
-    let g:ale_lint_on_text_changed = 'never'
-    let g:ale_lint_on_enter = 0
+    " default is 200 ms, increase to 5s to save battery power
+    let g:ale_lint_delay = 5000
 
-    VkhAdd 'plugin ale: Syntax checking.'
+    VkhAdd 'plugin ale: Syntax checking. c-k, c-j to navigate errors.'
     " }
 
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -604,11 +619,13 @@
       if g:my_clean_mode_toggle == 0
         set paste
         set nonu
+        set norelativenumber
         set signcolumn=no
         let g:my_clean_mode_toggle=1
       else
         set nopaste
         set nu
+        set relativenumber
         set signcolumn=yes
         let g:my_clean_mode_toggle=0
       endif
@@ -630,25 +647,86 @@
     " }
 
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-    " plugin vim-airline {
-    " ~/.vim/bundle/vim-airline/README.md
+    " plugin lightline.vim
+    " ~/.vim/bundle/lightline.vim/README.md
+    " plugin lightline-bufferline
+    " ~/.vim/bundle/lightline-bufferline/README.md
+    " plugin lightline-hunks
+    " ~/.vim/bundle/lightline-bufferline/README.md
+    " plugin lightline-ale
+    " ~/.vim/bundle/lightline-ale/README.md
 
-    let g:airline_extensions         = ['branch', 'tabline', 'cursormode', 'hunks', 'quickfix', 'ale']
-    let g:airline_theme              = 'onedark'
-    let g:airline_highlighting_cache = 1
-    let g:airline_powerline_fonts    = 1
+    " lightline {
+    let g:lightline = {
+        \ 'colorscheme': 'PaperColor',
+        \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+        \ 'subseparator': { 'left': "\ue0b1", 'right': "\ue0b3" },
+        \ }
+    let g:lightline.active = {
+        \ 'left': [ [ 'mode', 'paste', 'spell' ],
+        \           [ 'modified' ],
+        \           [ 'hunks', 'readonly', 'filename' ],
+        \ ],
+        \ 'right': [ [ 'lineinfo' ],
+        \            [ 'percent' ],
+        \            [ 'filetype', 'fileencoding', 'fileformat' ],
+        \            [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_infos', 'linter_ok' ],
+        \ ] }
+    let g:lightline.component_function = {
+        \ 'hunks': 'lightline#hunks#composer',
+        \ }
+    let g:lightline.component = {
+        \ 'spell': 'SPELL[%{&spell?&spelllang:""}]'
+        \ }
+    let g:lightline.tabline = {
+        \ 'left': [ [ 'tabs' ] ],
+        \ 'right': [ [ 'buffers' ] ] }
+    let g:lightline.component_expand = {
+        \ 'buffers': 'lightline#bufferline#buffers',
+        \ 'linter_checking': 'lightline#ale#checking',
+        \ 'linter_infos': 'lightline#ale#infos',
+        \ 'linter_warnings': 'lightline#ale#warnings',
+        \ 'linter_errors': 'lightline#ale#errors',
+        \ 'linter_ok': 'lightline#ale#ok',
+        \ }
+    let g:lightline.component_type = {
+        \ 'buffers': 'tabsel',
+        \ 'linter_checking': 'right',
+        \ 'linter_infos': 'right',
+        \ 'linter_warnings': 'warning',
+        \ 'linter_errors': 'error',
+        \ 'linter_ok': 'right',
+        \ }
+    " }
 
-    nmap gn <Plug>AirlineSelectNextTab
-    nmap gp <Plug>AirlineSelectPrevTab
-    nmap g1 <Plug>AirlineSelectTab1
-    nmap g2 <Plug>AirlineSelectTab2
-    nmap g3 <Plug>AirlineSelectTab3
-    nmap g4 <Plug>AirlineSelectTab4
-    nmap g5 <Plug>AirlineSelectTab5
-    nmap g6 <Plug>AirlineSelectTab6
-    nmap g7 <Plug>AirlineSelectTab7
-    nmap g8 <Plug>AirlineSelectTab8
-    nmap g9 <Plug>AirlineSelectTab9
+    " statusline for |CtrlP|, |Tagbar| buffers. {
+    let g:ctrlp_status_func = {
+      \ 'main': 'CtrlPStatusFunc_1',
+      \ 'prog': 'CtrlPStatusFunc_2',
+      \ }
+    function! CtrlPStatusFunc_1(focus, byfname, regex, prev, item, next, marked)
+      return lightline#statusline(0)
+    endfunction
+    function! CtrlPStatusFunc_2(str)
+      return lightline#statusline(0)
+    endfunction
+
+    let g:tagbar_status_func = 'TagbarStatusFunc'
+    function! TagbarStatusFunc(current, sort, fname, ...) abort
+      return lightline#statusline(0)
+    endfunction
+    " }
+
+    " icons as ale indicators {
+    let g:lightline#ale#indicator_checking = "\uf110 "
+    let g:lightline#ale#indicator_infos = "\uf129 "
+    let g:lightline#ale#indicator_warnings = "\uf071 "
+    let g:lightline#ale#indicator_errors = "\uf05e "
+    let g:lightline#ale#indicator_ok = "\uf00c "
+    " }
+
+    " `-- INSERT --` is unnecessary anymore because the mode information is displayed in the statusline.
+    set noshowmode
 
     VkhAdd "plugin vim-airline: Lean & mean status/tabline for vim that's light as air."
     VkhAdd 'gn to move to next tab, gp to move to previous tab, [0-9]gt to move to tab n.'
@@ -668,7 +746,6 @@
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     " plugin vim-colorschemes {
     " ~/.vim/bundle/vim-colorschemes/README.md
-
     set t_Co=256
     colorscheme PaperColor
     set background=dark
@@ -677,18 +754,14 @@
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     " plugin rainbow {
     " ~/.vim/bundle/rainbow/README.md
-
     let g:rainbow_active = 1
-
     VkhAdd 'plugin rainbow: help you read complex code by showing diff level of parentheses in diff color'
     " }
 
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     " plugin ack.vim {
     " ~/.vim/bundle/ack.vim/README.md
-
     map <expr> <leader>g ':Ack '.expand('<cword>').'<cr>'
-
     VkhAdd 'plugin ack.vim: source code search tool. <leader>g to search code.'
     " }
 
