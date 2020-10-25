@@ -17,6 +17,10 @@
 "   - https://vi.stackexchange.com/questions/16037/vim-swap-file-best-practices
 "
 
+" Skip plugins for vim-tiny or vim-small {
+	if !1 | finish | endif
+" }
+
 " General {
 
     " This must be first, because it changes other options as a side effect.
@@ -210,6 +214,9 @@
 
     " Toggle paste mode on and off
     map <leader>pp :setlocal paste!<cr>
+
+    " Share clipboard with system
+    set clipboard=unnamedplus
 
     " set persistent undo
     if !isdirectory("~/.vim/undodir")
