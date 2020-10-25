@@ -456,11 +456,9 @@
     " plugin bookmark {
     " ~/.vim/bundle/vim-vookmark/README.md
 
-    let g:bookmark_auto_save_file  = $HOME.'/.vim/bookmark'
-    let g:bookmark_location_list   = 1
-    let g:bookmark_highlight_lines = 1
+    let g:vookmark_savepath = $HOME.'/.vim/vookmark'
 
-    VkhAdd 'plugin vim-bookmark: <mm> toggle a bookmark <mn> next <mp> previous <ml> list'
+    VkhAdd 'plugin vim-vookmark: <mm> toggle a bookmark <mn> next <mp> previous <ml> list'
     " }
 
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
