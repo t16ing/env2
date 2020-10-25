@@ -183,6 +183,9 @@
         nmap g8 8gt
         nmap g9 9gt
 
+        " ,bt to open each buffer in a new tab; :tabo to close all other tabs
+        nmap ,bt :bufdo tab split<cr>
+
     " }
 
 " }
