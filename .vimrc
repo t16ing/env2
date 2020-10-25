@@ -521,6 +521,9 @@
     " default is 200 ms, increase to 5s to save battery power
     let g:ale_lint_delay = 5000
 
+    " pyhon default mode, set 'indent' to 2 space, and other stuff.
+    autocmd FileType python setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab smarttab textwidth=100
+
     VkhAdd 'plugin ale: Syntax checking. c-k, c-j to navigate errors.'
     " }
 
@@ -718,11 +721,11 @@
     " }
 
     " icons as ale indicators {
-    let g:lightline#ale#indicator_checking = "\uf110 "
+    let g:lightline#ale#indicator_checking = "..."
     let g:lightline#ale#indicator_infos = "\uf129 "
     let g:lightline#ale#indicator_warnings = "\uf071 "
     let g:lightline#ale#indicator_errors = "\uf05e "
-    let g:lightline#ale#indicator_ok = "\uf00c "
+    let g:lightline#ale#indicator_ok = ""
     " }
 
     " `-- INSERT --` is unnecessary anymore because the mode information is displayed in the statusline.
