@@ -158,7 +158,7 @@
         " Windows creation and deletion
         map <leader>- :set splitbelow<cr>:split<cr>
         map <leader>\| :set splitright<cr>:vsplit<cr>
-        map <leader>Q <c-w>q
+        map Q <c-w>q
 
     " }
 
