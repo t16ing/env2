@@ -9,3 +9,7 @@ sudo npm install -g esctags
 
 # required for ack.vim
 sudo apt install ack
+
+# required for ale
+sudo apt install pylint
+sudo apt install eslint
