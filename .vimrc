@@ -50,6 +50,12 @@
     " Show key combinations
     set showcmd
 
+    " With a map leader it's possible to do extra key combinations
+    " have to set before mapping keys, but vim.tiny does not supported
+	if 1
+        let mapleader = ","
+    endif
+
 " }
 
 " User Interface {
@@ -194,10 +200,6 @@
 
     " Show the line number relative to the line with the cursor (syntax highlight performance impacted) {
         set rnu
-    " }
-
-    " With a map leader it's possible to do extra key combinations {
-        let mapleader = ","
     " }
 
     " Visual mode pressing * or # searches for the current selection {
