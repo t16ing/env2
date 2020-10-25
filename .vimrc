@@ -17,10 +17,6 @@
 "   - https://vi.stackexchange.com/questions/16037/vim-swap-file-best-practices
 "
 
-" Skip plugins for vim-tiny or vim-small {
-	if !1 | finish | endif
-" }
-
 " General {
 
     " This must be first, because it changes other options as a side effect.
@@ -54,9 +50,6 @@
     " Show key combinations
     set showcmd
 
-    " With a map leader it's possible to do extra key combinations
-    let mapleader = ","
-
 " }
 
 " User Interface {
@@ -69,9 +62,6 @@
         " precede each line with its line number
         set nu
 
-        " Show the line number relative to the line with the cursor
-        set rnu
-
         " show the cursor position all the time
         set ruler
 
@@ -83,6 +73,9 @@
 
         " Turn on the Wild menu
         set wildmenu
+
+        " Always show status line = 2
+        set laststatus=2
 
     " }
 
@@ -107,32 +100,6 @@
         set showmatch
         " How many tenths of a second to blink when matching brackets
         set mat=2
-
-        " Visual mode pressing * or # searches for the current selection
-        vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
-        vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
-
-        " helper function for current selection {
-        function! CmdLine(str)
-            call feedkeys(":" . a:str)
-        endfunction
-
-        function! VisualSelection(direction, extra_filter) range
-            let l:saved_reg = @"
-            execute "normal! vgvy"
-
-            let l:pattern = escape(@", "\\/.*'$^~[]")
-            let l:pattern = substitute(l:pattern, "\n$", "", "")
-
-            if a:direction == 'gv'
-                call CmdLine("Ack '" . l:pattern . "' " )
-            elseif a:direction == 'replace'
-                call CmdLine("%s" . '/'. l:pattern . '/')
-            endif
-
-            let @/ = l:pattern
-            let @" = l:saved_reg
-        endfunction " }
 
         " Disable highlight by <leader>/
         map <silent> <leader>/ :noh<cr>
@@ -173,13 +140,6 @@
 
 " Formatting {
 
-    " Switch syntax highlighting on
-    syntax on
-
-    " Enable filetype plugins
-    filetype plugin on
-    filetype indent on
-
     " always set autoindenting on
     set autoindent
     set smartindent
@@ -199,15 +159,6 @@
     set modeline
     set modelines=2
 
-    " highlight unwanted space
-    highlight ExtraWhitespace ctermbg=red guibg=red
-    autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-    match ExtraWhitespace /\s\+$/
-    autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-    autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-    autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-    autocmd BufWinLeave * call clearmatches()
-
 " }
 
 " Editing {
@@ -217,18 +168,6 @@
 
     " Share clipboard with system
     set clipboard=unnamedplus
-
-    " set persistent undo
-    if !isdirectory("~/.vim/undodir")
-        silent !mkdir -p ~/.vim/undodir
-    endif
-    try
-        set undodir=~/.vim/undodir
-        set undofile
-        set undolevels=1000
-        set undoreload=10000
-    catch
-    endtry
 
     " Turn on spell checking
     set spell
@@ -244,6 +183,82 @@
     map <leader>sa zg
     " s?: list all typo
     map <leader>s? z=
+
+" }
+
+" Skip plugins and advanced settings for vim-tiny or vim-small {
+	if !1 | finish | endif
+" }
+
+" Advanced Settings {
+
+    " Show the line number relative to the line with the cursor (syntax highlight performance impacted) {
+        set rnu
+    " }
+
+    " With a map leader it's possible to do extra key combinations {
+        let mapleader = ","
+    " }
+
+    " Visual mode pressing * or # searches for the current selection {
+        vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
+        vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
+
+        " helper function for current selection {
+        function! CmdLine(str)
+            call feedkeys(":" . a:str)
+        endfunction
+
+        function! VisualSelection(direction, extra_filter) range
+            let l:saved_reg = @"
+            execute "normal! vgvy"
+
+            let l:pattern = escape(@", "\\/.*'$^~[]")
+            let l:pattern = substitute(l:pattern, "\n$", "", "")
+
+            if a:direction == 'gv'
+                call CmdLine("Ack '" . l:pattern . "' " )
+            elseif a:direction == 'replace'
+                call CmdLine("%s" . '/'. l:pattern . '/')
+            endif
+
+            let @/ = l:pattern
+            let @" = l:saved_reg
+        endfunction
+        " }
+    " }
+
+    " syntax {
+        " Switch syntax highlighting on
+        syntax on
+
+        " Enable filetype plugins
+        filetype plugin on
+        filetype indent on
+    " }
+
+    " highlight unwanted space {
+        highlight ExtraWhitespace ctermbg=red guibg=red
+        autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+        match ExtraWhitespace /\s\+$/
+        autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+        autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+        autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+        autocmd BufWinLeave * call clearmatches()
+    " }
+
+    " set persistent undo {
+        if !isdirectory("~/.vim/undodir")
+            silent !mkdir -p ~/.vim/undodir
+        endif
+        try
+            set undodir=~/.vim/undodir
+            set undofile
+            set undolevels=1000
+            set undoreload=10000
+        catch
+        endtry
+    " }
 
 " }
 
