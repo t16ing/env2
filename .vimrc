@@ -51,8 +51,8 @@
     set showcmd
 
     " With a map leader it's possible to do extra key combinations
-    " have to set before mapping keys, but vim.tiny does not supported
-	if 1
+    " have to apply leader map remapping before any leader key is used
+    if 1
         let mapleader = ","
     endif
 
