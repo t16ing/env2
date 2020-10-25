@@ -665,7 +665,30 @@
     " plugin startify {
     " ~/.vim/bundle/vim-startify/doc/startify.txt
 
+    let g:startify_lists = [
+          \ { 'type': 'sessions',  'header': ['   Sessions']       },
+          \ { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
+          \ { 'type': 'files',     'header': ['   MRU']            },
+          \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+          \ { 'type': 'commands',  'header': ['   Commands']       },
+          \ ]
+
+    " hardcoded files or directories that will always be shown
+    let g:startify_bookmarks = [ '~/.vimrc', '~/.zshrc', '~/.tmux.conf' ]
+
+    " The directory to save/load sessions to/from.
+    let g:startify_session_dir = '~/.vim/session'
+
+    " Automatically update sessions
     let g:startify_session_persistence=1
+
+    " updates oldfiles on-the-fly, so that :Startify is always up-to-date.
+    let g:startify_update_oldfiles = 0
+
+    " Unicode box-drawing characters will be used instead.
+    let g:startify_fortune_use_unicode = 1
+
+    " anytime ,s to launch Startify
     map <leader>s :Startify<CR>
 
     VkhAdd 'plugin vim-startify: <leader>ss open the fancy start screen for Vim. :SSave to save session.'
