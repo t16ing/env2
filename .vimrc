@@ -647,7 +647,7 @@
     " }
 
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-    " plugin lightline.vim
+    " plugin lightline.vim {
     " ~/.vim/bundle/lightline.vim/README.md
     " plugin lightline-bufferline
     " ~/.vim/bundle/lightline-bufferline/README.md
