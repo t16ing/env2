@@ -155,6 +155,11 @@
         " Always show tabline = 2
         set showtabline=2
 
+        " Windows creation and deletion
+        map <leader>- :set splitbelow<cr>:split<cr>
+        map <leader>\| :set splitright<cr>:vsplit<cr>
+        map <leader>Q <c-w>q
+
     " }
 
 " }
@@ -638,7 +643,7 @@
     VkhAdd '<c-o> jump backward. <c-i> jump forward.'
     VkhAdd ':tabe to create new tab. :tabc to close current tab.'
     VkhAdd 'gf to open file in the same tab. <c-w>gf to open file in new tab. <c-w>f to open file in new window.'
-    VkhAdd '<c-w>s to splie window. <c-w>q to close window.'
+    VkhAdd '<leader>- or <leader>| to splie window. Q to close window.'
     " }
 
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
