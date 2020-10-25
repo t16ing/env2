@@ -312,8 +312,6 @@
 
     " Plugins - Navigation {
 
-        Plug 't16ing/vim-vookmark'
-          " mm mn mp ml to toggle, move, list bookmarks
         Plug 'Lokaltog/vim-easymotion'
           " <leader><leader>w forward move <leader><leader>b backward move
         Plug 'terryma/vim-expand-region'
@@ -411,7 +409,38 @@
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     " plugin vim-signature {
     " ~/.vim/bundle/vim-signature/doc/signature.txt
+
+    " marks key mappings
+    let g:SignatureMap = {
+        \ 'Leader'             :  "m",
+        \ 'ToggleMarkAtLine'   :  "mm",
+        \ 'PurgeMarks'         :  "m<Space>",
+        \ 'PurgeMarkers'       :  "m<BS>",
+        \ 'GotoNextLineAlpha'  :  "']",
+        \ 'GotoPrevLineAlpha'  :  "'[",
+        \ 'GotoNextSpotAlpha'  :  "`]",
+        \ 'GotoPrevSpotAlpha'  :  "`[",
+        \ 'GotoNextLineByPos'  :  "]'",
+        \ 'GotoPrevLineByPos'  :  "['",
+        \ 'GotoNextSpotByPos'  :  "mn",
+        \ 'GotoPrevSpotByPos'  :  "mp",
+        \ 'GotoNextMarker'     :  "mN",
+        \ 'GotoPrevMarker'     :  "mP",
+        \ 'GotoNextMarkerAny'  :  "]=",
+        \ 'GotoPrevMarkerAny'  :  "[=",
+        \ 'ListBufferMarks'    :  "ml",
+        \ 'ListBufferMarkers'  :  "mL"
+        \ }
+
+    " highligh for markers
+    let g:SignatureMarkerLineHL = "QuickFixLine"
+
+    " When a line has both marks and markers, display the sign for markers
+    let g:SignaturePrioritizeMarks = 0
+
     VkhAdd 'plugin vim-signature: A plugin to toggle, display and navigate vim marks.'
+    VkhAdd 'mark: mm toggle a mark, mn/mp motion, ml list, m<space> clear all'
+    VkhAdd 'marker: m[0-9] toggle a marker, mN/mP motion, mL list, m<BS> clear all'
     " }
 
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -457,13 +486,6 @@
           \       'nerdtree': 0
           \    }
           \}
-    " }
-
-    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-    " plugin bookmark {
-    " ~/.vim/bundle/vim-vookmark/README.md
-    let g:vookmark_savepath = $HOME.'/.vim/vookmark'
-    VkhAdd 'plugin vim-vookmark: <mm> toggle a bookmark <mn> next <mp> previous <ml> list'
     " }
 
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
