@@ -47,6 +47,9 @@
     " Don't redraw while executing macros (good performance config)
     set lazyredraw
 
+    " Show key combinations
+    set showcmd
+
     " With a map leader it's possible to do extra key combinations
     let mapleader = ","
 
