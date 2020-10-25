@@ -35,6 +35,17 @@ typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
 # last prompt line gets hidden if it would overlap with left prompt.
 typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
   # =========================[ Line #1 ]=========================
+  context                 # user@hostname
+  nordvpn                 # nordvpn connection status, linux only (https://nordvpn.com/)
+  # vpn_ip                # virtual private network indicator
+  todo                    # todo items (https://github.com/todotxt/todo.txt-cli)
+  timewarrior             # timewarrior tracking status (https://timewarrior.net/)
+  taskwarrior             # taskwarrior task count (https://taskwarrior.org/)
+  ip                    # ip address and bandwidth usage for a specified network interface
+  public_ip             # public IP address
+  wifi                  # wifi speed
+  # =========================[ Line #2 ]=========================
+  newline
   nodenv                  # node.js version from nodenv (https://github.com/nodenv/nodenv)
   nvm                     # node.js version from nvm (https://github.com/nvm-sh/nvm)
   nodeenv                 # node.js environment (https://github.com/ekalinin/nodeenv)
@@ -55,17 +66,6 @@ typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
   phpenv                  # php version from phpenv (https://github.com/phpenv/phpenv)
   scalaenv                # scala version from scalaenv (https://github.com/scalaenv/scalaenv)
   haskell_stack           # haskell version from stack (https://haskellstack.org/)
-  context                 # user@hostname
-  nordvpn                 # nordvpn connection status, linux only (https://nordvpn.com/)
-  # vpn_ip                # virtual private network indicator
-  todo                    # todo items (https://github.com/todotxt/todo.txt-cli)
-  timewarrior             # timewarrior tracking status (https://timewarrior.net/)
-  taskwarrior             # taskwarrior task count (https://taskwarrior.org/)
-  ip                    # ip address and bandwidth usage for a specified network interface
-  public_ip             # public IP address
-  wifi                  # wifi speed
-  # =========================[ Line #2 ]=========================
-  newline
   status                  # exit code of the last command
   command_execution_time  # duration of the last command
   history
