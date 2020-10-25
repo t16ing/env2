@@ -80,7 +80,6 @@ export NVM_COMPLETION=true
 export NVM_LAZY_LOAD=true
 plugins+=(zsh-nvm)
 plugins+=(vi-mode)
-bindkey '^f' autosuggest-accept
 plugins+=(command-not-found)
 plugins+=(safe-paste)
 plugins+=(history-substring-search)
@@ -119,12 +118,16 @@ export EDITOR=vim
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ls='ls --color=tty --group-directories-first'
+alias ra='~/.local/bin/ranger'
 
 # Plugin Sections
 
 # for history-substring-search post-configuration
 bindkey '^P' history-substring-search-up
 bindkey '^N' history-substring-search-down
+
+# for zsh-autosuggestions
+bindkey '^f' autosuggest-accept
 
 # for color partial tab completions
 zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:t)(?)*==34=34}:${(s.:.)LS_COLORS}")';
@@ -141,9 +144,7 @@ function kubectl() {
   command kubectl "$@"
 }
 
-# Login Messages
-
-# for ./install/install-fail2cam.sh
+# Login Messages for ./install/install-fail2cam.sh
 [[ -a /tmp/fail2cam-`hostname`-*.png ]] && ( echo "###FAIL2CAM WARNING###"; ls -al /tmp/fail2cam-`hostname`-*.png )
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
