@@ -355,6 +355,8 @@
           " Auto trigger complete popup menu.
         Plug 'luochen1990/rainbow'
           " rainbow parentheses {[()]}
+        Plug 'nathanaelkane/vim-indent-guides'
+          " visually displaying indent levels
 
     " }
 
@@ -875,6 +877,25 @@
     nnoremap <leader>u :UndotreeToggle<cr>
 
     VkhAdd 'plugin undotree: visualizes undo history, <leader>u to open undo tree'
+    " }
+
+    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    " plugin vim-indent-guides {
+    " ~/.vim/bundle/vim-indent-guides/README.markdown
+
+    " have indent guides enabled by default
+    let g:indent_guides_enable_on_vim_startup = 1
+
+    " customize the size of the indent guide
+    let g:indent_guides_guide_size = 1
+
+    " Use this option to control which indent level to start showing guides from.
+    let g:indent_guides_start_level = 2
+
+    " Use this option to specify a list of filetypes to disable the plugin for.
+    let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'startify']
+
+    VkhAdd 'plugin vim-indent-guides: visually displaying indent levels'
     " }
 
 " }
