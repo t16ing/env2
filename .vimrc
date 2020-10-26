@@ -158,27 +158,31 @@
         \   exe "normal! g`\"" |
         \ endif
 
+        " switch between buffers, useful with multi-tabs
+        map <leader>l :bn<cr>
+        map <leader>h :bp<cr>
+
+        " beauty windows separator
+        set fillchars+=vert:\‖
+
         " Windows creation and deletion
         map <c-w>- :set splitbelow<cr>:split<cr>
         map <c-w>\| :set splitright<cr>:vsplit<cr>
+        map <c-w>\ :set splitright<cr>:vsplit<cr>
         map Q <c-w>q
+
+        " Windows resizing
+        map <c-w><up> :res+1<cr>
+        map <c-w><down> :res-1<cr>
+        map <c-w><left> :vertical res-5<cr>
+        map <c-w><right> :vertical res+5<cr>
 
         " Always show tabline = 2
         set showtabline=2
 
-        " Tab/buffer switching
+        " Tab switching
         nmap gn :if tabpagenr("$") == 1 \| :bn \| else \| :tabn \| endif<cr>
         nmap gp :if tabpagenr("$") == 1 \| :bp \| else \| :tabp \| endif<cr>
-
-        nmap g1 :if tabpagenr("$") == 1 \| :b 1 \| else \| :normal 1gt \| endif<cr>
-        nmap g2 :if tabpagenr("$") == 1 \| :b 2 \| else \| :normal 2gt \| endif<cr>
-        nmap g3 :if tabpagenr("$") == 1 \| :b 3 \| else \| :normal 3gt \| endif<cr>
-        nmap g4 :if tabpagenr("$") == 1 \| :b 4 \| else \| :normal 4gt \| endif<cr>
-        nmap g5 :if tabpagenr("$") == 1 \| :b 5 \| else \| :normal 5gt \| endif<cr>
-        nmap g6 :if tabpagenr("$") == 1 \| :b 6 \| else \| :normal 6gt \| endif<cr>
-        nmap g7 :if tabpagenr("$") == 1 \| :b 7 \| else \| :normal 7gt \| endif<cr>
-        nmap g8 :if tabpagenr("$") == 1 \| :b 8 \| else \| :normal 8gt \| endif<cr>
-        nmap g9 :if tabpagenr("$") == 1 \| :b 9 \| else \| :normal 9gt \| endif<cr>
 
         " ,bt to open buffer in tab; ,bT to open each buffer in a new tab
         " ,bc to close current tab; ,bC to close all other tab; ,bd to close buffer
@@ -213,8 +217,15 @@
     set shiftwidth=4
     set smarttab
 
+    " fold by indent and fold by default
+    set foldmethod=indent
+    set foldlevel=0
+
     " For all text files set 'textwidth' to 78 characters.
     autocmd FileType text setlocal textwidth=78
+
+    " When off lines will not wrap and only part of long lines will be displayed
+    set nowrap
 
     " modeline only take effect in first 2 lines or last 2 lines
     set modeline
@@ -373,6 +384,8 @@
           " gcc to comment out a line, gcap to comment out a paragraph
         Plug 'junegunn/vim-peekaboo'
           " extends " and @ in normal mode and <CTRL-R> in insert mode so you can see the contents of the registers
+        Plug 'mbbill/undotree'
+          " visualizes undo history, <leader>u to open undo tree
 
     " }
 
@@ -781,6 +794,37 @@
     " `-- INSERT --` is unnecessary anymore because the mode information is displayed in the statusline.
     set noshowmode
 
+    " `2`: Ordinal number (buffers are numbered from _1_ to _n_ sequentially)
+    let g:lightline#bufferline#show_number = 2
+
+    " to use unicode superscript numerals for ordinal number
+    let g:lightline#bufferline#number_map = {
+    \ 0: '⁰', 1: '¹', 2: '²', 3: '³', 4: '⁴',
+    \ 5: '⁵', 6: '⁶', 7: '⁷', 8: '⁸', 9: '⁹'}
+
+    " Enables the usage of [vim-devicons](https://github.com/ryanoasis/vim-devicons) to display a filetype icon for the buffer.
+    let g:lightline#bufferline#enable_devicons = 1
+
+    " Enables the usage of [nerdfont.vim](https://github.com/lambdalisue/nerdfont.vim) to display a filetype icon for the buffer.
+    let g:lightline#bufferline#enable_nerdfont = 1
+
+    " the symbols `+`, `-` and `...` are replaced by `✎`, `` and `…`.
+    let g:lightline#bufferline#unicode_symbols = 1
+
+    " bufferline is used in the `right` component; should be set to `1` to ensure the correct order of the buffers.
+    let g:lightline#bufferline#right_aligned = 1
+
+    " This plugin provides Plug mappings to switch to buffers using their ordinal number in the bufferline.
+    nmap g1 :if tabpagenr("$") == 1 \| :execute "normal \<Plug>lightline#bufferline#go(1)" \| else \| :tabn1 \| endif<cr>
+    nmap g2 :if tabpagenr("$") == 1 \| :execute "normal \<Plug>lightline#bufferline#go(2)" \| else \| :tabn2 \| endif<cr>
+    nmap g3 :if tabpagenr("$") == 1 \| :execute "normal \<Plug>lightline#bufferline#go(3)" \| else \| :tabn3 \| endif<cr>
+    nmap g4 :if tabpagenr("$") == 1 \| :execute "normal \<Plug>lightline#bufferline#go(4)" \| else \| :tabn4 \| endif<cr>
+    nmap g5 :if tabpagenr("$") == 1 \| :execute "normal \<Plug>lightline#bufferline#go(5)" \| else \| :tabn5 \| endif<cr>
+    nmap g6 :if tabpagenr("$") == 1 \| :execute "normal \<Plug>lightline#bufferline#go(6)" \| else \| :tabn6 \| endif<cr>
+    nmap g7 :if tabpagenr("$") == 1 \| :execute "normal \<Plug>lightline#bufferline#go(7)" \| else \| :tabn7 \| endif<cr>
+    nmap g8 :if tabpagenr("$") == 1 \| :execute "normal \<Plug>lightline#bufferline#go(8)" \| else \| :tabn8 \| endif<cr>
+    nmap g9 :if tabpagenr("$") == 1 \| :execute "normal \<Plug>lightline#bufferline#go(9)" \| else \| :tabn9 \| endif<cr>
+
     VkhAdd "plugin vim-airline: Lean & mean status/tabline for vim that's light as air."
     VkhAdd '<c-o> jump backward. <c-i> jump forward.'
     VkhAdd 'gf to open file in the same tab. <c-w>gf to open file in new tab. <c-w>f to open file in new window.'
@@ -815,6 +859,22 @@
     " ~/.vim/bundle/ack.vim/README.md
     map <expr> <leader>g ':Ack '.expand('<cword>').'<cr>'
     VkhAdd 'plugin ack.vim: source code search tool. <leader>g to search code.'
+    " }
+
+    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    " plugin undotree {
+    " ~/.vim/bundle/undotree/README.md
+
+    " change windows layout for bigger diff area
+    let g:undotree_WindowLayout = 2
+
+    " get focus after being opened
+    let g:undotree_SetFocusWhenToggle = 1
+
+    " to toggle the undo-tree panel
+    nnoremap <leader>u :UndotreeToggle<cr>
+
+    VkhAdd 'plugin undotree: visualizes undo history, <leader>u to open undo tree'
     " }
 
 " }
