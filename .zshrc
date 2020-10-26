@@ -120,22 +120,23 @@ which nvim > /dev/null && export EDITOR='nvim' || export EDITOR='vim'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ls='ls --color=tty --group-directories-first'
 alias ra='ranger'
-alias s='case $(($RANDOM % 4)) in
-    0)
+alias s='case $(($RANDOM % 10)) in
+    0|1|2)
         # yellow, purple
         neofetch --colors 13 8 8 3 8 7 --ascii_colors 5 3 8 8 8 8
         ;;
-    1)
+    3|4|5)
         # purple, green
         neofetch --colors 2 8 8 13 8 7 --ascii_colors 5 2 8 8 8 8
         ;;
-    2)
+    6|7|8)
         # blue, purple
         neofetch --colors 6 5 8 6 8 8 --ascii_colors 5 6 8 8 8 8
         ;;
     *)
         # chaos
-        neofetch --colors $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) --ascii_colors $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16))
+        neofetch --colors $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) \
+            --ascii_colors $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16))
         ;;
 esac'
 
