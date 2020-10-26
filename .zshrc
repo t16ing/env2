@@ -120,6 +120,7 @@ alias vi='nvim'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ls='ls --color=tty --group-directories-first'
 alias ra='~/.local/bin/ranger'
+alias s='neofetch --colors 13 5 8 13 8 7 --ascii_colors 5 3 8 8 8 8'
 
 # Plugin Sections
 
