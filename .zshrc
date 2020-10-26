@@ -120,7 +120,20 @@ export EDITOR=nvim
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ls='ls --color=tty --group-directories-first'
 alias ra='ranger'
-alias s='neofetch --colors 13 5 8 3 8 7 --ascii_colors 5 3 8 8 8 8'
+alias s='case $(($RANDOM % 3)) in
+    0)
+        # yellow, purple
+        neofetch --colors 13 8 8 3 8 7 --ascii_colors 5 3 8 8 8 8
+        ;;
+    1)
+        # purple, green
+        neofetch --colors 2 8 8 13 8 7 --ascii_colors 5 2 8 8 8 8
+        ;;
+    *)
+        # blue, purple
+        neofetch --colors 6 5 8 6 8 8 --ascii_colors 5 6 8 8 8 8
+        ;;
+esac'
 
 # Plugin Sections
 
