@@ -158,10 +158,6 @@
         \   exe "normal! g`\"" |
         \ endif
 
-        " switch between buffers, useful with multi-tabs
-        map <leader>l :bn<cr>
-        map <leader>h :bp<cr>
-
         " Windows creation and deletion
         map <c-w>- :set splitbelow<cr>:split<cr>
         map <c-w>\| :set splitright<cr>:vsplit<cr>
@@ -170,21 +166,27 @@
         " Always show tabline = 2
         set showtabline=2
 
-        " Tab movement
-        nmap gn :tabn<cr>
-        nmap gp :tabp<cr>
-        nmap g1 1gt
-        nmap g2 2gt
-        nmap g3 3gt
-        nmap g4 4gt
-        nmap g5 5gt
-        nmap g6 6gt
-        nmap g7 7gt
-        nmap g8 8gt
-        nmap g9 9gt
+        " Tab/buffer switching
+        nmap gn :if tabpagenr("$") == 1 \| :bn \| else \| :tabn \| endif<cr>
+        nmap gp :if tabpagenr("$") == 1 \| :bp \| else \| :tabp \| endif<cr>
 
-        " ,bt to open each buffer in a new tab; :tabo to close all other tabs
-        nmap ,bt :bufdo tab split<cr>
+        nmap g1 :if tabpagenr("$") == 1 \| :b 1 \| else \| :normal 1gt \| endif<cr>
+        nmap g2 :if tabpagenr("$") == 1 \| :b 2 \| else \| :normal 2gt \| endif<cr>
+        nmap g3 :if tabpagenr("$") == 1 \| :b 3 \| else \| :normal 3gt \| endif<cr>
+        nmap g4 :if tabpagenr("$") == 1 \| :b 4 \| else \| :normal 4gt \| endif<cr>
+        nmap g5 :if tabpagenr("$") == 1 \| :b 5 \| else \| :normal 5gt \| endif<cr>
+        nmap g6 :if tabpagenr("$") == 1 \| :b 6 \| else \| :normal 6gt \| endif<cr>
+        nmap g7 :if tabpagenr("$") == 1 \| :b 7 \| else \| :normal 7gt \| endif<cr>
+        nmap g8 :if tabpagenr("$") == 1 \| :b 8 \| else \| :normal 8gt \| endif<cr>
+        nmap g9 :if tabpagenr("$") == 1 \| :b 9 \| else \| :normal 9gt \| endif<cr>
+
+        " ,bt to open buffer in tab; ,bT to open each buffer in a new tab
+        " ,bc to close current tab; ,bC to close all other tab; ,bd to close buffer
+        nmap <leader>bt :tab split<cr>
+        nmap <leader>bT :bufdo tab split<cr>
+        nmap <leader>bc :tabclose<cr>
+        nmap <leader>bC :tabonly<cr>
+        nmap <leader>bd :bd<cr>
 
     " }
 
@@ -780,12 +782,11 @@
     set noshowmode
 
     VkhAdd "plugin vim-airline: Lean & mean status/tabline for vim that's light as air."
-    VkhAdd 'gn to move to next tab, gp to move to previous tab, [0-9]gt to move to tab n.'
-    VkhAdd 'gr refresh tabs - unfold all buffers to tabs, g[1-9] to move to tab n.'
     VkhAdd '<c-o> jump backward. <c-i> jump forward.'
-    VkhAdd ':tabe to create new tab. :tabc to close current tab.'
     VkhAdd 'gf to open file in the same tab. <c-w>gf to open file in new tab. <c-w>f to open file in new window.'
     VkhAdd '<leader>- or <leader>| to splie window. Q to close window.'
+    VkhAdd ',bt to open buffer in tab; ,bT to open each buffer in a new tab; ,bc to close current tab; ,bC to close all other tabs'
+    VkhAdd 'gn to move to next tab, gp to move to previous tab, [1-9]gt or g[1-9] to move to tab n'
     " }
 
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
