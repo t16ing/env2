@@ -10,8 +10,7 @@ echo "Install oh-my-zsh"
 sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 
 echo "Install oh-my-zsh plugin dependency"
-sudo apt install -y autojump
-sudo apt install -y fzf
+sudo apt install -y autojump fzf thefuck
 sudo apt install -y zsh-autosuggestions
 sudo apt install -y zsh-syntax-highlighting
 

@@ -85,6 +85,7 @@ plugins+=(safe-paste)
 plugins+=(history-substring-search)
 plugins+=(fzf)
 plugins+=(pipenv)
+plugins+=(thefuck)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -119,7 +120,7 @@ export EDITOR=nvim
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ls='ls --color=tty --group-directories-first'
 alias ra='ranger'
-alias s='neofetch --colors 13 5 8 2 8 7 --ascii_colors 5 3 8 8 8 8'
+alias s='neofetch --colors 13 5 8 3 8 7 --ascii_colors 5 3 8 8 8 8'
 
 # Plugin Sections
 
