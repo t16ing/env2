@@ -11,6 +11,7 @@ sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/to
 
 echo "Install oh-my-zsh plugin dependency"
 sudo apt install -y autojump fzf thefuck
+sudo apt install -y neofetch
 sudo apt install -y zsh-autosuggestions
 sudo apt install -y zsh-syntax-highlighting
 
