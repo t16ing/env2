@@ -7,11 +7,16 @@ echo "Install powerline fonts"
 sudo apt install fonts-powerline
 
 echo "Install nerd fonts for vim nerdtree plugin."
-URL=https://github.com/ryanoasis/nerd-fonts/releases/download/v2.0.0/Ubuntu.zip
+for URL in \
+    https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Ubuntu.zip \
+    https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip \
+    https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/SourceCodePro.zip
+do
+    mkdir -p ~/.fonts/nerdfonts
+    cd ~/.fonts/nerdfonts
+    wget -q -O tmp.zip $URL && unzip tmp.zip && rm tmp.zip
+    cd -
+done
 
-mkdir -p ~/.fonts
-cd ~/.fonts
-wget -q -O tmp.zip $URL && unzip tmp.zip && rm tmp.zip
 fc-cache -fv
-cd -
 
