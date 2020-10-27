@@ -180,16 +180,13 @@
         " Always show tabline = 2
         set showtabline=2
 
-        " Tab switching
-        nmap gn :if tabpagenr("$") == 1 \| :bn \| else \| :tabn \| endif<cr>
-        nmap gp :if tabpagenr("$") == 1 \| :bp \| else \| :tabp \| endif<cr>
+        " Buffer switching
+        nmap gn :bn<cr>
+        nmap gp :bp<cr>
 
-        " ,bt to open buffer in tab; ,bT to open each buffer in a new tab
-        " ,bc to close current tab; ,bC to close all other tab; ,bd to close buffer
+        " ,bt to open buffer in tab; ,bc to close tab; ,bd to close buffer
         nmap <leader>bt :tab split<cr>
-        nmap <leader>bT :bufdo tab split<cr>
         nmap <leader>bc :tabclose<cr>
-        nmap <leader>bC :tabonly<cr>
         nmap <leader>bd :bd<cr>
 
     " }
@@ -244,40 +241,61 @@
 
 " Editing {
 
-    " Toggle paste mode on and off
-    map <leader>pp :setlocal paste!<cr>
+    " copy/paste and undo {
 
-    " Share clipboard with system
-    set clipboard=unnamedplus
+        " Toggle paste mode on and off
+        map <leader>pp :setlocal paste!<cr>
 
-    " set persistent undo
-    if !isdirectory("~/.vim/undodir")
-        silent !mkdir -p ~/.vim/undodir
-    endif
-    try
-        set undodir=~/.vim/undodir
-        set undofile
-        set undolevels=1000
-        set undoreload=10000
-    catch
-    endtry
+        " Share clipboard with system
+        set clipboard=unnamedplus
 
-    " Turn on spell checking
-    set spell
+        " set persistent undo
+        if !isdirectory("~/.vim/undodir")
+            silent !mkdir -p ~/.vim/undodir
+        endif
+        try
+            set undodir=~/.vim/undodir
+            set undofile
+            set undolevels=1000
+            set undoreload=10000
+        catch
+        endtry
 
-    " Pressing <leader>ss will toggle and untoggle spell checking
-    noremap <leader>ss :setlocal spell!<cr>
+    " }
 
-    " sn: next typo
-    noremap <leader>sn ]s
-    " sp: previous typo
-    noremap <leader>sp [s
-    " sa: add typo to dict
-    noremap <leader>sa zg
-    " sc: fix typo
-    noremap <leader>sc a<c-x>s<esc>
-    " s?: list all typo
-    noremap <leader>s? z=
+    " spell {
+
+        " Turn on spell checking
+        set spell
+
+        " Pressing <leader>ss will toggle and untoggle spell checking
+        noremap <leader>ss :setlocal spell!<cr>
+
+        " sn: next typo
+        noremap <leader>sn ]s
+        " sp: previous typo
+        noremap <leader>sp [s
+        " sa: add typo to dict
+        noremap <leader>sa zg
+        " sc: fix typo
+        noremap <leader>sc a<c-x>s<esc>
+        " s?: list all typo
+        noremap <leader>s? z=
+        "
+    " }
+
+" }
+
+" Misc {
+
+    " next placeholder <++> <++> <++>
+    noremap <LEADER><SPACE> <Esc>/<++><CR>:nohlsearch<CR>c4l
+
+    " opening a terminal window
+    noremap <LEADER>t :set splitbelow<CR>:split<CR>:res -10<CR>:term<CR>i
+
+    " call figlet
+    noremap tx :r !figlet 
 
 " }
 
@@ -390,6 +408,8 @@
           " extends " and @ in normal mode and <CTRL-R> in insert mode so you can see the contents of the registers
         Plug 'mbbill/undotree'
           " visualizes undo history, <leader>u to open undo tree
+        Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] }
+          " ,tm to start automatic table creator & formatter
 
     " }
 
@@ -710,8 +730,8 @@
     " Unicode box-drawing characters will be used instead.
     let g:startify_fortune_use_unicode = 1
 
-    " anytime ,s to launch Startify
-    map <leader>s :Startify<CR>
+    " anytime ,S to launch Startify
+    map <leader>S :Startify<CR>
 
     VkhAdd 'plugin vim-startify: <leader>ss open the fancy start screen for Vim. :SSave to save session.'
     " }
@@ -798,33 +818,37 @@
     " `-- INSERT --` is unnecessary anymore because the mode information is displayed in the statusline.
     set noshowmode
 
-    " `2`: Ordinal number (buffers are numbered from _1_ to _n_ sequentially)
-    let g:lightline#bufferline#show_number = 2
+    " lighline#bufferline {
 
-    " to use unicode superscript numerals for ordinal number
-    let g:lightline#bufferline#number_map = {
-    \ 0: '₀', 1: '₁', 2: '₂', 3: '₃', 4: '₄',
-    \ 5: '₅', 6: '₆', 7: '₇', 8: '₈', 9: '₉'}
+        " `2`: Ordinal number (buffers are numbered from _1_ to _n_ sequentially)
+        let g:lightline#bufferline#show_number = 2
 
-    " Enables the usage of [vim-devicons](https://github.com/ryanoasis/vim-devicons) to display a filetype icon for the buffer.
-    let g:lightline#bufferline#enable_devicons = 1
+        " to use unicode superscript numerals for ordinal number
+        let g:lightline#bufferline#number_map = {
+        \ 0: '₀', 1: '₁', 2: '₂', 3: '₃', 4: '₄',
+        \ 5: '₅', 6: '₆', 7: '₇', 8: '₈', 9: '₉'}
 
-    " Enables the usage of [nerdfont.vim](https://github.com/lambdalisue/nerdfont.vim) to display a filetype icon for the buffer.
-    let g:lightline#bufferline#enable_nerdfont = 1
+        " Enables the usage of [vim-devicons](https://github.com/ryanoasis/vim-devicons) to display a filetype icon for the buffer.
+        let g:lightline#bufferline#enable_devicons = 1
 
-    " the symbols `+`, `-` and `...` are replaced by `✎`, `` and `…`.
-    let g:lightline#bufferline#unicode_symbols = 1
+        " Enables the usage of [nerdfont.vim](https://github.com/lambdalisue/nerdfont.vim) to display a filetype icon for the buffer.
+        let g:lightline#bufferline#enable_nerdfont = 1
+
+        " the symbols `+`, `-` and `...` are replaced by `✎`, `` and `…`.
+        let g:lightline#bufferline#unicode_symbols = 1
+
+    " }
 
     " This plugin provides Plug mappings to switch to buffers using their ordinal number in the bufferline.
-    nmap g1 :if tabpagenr("$") == 1 \| :execute "normal \<Plug>lightline#bufferline#go(1)" \| else \| :tabn1 \| endif<cr>
-    nmap g2 :if tabpagenr("$") == 1 \| :execute "normal \<Plug>lightline#bufferline#go(2)" \| else \| :tabn2 \| endif<cr>
-    nmap g3 :if tabpagenr("$") == 1 \| :execute "normal \<Plug>lightline#bufferline#go(3)" \| else \| :tabn3 \| endif<cr>
-    nmap g4 :if tabpagenr("$") == 1 \| :execute "normal \<Plug>lightline#bufferline#go(4)" \| else \| :tabn4 \| endif<cr>
-    nmap g5 :if tabpagenr("$") == 1 \| :execute "normal \<Plug>lightline#bufferline#go(5)" \| else \| :tabn5 \| endif<cr>
-    nmap g6 :if tabpagenr("$") == 1 \| :execute "normal \<Plug>lightline#bufferline#go(6)" \| else \| :tabn6 \| endif<cr>
-    nmap g7 :if tabpagenr("$") == 1 \| :execute "normal \<Plug>lightline#bufferline#go(7)" \| else \| :tabn7 \| endif<cr>
-    nmap g8 :if tabpagenr("$") == 1 \| :execute "normal \<Plug>lightline#bufferline#go(8)" \| else \| :tabn8 \| endif<cr>
-    nmap g9 :if tabpagenr("$") == 1 \| :execute "normal \<Plug>lightline#bufferline#go(9)" \| else \| :tabn9 \| endif<cr>
+    nmap g1 <Plug>lightline#bufferline#go(1)
+    nmap g2 <Plug>lightline#bufferline#go(2)
+    nmap g3 <Plug>lightline#bufferline#go(3)
+    nmap g4 <Plug>lightline#bufferline#go(4)
+    nmap g5 <Plug>lightline#bufferline#go(5)
+    nmap g6 <Plug>lightline#bufferline#go(6)
+    nmap g7 <Plug>lightline#bufferline#go(7)
+    nmap g8 <Plug>lightline#bufferline#go(8)
+    nmap g9 <Plug>lightline#bufferline#go(9)
 
     VkhAdd "plugin vim-airline: Lean & mean status/tabline for vim that's light as air."
     VkhAdd '<c-o> jump backward. <c-i> jump forward.'
@@ -895,6 +919,12 @@
     let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'startify']
 
     VkhAdd 'plugin vim-indent-guides: visually displaying indent levels'
+    " }
+
+    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    " plugin vim-table-mode {
+    " ~/.vim/bundle/vim-table-mode/README.md
+    VkhAdd 'plugin vim-table-mode: ,tm to start automatic table creator & formatter'
     " }
 
 " }
