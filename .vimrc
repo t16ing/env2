@@ -219,7 +219,7 @@
 
     " fold by indent and fold by default
     set foldmethod=indent
-    set foldlevel=0
+    set foldlevel=10
 
     " For all text files set 'textwidth' to 78 characters.
     autocmd FileType text setlocal textwidth=78
@@ -747,8 +747,8 @@
         \ 'spell': 'SPELL[%{&spell?&spelllang:""}]'
         \ }
     let g:lightline.tabline = {
-        \ 'left': [ [ 'tabs' ] ],
-        \ 'right': [ [ 'buffers' ] ] }
+        \ 'left': [ [ 'buffers' ] ],
+        \ 'right': [ [ 'tabs' ] ] }
     let g:lightline.component_expand = {
         \ 'buffers': 'lightline#bufferline#buffers',
         \ 'linter_checking': 'lightline#ale#checking',
@@ -812,9 +812,6 @@
 
     " the symbols `+`, `-` and `...` are replaced by `✎`, `` and `…`.
     let g:lightline#bufferline#unicode_symbols = 1
-
-    " bufferline is used in the `right` component; should be set to `1` to ensure the correct order of the buffers.
-    let g:lightline#bufferline#right_aligned = 1
 
     " This plugin provides Plug mappings to switch to buffers using their ordinal number in the bufferline.
     nmap g1 :if tabpagenr("$") == 1 \| :execute "normal \<Plug>lightline#bufferline#go(1)" \| else \| :tabn1 \| endif<cr>

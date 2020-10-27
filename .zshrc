@@ -102,7 +102,7 @@ source $ZSH/oh-my-zsh.sh
 # else
 #   export EDITOR='mvim'
 # fi
-which nvim > /dev/null && export EDITOR='nvim' || export EDITOR='vim'
+which nvim > /dev/null && { export EDITOR='nvim' ; alias vi="nvim" } || { export EDITOR='vim' ; alias vi="vim" }
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
