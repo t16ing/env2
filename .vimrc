@@ -266,16 +266,18 @@
     set spell
 
     " Pressing <leader>ss will toggle and untoggle spell checking
-    map <leader>ss :setlocal spell!<cr>
+    noremap <leader>ss :setlocal spell!<cr>
 
     " sn: next typo
-    map <leader>sn ]s
+    noremap <leader>sn ]s
     " sp: previous typo
-    map <leader>sp [s
+    noremap <leader>sp [s
     " sa: add typo to dict
-    map <leader>sa zg
+    noremap <leader>sa zg
+    " sc: fix typo
+    noremap <leader>sc a<c-x>s<esc>
     " s?: list all typo
-    map <leader>s? z=
+    noremap <leader>s? z=
 
 " }
 
