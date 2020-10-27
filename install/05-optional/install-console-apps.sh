@@ -1,14 +1,13 @@
 #!/bin/bash
 
-# show pictures, play videos, under console, by caca!
-sudo apt install mplayer
-sudo apt install caca-utils
+# play videos, under console
+sudo apt install -y mplayer caca-utils
+
+# show pictures under console
+sudo apt install -y catimg
 
 # ascii art
-sudo apt install cowsay
-
-# better picture renderer for png files
-npm install -g picture-tube
+sudo apt install -y cowsay
 
 # file manager
 sudo apt install ranger
