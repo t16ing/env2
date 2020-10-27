@@ -134,11 +134,19 @@ alias s='case $(($RANDOM % 10)) in
         neofetch --colors 6 5 8 6 8 8 --ascii_colors 5 6 8 8 8 8
         ;;
     *)
-        # chaos
-        neofetch --colors $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) \
-            --ascii_colors $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16))
-        ;;
-esac'
+        case $(($RANDOM % 2)) in
+        0)
+            # wallpaper with chaos
+            neofetch --colors $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) \
+                --chafa
+            ;;
+        *)
+            # chaos
+            neofetch --colors $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) \
+                --ascii_colors $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16))
+            ;;
+        esac
+    esac'
 
 # Plugin Sections
 
