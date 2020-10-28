@@ -292,7 +292,7 @@
     noremap <LEADER><SPACE> <Esc>/<++><CR>:nohlsearch<CR>c4l
 
     " opening a terminal window
-    noremap <LEADER>t :set splitbelow<CR>:split<CR>:res -10<CR>:term<CR>i
+    noremap <LEADER>T :set splitbelow<CR>:split<CR>:res -10<CR>:term<CR>i
 
     " call figlet
     noremap tx :r !figlet 
@@ -408,8 +408,12 @@
           " extends " and @ in normal mode and <CTRL-R> in insert mode so you can see the contents of the registers
         Plug 'mbbill/undotree'
           " visualizes undo history, <leader>u to open undo tree
+
         Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] }
           " ,tm to start automatic table creator & formatter
+
+        Plug 'Ron89/thesaurus_query.vim'
+          " ,cs to lookup synonyms of any word under cursor or phrase covered in visual mode, and replace it with an user chosen synonym
 
     " }
 
@@ -925,6 +929,12 @@
     " plugin vim-table-mode {
     " ~/.vim/bundle/vim-table-mode/README.md
     VkhAdd 'plugin vim-table-mode: ,tm to start automatic table creator & formatter'
+
+    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    " plugin thesaurus_query.vim {
+    " ~/.vim/bundle/thesaurus_query.vim/README.md
+    VkhAdd 'plugin thesaurus_query.vim: ,cs to lookup synonyms of any word under cursor or phrase covered in visual mode, and replace it with an user chosen synonym'
+
     " }
 
 " }
