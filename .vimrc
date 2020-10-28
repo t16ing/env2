@@ -390,6 +390,8 @@
           " extends " and @ in normal mode and <CTRL-R> in insert mode so you can see the contents of the registers
         Plug 'mbbill/undotree'
           " visualizes undo history, <leader>u to open undo tree
+        Plug 'Ron89/thesaurus_query.vim'
+          " ,cs to lookup synonyms of any word under cursor or phrase covered in visual mode, and replace it with an user chosen synonym
 
     " }
 
@@ -895,6 +897,12 @@
     let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'startify']
 
     VkhAdd 'plugin vim-indent-guides: visually displaying indent levels'
+    " }
+
+    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    " plugin thesaurus_query.vim {
+    " ~/.vim/bundle/thesaurus_query.vim/README.md
+    VkhAdd 'plugin thesaurus_query.vim: ,cs to lookup synonyms of any word under cursor or phrase covered in visual mode, and replace it with an user chosen synonym'
     " }
 
 " }
