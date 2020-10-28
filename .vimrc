@@ -320,14 +320,18 @@
     " Plugins - General {
 
         Plug 't16ing/vim-vandomkeyhint'
+          " randomly pick keybindings hint and show in the message bar
         Plug 'mhinz/vim-startify'
+          " <leader>S open the fancy start screen for Vim. :SSave to save session.
 
     " }
 
     " Plugins - lightline family {
 
         Plug 'itchyny/lightline.vim'
+          " Lean & mean status/tabline for vim that's light as air.
         Plug 'mengelbrecht/lightline-bufferline'
+          " gn to next buffer, gp to previous buffer, g[1-9] to buffer n
         Plug 'sinetoami/lightline-hunks'
         Plug 'maximbaz/lightline-ale'
 
@@ -340,9 +344,9 @@
         Plug 'Xuyuanp/nerdtree-git-plugin'
           " git notation for nerdtree
         Plug 'ctrlpvim/ctrlp.vim'
-          " c-p for ctrlp, <leader>p for MRU, <leader>o for buffer window
+          " <c-p> for ctrlp, <leader>o for buffer window
         Plug 'mileszs/ack.vim', {'on': 'Ack'}
-          " <leader>g code search tool
+          " <leader>f code search tool
 
     " }
 
@@ -368,7 +372,7 @@
         Plug 'airblade/vim-gitgutter'
           " <leader>gt Visible git sign <]c> for next hunk, <[c> for previous hunk.
         Plug 'majutsushi/tagbar'
-          " <leader>tt open tag bar, ctags required
+          " <leader>bb open tag bar, ctags required
         Plug 'vim-scripts/L9'
           " required by vim-autocomplpop
         Plug 'othree/vim-autocomplpop'
@@ -390,9 +394,8 @@
         Plug 'leafgarland/typescript-vim', {'for': 'typescript'}
           " syntax for ts
 
-        " have to load early, otherwise not working
         Plug 'hushicai/tagbar-javascript.vim'
-          " tagbar for js
+          " tagbar for js; have to load early, otherwise not working
         Plug 'moll/vim-node'
           " gf in node.js require(...)
 
@@ -410,10 +413,10 @@
           " visualizes undo history, <leader>u to open undo tree
 
         Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] }
-          " ,tm to start automatic table creator & formatter
+          " <leader>tm to start automatic table creator & formatter
 
         Plug 'Ron89/thesaurus_query.vim'
-          " ,cs to lookup synonyms of any word under cursor or phrase covered in visual mode, and replace it with an user chosen synonym
+          " <leader>cs to lookup synonyms of any word under cursor or phrase covered in visual mode, and replace it with an user chosen synonym
 
     " }
 
@@ -607,9 +610,9 @@
     let g:tagbar_autoshowtag = 1
     let g:tagbar_width = 32
 
-    map <leader>tt <ESC>:TagbarToggle<CR>
+    map <leader>bb <ESC>:TagbarToggle<CR>
 
-    VkhAdd '<leader>tt to open Tagbar window.'
+    VkhAdd '<leader>bb to open Tagbar window.'
     " }
 
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -734,10 +737,10 @@
     " Unicode box-drawing characters will be used instead.
     let g:startify_fortune_use_unicode = 1
 
-    " anytime ,S to launch Startify
+    " anytime <leader>S to launch Startify
     map <leader>S :Startify<CR>
 
-    VkhAdd 'plugin vim-startify: <leader>ss open the fancy start screen for Vim. :SSave to save session.'
+    VkhAdd 'plugin vim-startify: <leader>S open the fancy start screen for Vim. :SSave to save session.'
     " }
 
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -759,7 +762,7 @@
     let g:lightline.active = {
         \ 'left': [ [ 'mode', 'paste', 'spell' ],
         \           [ 'modified' ],
-        \           [ 'hunks', 'readonly', 'filename' ],
+        \           [ 'hunks', 'readonly', 'relativepath' ],
         \ ],
         \ 'right': [ [ 'lineinfo' ],
         \            [ 'percent' ],
@@ -768,9 +771,6 @@
         \ ] }
     let g:lightline.component_function = {
         \ 'hunks': 'lightline#hunks#composer',
-        \ }
-    let g:lightline.component = {
-        \ 'spell': 'SPELL[%{&spell?&spelllang:""}]'
         \ }
     let g:lightline.tabline = {
         \ 'left': [ [ 'buffers' ] ],
@@ -843,7 +843,7 @@
 
     " }
 
-    " This plugin provides Plug mappings to switch to buffers using their ordinal number in the bufferline.
+    " This plugin provides Plug mappings to switch to buffers using their ordinal number in the bufferline {
     nmap g1 <Plug>lightline#bufferline#go(1)
     nmap g2 <Plug>lightline#bufferline#go(2)
     nmap g3 <Plug>lightline#bufferline#go(3)
@@ -853,13 +853,13 @@
     nmap g7 <Plug>lightline#bufferline#go(7)
     nmap g8 <Plug>lightline#bufferline#go(8)
     nmap g9 <Plug>lightline#bufferline#go(9)
+    " }
 
     VkhAdd "plugin vim-airline: Lean & mean status/tabline for vim that's light as air."
     VkhAdd '<c-o> jump backward. <c-i> jump forward.'
-    VkhAdd 'gf to open file in the same tab. <c-w>gf to open file in new tab. <c-w>f to open file in new window.'
     VkhAdd '<leader>- or <leader>| to splie window. Q to close window.'
-    VkhAdd ',bt to open buffer in tab; ,bT to open each buffer in a new tab; ,bc to close current tab; ,bC to close all other tabs'
-    VkhAdd 'gn to move to next tab, gp to move to previous tab, [1-9]gt or g[1-9] to move to tab n'
+    VkhAdd ',bt to open buffer in tab; ,bc to close current tab; ,bd to close buffer'
+    VkhAdd 'gn to next buffer, gp to previous buffer, g[1-9] to move to tab n'
     " }
 
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -886,8 +886,8 @@
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     " plugin ack.vim {
     " ~/.vim/bundle/ack.vim/README.md
-    map <expr> <leader>g ':Ack '.expand('<cword>').'<cr>'
-    VkhAdd 'plugin ack.vim: source code search tool. <leader>g to search code.'
+    map <expr> <leader>f ':Ack '.expand('<cword>').'<cr>'
+    VkhAdd 'plugin ack.vim: source code search tool. <leader>f to search code.'
     " }
 
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -928,7 +928,7 @@
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     " plugin vim-table-mode {
     " ~/.vim/bundle/vim-table-mode/README.md
-    VkhAdd 'plugin vim-table-mode: ,tm to start automatic table creator & formatter'
+    VkhAdd 'plugin vim-table-mode: <leader>tm to start automatic table creator & formatter'
 
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     " plugin thesaurus_query.vim {
