@@ -1,6 +1,5 @@
 " Modeline and Metadata
 " vim: set shiftwidth=4 tabstop=4 softtabstop=4 expandtab smarttab textwidth=78 foldmarker={,} foldlevel=0 foldmethod=marker spell:
-"
 " Maintainer:
 "           ____  __   _   ____  _  _  ___
 "          (_  _)/  ) / ) (_  _)( \( )/ __)
@@ -9,12 +8,8 @@
 "
 " Description:
 "
-"   A single, self-satisfied, personal .vimrc for general configurations, plugins bundles, themes, and more.
-"   Customization for a sensible, comfortable, light and powerful editor environment.
-"
-" References:
-"
-"   - https://vi.stackexchange.com/questions/16037/vim-swap-file-best-practices
+"   All in one .vimrc for personal configurations.
+"   Customization for sensible, comfortable, light and powerful editor environment.
 "
 
 " Skip all configurations and plugins for vim.tiny {
@@ -56,6 +51,13 @@
 
     " With a map leader it's possible to do extra key combinations
     let mapleader = ","
+
+    " Open the vimrc file anytime
+    noremap <LEADER>rc :e ~/.vimrc<CR>
+
+    " Tab to Space
+    nnoremap <LEADER>tt :%s/\t/    /g
+    vnoremap <LEADER>tt :s/\t/    /g
 
 " }
 
@@ -142,11 +144,19 @@
 
     " }
 
-    " Move around between lines, buffers, windows, tabs {
+    " Move around of lines {
 
         " allow backspacing over everything in insert mode
         set backspace=indent,eol,start
         set whichwrap+=<,>,h,l
+
+        " Faster in-line navigation
+        noremap W 5w
+        noremap B 5b
+
+        " Ctrl + U and D to scroll without moving cursor
+        noremap <c-u> 5<c-y>
+        noremap <c-d> 5<c-e>
 
         " When editing a file, always jump to the last known cursor position.
         " Don't do it when the position is invalid or when inside an event handler
@@ -158,27 +168,9 @@
         \   exe "normal! g`\"" |
         \ endif
 
-        " switch between buffers, useful with multi-tabs
-        map <leader>l :bn<cr>
-        map <leader>h :bp<cr>
+    " }
 
-        " beauty windows separator
-        set fillchars+=vert:\‖
-
-        " Windows creation and deletion
-        map <c-w>- :set splitbelow<cr>:split<cr>
-        map <c-w>\| :set splitright<cr>:vsplit<cr>
-        map <c-w>\ :set splitright<cr>:vsplit<cr>
-        map Q <c-w>q
-
-        " Windows resizing
-        map <c-w><up> :res+1<cr>
-        map <c-w><down> :res-1<cr>
-        map <c-w><left> :vertical res-5<cr>
-        map <c-w><right> :vertical res+5<cr>
-
-        " Always show tabline = 2
-        set showtabline=2
+    " Move around between buffers, windows, and tabs {
 
         " Buffer switching
         nmap gn :bn<cr>
@@ -188,6 +180,24 @@
         nmap <leader>bt :tab split<cr>
         nmap <leader>bc :tabclose<cr>
         nmap <leader>bd :bd<cr>
+
+        " beauty windows separator
+        set fillchars+=vert:\│
+
+        " Windows creation and deletion
+        map <c-w>- :set splitbelow<cr>:split<cr>
+        map <c-w>\| :set splitright<cr>:vsplit<cr>
+        map <c-w>\ :set splitright<cr>:vsplit<cr>
+        map Q <c-w>q
+
+        " Windows resizing
+        map <up> :res+1<cr>
+        map <down> :res-1<cr>
+        map <left> :vertical res-5<cr>
+        map <right> :vertical res+5<cr>
+
+        " Always show tabline = 2
+        set showtabline=2
 
     " }
 
@@ -236,6 +246,10 @@
     autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
     autocmd InsertLeave * match ExtraWhitespace /\s\+$/
     autocmd BufWinLeave * call clearmatches()
+
+    " make indent faster
+    nnoremap < <<
+    nnoremap > >>
 
 " }
 
@@ -372,7 +386,7 @@
         Plug 'airblade/vim-gitgutter'
           " <leader>gt Visible git sign <]c> for next hunk, <[c> for previous hunk.
         Plug 'majutsushi/tagbar'
-          " <leader>bb open tag bar, ctags required
+          " tt to open tag bar; ctags required
         Plug 'vim-scripts/L9'
           " required by vim-autocomplpop
         Plug 'othree/vim-autocomplpop'
@@ -411,12 +425,12 @@
           " extends " and @ in normal mode and <CTRL-R> in insert mode so you can see the contents of the registers
         Plug 'mbbill/undotree'
           " visualizes undo history, <leader>u to open undo tree
-
         Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle', 'for': ['text', 'markdown', 'vim-plug'] }
           " <leader>tm to start automatic table creator & formatter
-
         Plug 'Ron89/thesaurus_query.vim'
           " <leader>cs to lookup synonyms of any word under cursor or phrase covered in visual mode, and replace it with an user chosen synonym
+        Plug 'mg979/vim-visual-multi'
+          " ctrl+N to select words, n to confirm, q to skip
 
     " }
 
@@ -610,9 +624,9 @@
     let g:tagbar_autoshowtag = 1
     let g:tagbar_width = 32
 
-    map <leader>bb <ESC>:TagbarToggle<CR>
+    map tt <ESC>:TagbarToggle<CR>
 
-    VkhAdd '<leader>bb to open Tagbar window.'
+    VkhAdd 'tt to open Tagbar window.'
     " }
 
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -714,13 +728,25 @@
     " plugin startify {
     " ~/.vim/bundle/vim-startify/doc/startify.txt
 
+    " Define your own header. {
+    let g:ascii = [
+        \ '  ____  __   _   ____  _  _  ___',
+        \ ' (_  _)/  ) / ) (_  _)( \( )/ __)',
+        \ '   )(   )( / _ \ _)(_  )  (( (_-.',
+        \ '  (__) (__)\___/(____)(_)\_)\___/',]
+    let g:startify_custom_header =
+        \ 'startify#pad(g:ascii + startify#fortune#boxed())'
+    " }
+
+    " Startify displays lists. Each list consists of a `type` and optionally a `header` and custom `indices`. {
     let g:startify_lists = [
-          \ { 'type': 'sessions',  'header': ['   Sessions']       },
-          \ { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
-          \ { 'type': 'files',     'header': ['   MRU']            },
-          \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
-          \ { 'type': 'commands',  'header': ['   Commands']       },
-          \ ]
+        \ { 'type': 'sessions',  'header': ['   Sessions']       },
+        \ { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
+        \ { 'type': 'files',     'header': ['   MRU']            },
+        \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+        \ { 'type': 'commands',  'header': ['   Commands']       },
+        \ ]
+    " }
 
     " hardcoded files or directories that will always be shown
     let g:startify_bookmarks = [ '~/.vimrc', '~/.zshrc', '~/.tmux.conf' ]
@@ -891,6 +917,12 @@
     " }
 
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    " plugin vim-peekaboo {
+    " ~/.vim/bundle/vim-peekaboo/README.md
+    VkhAdd '" or @ in normal mode and <CTRL-R> in insert mode to see the contents of the registers'
+    " }
+
+    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     " plugin undotree {
     " ~/.vim/bundle/undotree/README.md
 
@@ -929,12 +961,18 @@
     " plugin vim-table-mode {
     " ~/.vim/bundle/vim-table-mode/README.md
     VkhAdd 'plugin vim-table-mode: <leader>tm to start automatic table creator & formatter'
+    " }
 
     """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
     " plugin thesaurus_query.vim {
     " ~/.vim/bundle/thesaurus_query.vim/README.md
-    VkhAdd 'plugin thesaurus_query.vim: ,cs to lookup synonyms of any word under cursor or phrase covered in visual mode, and replace it with an user chosen synonym'
+    VkhAdd 'plugin thesaurus_query.vim: <leader>cs to lookup synonyms of any word under cursor or phrase covered in visual mode, and replace it with an user chosen synonym'
+    " }
 
+    """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    " plugin vim-visual-multi {
+    " ~/.vim/bundle/vim-visual-multi/README.md
+    VkhAdd 'plugin vim-visual-multi: ctrl+N to select words, n to confirm, q to skip'
     " }
 
 " }
