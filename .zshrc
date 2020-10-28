@@ -154,6 +154,9 @@ alias s='case $(($RANDOM % 10)) in
 bindkey '^P' history-substring-search-up
 bindkey '^N' history-substring-search-down
 
+# bind Alt+Return to insert a literal newline in a multiline zsh command
+bindkey '^[^M' self-insert-unmeta
+
 # for zsh-autosuggestions
 bindkey '^f' autosuggest-accept
 
