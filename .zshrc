@@ -120,32 +120,88 @@ which nvim > /dev/null && { export EDITOR='nvim' ; alias vi="nvim" } || { export
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ls='ls --color=tty --group-directories-first'
 alias ra='ranger'
-alias s='case $(($RANDOM % 10)) in
-    0|1|2)
+alias s='case $(($RANDOM % 4)) in
+    0)
         # yellow, purple
         neofetch --colors 13 8 8 3 8 7 --ascii_colors 5 3 8 8 8 8
         ;;
-    3|4|5)
+    1)
         # purple, green
         neofetch --colors 2 8 8 13 8 7 --ascii_colors 5 2 8 8 8 8
         ;;
-    6|7|8)
+    2)
         # blue, purple
         neofetch --colors 6 5 8 6 8 8 --ascii_colors 5 6 8 8 8 8
         ;;
     *)
-        case $(($RANDOM % 2)) in
+        distros=(
+            AIX Alpine Anarchy Android Antergos antiX AOSC
+            Apricity ArcoLinux ArchBox ARCHlabs ArchStrike
+            XFerience ArchMerge Arch Artix Arya Bedrock Bitrig
+            BlackArch BLAG BlankOn BlueLight bonsai BSD
+            BunsenLabs Calculate Carbs CentOS Chakra ChaletOS
+            Chapeau Chrom Cleanjaro ClearOS Clear_Linux Clover
+            Condres Container_Linux CRUX Cucumber Debian Deepin
+            DesaOS Devuan DracOS DragonFly Drauger Elementary
+            EndeavourOS Endless EuroLinux Exherbo Fedora Feren FreeBSD
+            FreeMiNT Frugalware Funtoo GalliumOS Gentoo Pentoo
+            gNewSense GNU GoboLinux Grombyang Guix Haiku Huayra
+            Hyperbola janus Kali KaOS KDE_neon Kibojoe Kogaion
+            Korora KSLinux Kubuntu LEDE LFS Linux_Lite
+            LMDE Lubuntu Lunar macos Mageia MagpieOS Mandriva
+            Manjaro Maui Mer Minix LinuxMint MX_Linux Namib
+            Neptune NetBSD Netrunner Nitrux NixOS Nurunner
+            NuTyX OBRevenge OpenBSD OpenIndiana OpenMandriva
+            OpenWrt osmc Oracle PacBSD Parabola Pardus Parrot
+            Parsix TrueOS PCLinuxOS Peppermint popos Porteus
+            PostMarketOS Proxmox Puppy PureOS Qubes Radix Raspbian
+            Reborn_OS Redstar Redcore Redhat Refracted_Devuan Regata
+            Rosa sabotage Sabayon Sailfish SalentOS Scientific Septor
+            SharkLinux Siduction Slackware SliTaz SmartOS Solus
+            Source_Mage Sparky Star SteamOS SunOS openSUSE_Leap
+            openSUSE_Tumbleweed openSUSE SwagArch Tails Trisquel
+            Ubuntu-Budgie Ubuntu-GNOME Ubuntu-MATE Ubuntu-Studio Ubuntu
+            Void Obarun windows10 Windows7 Xubuntu Zorin and IRIX
+            Arch_old Ubuntu_old Redhat_old Dragonfly_old
+            Ubuntu-Mate Ubuntu-Budgie
+            Arcolinux_small Dragonfly_small Fedora_small Alpine_small Arch_small Ubuntu_small
+            CRUX_small Debian_small Gentoo_small FreeBSD_small Mac_small NixOS_small OpenBSD_small android_small
+            Antrix_small CentOS_small Cleanjaro_small ElementaryOS_small GUIX_small Hyperbola_small
+            Manjaro_small MXLinux_small NetBSD_small Parabola_small POP_OS_small PureOS_small
+            Slackware_small SunOS_small LinuxLite_small OpenSUSE_small Raspbian_small
+            postmarketOS_small Void_small
+        )
+        distro=${distros[$RANDOM % ${#distros[@]} ]}
+
+        case $(($RANDOM % 5)) in
         0)
             # wallpaper with chaos
             neofetch --colors $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) \
                 --chafa
             ;;
-        *)
-            # chaos
+        1)
+            # ubuntu in a chaos
             neofetch --colors $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) \
                 --ascii_colors $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16))
             ;;
+        2)
+            # not a mac
+            neofetch --ascii-distro mac
+            ;;
+        3)
+            # distro chaos
+            echo $distro
+            neofetch --ascii_distro $distro
+            ;;
+        *)
+            # totally chaos
+            echo $distro
+            neofetch --colors $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) \
+                --ascii_colors $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) \
+                --ascii_distro $distro
+            ;;
         esac
+        ;;
     esac'
 
 # Plugin Sections
