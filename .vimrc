@@ -309,7 +309,7 @@
     noremap <LEADER>T :set splitbelow<CR>:split<CR>:res -10<CR>:term<CR>i
 
     " call figlet
-    noremap tx :r !figlet 
+    noremap tx :r !figlet -f pagga 
 
 " }
 
@@ -412,6 +412,9 @@
           " tagbar for js; have to load early, otherwise not working
         Plug 'moll/vim-node'
           " gf in node.js require(...)
+
+        Plug 'jamessan/vim-gnupg'
+          " transparent editing of gpg encrypted files: ".gpg", ".pgp" or ".asc" suffix
 
     " }
 
