@@ -38,6 +38,10 @@ typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
   context                 # user@hostname
   nordvpn                 # nordvpn connection status, linux only (https://nordvpn.com/)
   # vpn_ip                # virtual private network indicator
+  # load                  # CPU load
+  # disk_usage            # disk usage
+  ram                   # free RAM
+  # swap                  # used swap
   todo                    # todo items (https://github.com/todotxt/todo.txt-cli)
   timewarrior             # timewarrior tracking status (https://timewarrior.net/)
   taskwarrior             # taskwarrior task count (https://taskwarrior.org/)
@@ -71,10 +75,6 @@ typeset -g POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(
   history
   background_jobs         # presence of background jobs
   # proxy                 # system-wide http/https/ftp proxy
-  # load                  # CPU load
-  # disk_usage            # disk usage
-  ram                   # free RAM
-  # swap                  # used swap
   # battery               # internal battery
   # example               # example user-defined segment (see prompt_example function below)
   time                    # current time

@@ -184,7 +184,7 @@ tmux_conf_theme_right_separator_sub='\uE0B3'  #   PowerlineSymbols.otf font, see
 #     - #{username}
 #     - #{username_ssh}
 tmux_conf_theme_status_left=' ❐ #S '
-tmux_conf_theme_status_right='#{prefix}#{pairing}#{synchronized} Online: #{online_status} #{wifi_ssid} #{wifi_icon} , #{network_bandwidth}#{?battery_status, #{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} , %R , %d %b '
+tmux_conf_theme_status_right='#{prefix}#{pairing}#{synchronized} #{online_status} #{wifi_ssid} #{wifi_icon} , #{network_bandwidth}#{?battery_status, #{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} , #(curl -m 1 wttr.in\?format=1 2>/dev/null; sleep 900) , %a %d %b'
 
 # status left style
 tmux_conf_theme_status_left_fg='#000000,#e4e4e4,#e4e4e4'  # black, white , white
@@ -306,7 +306,7 @@ bind | split-window -h
 # address vim mode switching delay (http://superuser.com/a/252717/65504)
 set -s escape-time 0
 # Some people have also had some good luck with
-set -g status-interval 2
+set -g status-interval 10
 
 # easier and faster switching between next/prev window
 bind -r C-p previous-window
