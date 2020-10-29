@@ -159,3 +159,7 @@ typeset -g POWERLEVEL9K_TIME_FORMAT="%D{%H:%M:%S %Y-%m-%d}"
 # commands will contain the start times of their commands as opposed to the default
 # behavior where they contain the end times of their preceding commands.
 typeset -g POWERLEVEL9K_TIME_UPDATE_ON_COMMAND=true
+
+###########[ ip: ip address and bandwidth usage for a specified network interface ]###########
+# The following parameters are accessible within the expansion:
+typeset -g POWERLEVEL9K_IP_CONTENT_EXPANSION='$P9K_IP_IP'

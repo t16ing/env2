@@ -19,3 +19,6 @@ echo "Install powerlevel10k"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
 sudo apt install -y powerline fonts-powerline
 
+echo "Install plugin manager"
+sudo apt install -y tmux-plugin-manager
+
