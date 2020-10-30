@@ -1,5 +1,7 @@
-env2: The collections for Linux Shell and Desktop Environment Repository
+env2
 ===
+
+The collections for Linux Shell and Desktop Environment Repository.
 
 ## Why env2?
 

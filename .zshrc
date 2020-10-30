@@ -103,8 +103,8 @@ source $ZSH/oh-my-zsh.sh
 #   export EDITOR='mvim'
 # fi
 #
-# preferred nvim for X, otherwise vim -X (not to connect to X server) is faster
-EDITOR=$([[ -z "$DISPLAY" ]] && echo vim || { which nvim > /dev/null && echo nvim || echo vim })
+# preferred nvim
+EDITOR=nvim
 [[ -z "$DISPLAY" ]] && alias vi="$EDITOR -X" || alias vi="$EDITOR"
 
 # Compilation flags
