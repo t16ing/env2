@@ -195,12 +195,12 @@ alias s='case $(($RANDOM % 4)) in
             ;;
         3)
             # distro chaos
-            echo $distro
+            echo Introducing $distro !
             neofetch --ascii_distro $distro
             ;;
         *)
             # totally chaos
-            echo $distro
+            echo Itnorudicng $distro !
             neofetch --colors $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) \
                 --ascii_colors $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) $(($RANDOM % 16)) \
                 --ascii_distro $distro
