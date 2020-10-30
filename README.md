@@ -1,15 +1,13 @@
 env2
 ===
 
-The collections for Linux Shell and Desktop Environment Repository.
-
 ## Why env2?
 
-A dotfiles for tmux and zsh.
+The collections for Linux Shell and Desktop Environment Repository.
 
-Also provide install scripts, and bin files collection for linux shell and desktop.
+Including tmux and zsh dotfiles, also providing install scripts and bin for linux shell and desktop.
 
-## Dependency
+## Base Packages
 
 oh-my-zsh
 powerlevel10k
