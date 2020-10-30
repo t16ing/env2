@@ -778,7 +778,7 @@
     " plugin lightline-bufferline
     " ~/.vim/bundle/lightline-bufferline/README.md
     " plugin lightline-hunks
-    " ~/.vim/bundle/lightline-bufferline/README.md
+    " ~/.vim/bundle/lightline-hunks/README.md
     " plugin lightline-ale
     " ~/.vim/bundle/lightline-ale/README.md
 
@@ -901,7 +901,12 @@
     " plugin vim-colorschemes {
     " ~/.vim/bundle/vim-colorschemes/README.md
     set t_Co=256
+    try
     colorscheme PaperColor
+    catch
+    colorscheme murphy
+    endtry
+
     set background=dark
     " }
 
