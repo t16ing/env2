@@ -75,6 +75,7 @@ setopt EXTENDED_HISTORY
 # Add wisely, as too many plugins slow down shell startup.
 plugins=()
 plugins+=(ssh-agent)
+plugins+=(gpg-agent)
 plugins+=(autojump)
 export NVM_COMPLETION=true
 export NVM_LAZY_LOAD=true
@@ -109,11 +110,6 @@ EDITOR=nvim
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-# gpg
-export GPG_TTY=$(tty)
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
