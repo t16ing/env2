@@ -184,7 +184,7 @@ tmux_conf_theme_right_separator_sub='\uE0B3'  #   PowerlineSymbols.otf font, see
 #     - #{username}
 #     - #{username_ssh}
 tmux_conf_theme_status_left=' ❐ #S '
-tmux_conf_theme_status_right='#{prefix}#{pairing}#{synchronized} #{online_status} #{wifi_ssid} #{wifi_icon} #{network_bandwidth}#{?battery_status, #{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} , #(curl https://wttr.in\?format=1 2>/dev/null; sleep 900) , %a %d %b'
+tmux_conf_theme_status_right='#{prefix}#{pairing}#{synchronized} #{online_status} #{wifi_ssid} #{wifi_icon} #{network_bandwidth}#{?battery_status, #{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} , #{weather} , %a %d %b'
 
 # status left style
 tmux_conf_theme_status_left_fg='#000000,#e4e4e4,#e4e4e4'  # black, white , white
@@ -318,6 +318,9 @@ unbind p
 unbind P
 bind p choose-buffer
 bind P choose-buffer
+
+# bind key to hide status bar
+bind z set-option status
 
 # -- custom variables ----------------------------------------------------------
 # to define a custom #{foo} variable, define a POSIX shell function between the
