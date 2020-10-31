@@ -16,5 +16,8 @@ sudo apt install -y krita
 sudo apt install -y mypaint
 sudo apt install -y inkscape
 
+## Video Editor
+sudo apt install -y kdenlive
+
 ## Productivity
 sudo apt install -y umbrello

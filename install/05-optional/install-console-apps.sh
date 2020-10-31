@@ -9,5 +9,5 @@ sudo apt install -y catimg
 # ascii art
 sudo apt install -y cowsay
 
-# file manager
-sudo apt install ranger
+# terminal recording
+sudo apt install -y asciinema

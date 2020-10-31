@@ -87,6 +87,7 @@ plugins+=(history-substring-search)
 plugins+=(fzf)
 plugins+=(pipenv)
 plugins+=(thefuck)
+plugins+=(kubectl)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -223,14 +224,6 @@ zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:
 # plugins by apt install
 source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# for kubectl completion
-function kubectl() {
-  if ! type __start_kubectl >/dev/null 2>&1; then
-    source <(command kubectl completion zsh)
-  fi
-  command kubectl "$@"
-}
 
 # Login Messages for ./install/install-fail2cam.sh
 [[ -a /tmp/fail2cam-`hostname`-*.png ]] && ( echo "###FAIL2CAM WARNING###"; ls -al /tmp/fail2cam-`hostname`-*.png )

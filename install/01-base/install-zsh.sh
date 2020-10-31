@@ -3,13 +3,11 @@
 echo "Installing zsh..."
 sudo apt install zsh
 
-echo "Please change your shell to /bin/zsh"
-chsh -s zsh
-
 echo "Install oh-my-zsh"
-sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc
 
 echo "Install oh-my-zsh plugin dependency"
+sudo apt install -y gpg
 sudo apt install -y autojump fzf thefuck
 sudo apt install -y neofetch
 sudo apt install -y zsh-autosuggestions
@@ -27,5 +25,5 @@ sudo apt install -y tmux-plugin-manager
 
 echo "To fix plugin thefuck error: No module named 'distutils.spawn'"
 echo "Refernce: https://github.com/platformio/platformio-vscode-ide/issues/1731"
-sudo apt-get install python3-distutils
+sudo apt install -y python3-distutils
 
