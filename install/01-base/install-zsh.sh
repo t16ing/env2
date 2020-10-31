@@ -4,7 +4,7 @@ echo "Installing zsh..."
 sudo apt install zsh
 
 echo "Please change your shell to /bin/zsh"
-chsh
+chsh -s zsh
 
 echo "Install oh-my-zsh"
 sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
@@ -24,4 +24,8 @@ git clone https://github.com/lukechilds/zsh-nvm ~/.oh-my-zsh/custom/plugins/zsh-
 
 echo "Install plugin manager"
 sudo apt install -y tmux-plugin-manager
+
+echo "To fix plugin thefuck error: No module named 'distutils.spawn'"
+echo "Refernce: https://github.com/platformio/platformio-vscode-ide/issues/1731"
+sudo apt-get install python3-distutils
 

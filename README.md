@@ -29,12 +29,20 @@ This helps me to maintain a consistent Terminal and Desktop environment for ever
 
 **NOTICE**: only install on a fresh new installed environment.
 
-To install `env2`:
+### Step 1: run `env2` setup.sh
 
 ```
-$ cd ~ ; git clone --no-checkout https://github.com/t16ing/env2 ~/.git~ ; mv ~/.git~/.git ~/.git ; rmdir ~/.git~
-$ git restore --staged . && git checkout -- .
+$ sh <(curl https://raw.githubusercontent.com/t16ing/env2/master/bin/setup.sh -L)
 ```
+
+Or
+
+```
+$ git clone --no-checkout https://github.com/t16ing/env2 ~/.git~ ; mv ~/.git~/.git ~/.git ; rmdir ~/.git~
+$ cd ~ ; git restore --staged . && git checkout -- .
+```
+
+### Step 2: choose install scripts
 
 In a fresh installed Linux Distro, choose install scripts by the order:
 
@@ -46,14 +54,20 @@ In a fresh installed Linux Distro, choose install scripts by the order:
 | `install/04-hack/*`          | optional: install hacker tools                   |
 | `install/05-optional/*`      | other install scripts depends on necessary       |
 
-For wls2 Ubuntu, before installing docker.io, please read https://docs.docker.com/docker-for-windows/wsl/.
-
-Minimal install scripts:
+To get minimal usable environment, recommend bring-up zsh first.
 
 ```
 $ install/01-base/install-zsh.sh
 $ git checkout -- ~/.zshrc
+$ exit
 $ exec zsh
+```
+
+Hint: the snippet to clean up `env2`.
+
+```
+$ rm -rf bin install README.md .tmux* .p10* .zsh* .pylintrc .git* .oh-my-zsh*
+```
 
 ## Extra Features Highlight
 
@@ -106,6 +120,18 @@ Terminal multiplexer:
 | key         | action             |
 |-------------|--------------------|
 | `<prefix>z` | toggle status line |
+
+## Dependency
+
+1. Docker for wls2 Ubuntu
+
+    For wls2 Ubuntu, before installing docker.io, please read https://docs.docker.com/docker-for-windows/wsl/.
+
+2. Test environement
+
+    Use [sandbox](https://github.com/tarlety/docker-apps/tree/master/security/sandbox) for testing, with minimal zsh installation:
+
+    <img src="https://i.imgur.com/P7hZ6js.png" alt="drawing" width="480"/>
 
 ## License
 
