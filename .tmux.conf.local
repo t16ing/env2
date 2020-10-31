@@ -335,7 +335,7 @@ bind z set-option status
 # EOF
 #
 # weather() {
-#   curl -m 1 wttr.in?format=3 2>/dev/null
+#   curl -m 1 wttr.in?format=1 2>/dev/null
 #   sleep 900 # sleep for 15 minutes, throttle network requests whatever the value of status-interval
 # }
 #
