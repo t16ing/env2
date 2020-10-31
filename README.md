@@ -9,29 +9,31 @@ It includes dotfiles for tmux and zsh, install scripts, and some useful shell bi
 
 This helps me to maintain a consistent Terminal and Desktop environment for every fresh new installed Linux Distro.
 
-## Which environment `env2` take effect
+## Which environment `env2` configures
 
-| environment          | preferred |
+| Environment          | Preferred |
 |----------------------|-----------|
 | Linux Distro         | Ubuntu    |
 | Desktop Environment  | Gnome     |
 | Shell                | zsh       |
 | Terminal Multiplexer | tmux      |
 
-## Recommend configurations
+## Recommend External Configurations
 
-| environment  | preferred  | recommend configuration                  |
+| Environment  | Preferred  | Recommend Configuration                  |
 |--------------|------------|------------------------------------------|
 | Editor       | vim/neovim | `https://github.com/t16ing/.vim`         |
-| File Manager | ranger     | `https://github.com/tarlety/ranger.conf` |
+| File Manager | ranger     | `https://github.com/t16ing/.ranger` |
 
 ## How to use env2
+
+**NOTICE**: only install on a fresh new installed environment.
 
 To install `env2`:
 
 ```
-$ cd ~ ; git clone --no-checkout https://github.com/t16ing/env2 ~
-$ git checkout -- .
+$ cd ~ ; git clone --no-checkout https://github.com/t16ing/env2 ~/.git~ ; mv ~/.git~/.git ~/.git ; rmdir ~/.git~
+$ git restore --staged . && git checkout -- .
 ```
 
 In a fresh installed Linux Distro, choose install scripts by the order:
@@ -45,6 +47,13 @@ In a fresh installed Linux Distro, choose install scripts by the order:
 | `install/05-optional/*`      | other install scripts depends on necessary       |
 
 For wls2 Ubuntu, before installing docker.io, please read https://docs.docker.com/docker-for-windows/wsl/.
+
+Minimal install scripts:
+
+```
+$ install/01-base/install-zsh.sh
+$ git checkout -- ~/.zshrc
+$ exec zsh
 
 ## Extra Features Highlight
 

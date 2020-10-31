@@ -15,9 +15,12 @@ sudo apt install -y neofetch
 sudo apt install -y zsh-autosuggestions
 sudo apt install -y zsh-syntax-highlighting
 
-echo "Install powerlevel10k"
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
+echo "Install oh-my-zsh custom theme: powerlevel10k"
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/custom/themes/powerlevel10k
 sudo apt install -y powerline fonts-powerline
+
+echo "Install oh-my-zsh custom plugins"
+git clone https://github.com/lukechilds/zsh-nvm ~/.oh-my-zsh/custom/plugins/zsh-nvm
 
 echo "Install plugin manager"
 sudo apt install -y tmux-plugin-manager
