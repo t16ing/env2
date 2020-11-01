@@ -121,8 +121,16 @@ EDITOR=nvim
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ls='ls --color=tty --group-directories-first'
-alias ra='ranger'
-alias s='case $(($RANDOM % 4)) in
+function ra {
+    temp_file="$(mktemp -t "ranger_cd.XXXXXXXXXX")"
+    ranger --choosedir="$temp_file" -- "${@:-$PWD}"
+    if chosen_dir="$(cat -- "$temp_file")" && [ -n "$chosen_dir" ] && [ "$chosen_dir" != "$PWD" ]; then
+        cd -- "$chosen_dir"
+    fi
+    rm -f -- "$temp_file"
+}
+function s {
+    case $(($RANDOM % 4)) in
     0)
         # yellow, purple
         neofetch --colors 13 8 8 3 8 7 --ascii_colors 5 3 8 8 8 8
@@ -204,7 +212,8 @@ alias s='case $(($RANDOM % 4)) in
             ;;
         esac
         ;;
-    esac'
+    esac
+}
 
 # Plugin Sections
 
