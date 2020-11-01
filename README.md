@@ -30,7 +30,6 @@
 * [Desktop Environment](#desktop-environment)
     * [Key Bindings](#key-bindings-1)
     * [Desktop Theme Customization](#desktop-theme-customization)
-    * [Other Sensible Linux Desktop Applications](#other-sensible-linux-desktop-applications)
 * [Take a Look at Install Scripts](#take-a-look-at-install-scripts)
     * [Feature: `fail2cam`](#feature-fail2cam)
 * [Fonts](#fonts)
@@ -219,10 +218,7 @@ $ ./zss0 app up && ./zss0 app env2 && ./zss0 app ssh
 - do not clear history
 - more history size
 - much clear pane border style
-- status update interval: 30 seconds
-- status sections separators: powerline font
-- status line added: online status, wifi status, weather
-- compat weather format: icon and temperature only
+- status line theme: dragula
 - auto save and restore session status
 
 ## Desktop Environment
@@ -255,11 +251,6 @@ Install scripts does the customization:
 - `install/03-customization/install-mac-style.sh`
 - `install/03-customization/install-mac-style-patch-nautilus-icon.sh`
 
-### Other Sensible Linux Desktop Applications
-
-- `install/01-base/...` installs frequently used desktop applications:
-- `install/05-optional/install-gui-apps.sh` installs optional GUI applications.
-
 ## Take a Look at Install Scripts
 
 In a fresh new installed Linux Distro, packages and features can be enabled by these install scripts:
@@ -276,6 +267,11 @@ Sensible Linux Shell Applications:
 
 - `install/01-base/install-apps-base.sh` installs frequently system applications but not been installed by default.
 - `install/05-optional/install-console-apps.sh` installs other optional console applications.
+
+Sensible Linux Desktop Applications:
+
+- `install/01-base/...` installs frequently used desktop applications:
+- `install/05-optional/install-gui-apps.sh` installs optional GUI applications.
 
 Security enhancement:
 
