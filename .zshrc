@@ -17,6 +17,13 @@ export ZSH=$HOME/.oh-my-zsh
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
+# if in terminal recording mode, use a simpler prompt
+ZSH_THEME_RANDOM_CANDIDATES=(
+    "wezm" "miloshadzic" "gozilla" "crunch" "wuffers" "miloshadzic"
+    "apple" "kolo" "avit" "minimal" "amuse" "frontcube"
+    )
+[[ "${ASCIINEMA_REC}" == "1" ]] && { ZSH_THEME="random" }
+
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
