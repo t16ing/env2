@@ -36,6 +36,7 @@
 * [Dependency](#dependency)
 * [Workarounds for Linux Distro and Desktop](#workarounds-for-linux-distro-and-desktop)
 * [How to Uninstall `env2`](#how-to-uninstall-env2)
+* [Backlogs](#backlogs)
 * [License](#license)
 
 <!-- vim-markdown-toc -->
@@ -78,6 +79,7 @@ It helps me to maintain a consistent Desktop and Terminal for every fresh new in
 | File Manager | ranger     | `https://github.com/t16ing/.ranger` |
 
 - Use `install/05-optional/install-nvim.sh` to install neovim.
+- Use `install/02-develop/install-vimplugin.sh` to complete vim plugin dependency.
 - Use `install/05-optional/install-ranger.sh` to install ranger.
 
 ## How To Install `env2`
@@ -163,7 +165,7 @@ $ ./zss0 app up && ./zss0 app env2 && ./zss0 app ssh
 | Key               | Action                    |
 |-------------------|---------------------------|
 | `<prefix><enter>` | Enter copy mode (vi-mode) |
-| `<prefix>p,P`     | Choose buffer             |
+| `<prefix>p or P`  | Choose buffer             |
 | `<prefix>b`       | List buffer               |
 
 #### `tmux` misc
@@ -359,6 +361,12 @@ This is a snippet to clean up `env2`:
 $ rm -rf bin install README.md .tmux* .p10* .zsh* .pylintrc .git .oh-my-zsh*
 $ exit
 ```
+
+## Backlogs
+
+- Better online status notation.
+- Network benchmark available.
+- `wttr.in` connection robustness improvement.
 
 ## License
 
