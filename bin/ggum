@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# ggum for Git confiG Upstream Merge
+# Hint: use gguc to Remote Checkout first
+
+# examples:
+# $ ggum (to merge current branch from remote)
+# $ ggum master
+# $ ggum develop
+
+BRANCH=${1:-$(git rev-parse --abbrev-ref HEAD)}
+
+git fetch upstream ${BRANCH}
+git merge upstream/${BRANCH}
