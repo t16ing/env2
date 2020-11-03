@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# ggmm for Git configG switching branch to Master or Main
+
+for b in $(git branch | grep '^  \(master\|main\)$')
+do
+    git checkout $b && exit 0
+done
+

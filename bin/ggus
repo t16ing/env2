@@ -1,8 +1,10 @@
 #!/bin/bash
 
+# gguc for Git confiG Upstream Checkout
+
 # examples:
-# $ git_upstream_setup https://github.com/go-gitea/gitea master
-# $ git_upstream_setup https://github.com/hackmdio/codimd develop
+# $ gguc https://github.com/go-gitea/gitea master
+# $ gguc https://github.com/hackmdio/codimd develop
 
 DIRBASE=$(basename $(pwd))
 UPSTREAM=${1:-https://github.com/${DIRBASE}/${DIRBASE}}
