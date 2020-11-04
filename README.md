@@ -99,6 +99,13 @@ $ install/01-base/install-zsh.sh
 $ exec zsh
 ```
 
+Step 3: enable tmux plugins (optional)
+
+```
+$ install/05-optional/install-tmux-plugins.sh
+$ tmux
+```
+
 Use [sandbox](https://github.com/tarlety/docker-apps/tree/master/security/sandbox) to test [How To Install `env2`](#how-to-install-env2).
 
 ```
