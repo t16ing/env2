@@ -14,7 +14,7 @@ for URL in \
 do
     mkdir -p ~/.fonts/nerdfonts
     cd ~/.fonts/nerdfonts
-    wget -q -O tmp.zip $URL && unzip tmp.zip && rm tmp.zip
+    wget -q -O tmp.zip $URL && unzip -o tmp.zip && rm tmp.zip
     cd -
 done
 

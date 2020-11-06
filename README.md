@@ -99,6 +99,13 @@ $ install/01-base/install-zsh.sh
 $ exec zsh
 ```
 
+Step 3: enable tmux plugins (optional)
+
+```
+$ install/05-optional/install-tmux-plugins.sh
+$ tmux
+```
+
 Use [sandbox](https://github.com/tarlety/docker-apps/tree/master/security/sandbox) to test [How To Install `env2`](#how-to-install-env2).
 
 ```
@@ -113,9 +120,9 @@ $ ./zss0 app up && ./zss0 app env2 && ./zss0 app ssh
 - `s`: start the day of shell
 - `ra`: ranger
 - `vi`: smart alias to vim or nvim
-- `gginit`: stands for *g*it confi*g* *init*alization
 - `j`: smart jump to folder
 - `nvm`: npm and node.js environment management.
+- gg family: *G*it confi*G* utilities
 
 ### Key Bindings
 
@@ -190,7 +197,7 @@ $ ./zss0 app up && ./zss0 app env2 && ./zss0 app ssh
 - nerdfont-complete
 - vcs nerd icon
 - dir writable icon
-- it makes good mood if there is always an OK icon there.
+- there is always an OK icon there if execution is OK.
 - it makes more informative to show all kinds of error status and exit code.
 - execution for 1 second is long enough to wait; show execution time in ms unit.
 - customized background job icon and show the background jobs number.
@@ -220,7 +227,7 @@ $ ./zss0 app up && ./zss0 app env2 && ./zss0 app ssh
 - do not clear history
 - more history size
 - much clear pane border style
-- status line theme: dragula
+- status line theme: Dracula
 - auto save and restore session status
 
 ## Desktop Environment
@@ -231,7 +238,7 @@ $ ./zss0 app up && ./zss0 app env2 && ./zss0 app ssh
 |-----------------------|----------------------------|
 | `<super><alt>d`       | Draw on the screen.        |
 | `<ctrl><alt>k`        | Toggle screenkey.          |
-| `<ctrl><alt><shift>r` | Record a short screencast. |
+| `<ctrl><alt><shift>r` | Record a short screen cast. |
 
 ### Desktop Theme Customization
 
@@ -240,7 +247,7 @@ Customizations:
 - Dock: Plank (replace Gnome Dock)
 - Spotlight: Albert
 - Hide activities
-- Remove dropdown arrows
+- Remove drop down arrows
 - Hide top bar
 - Application indicator
 - Wallpapers for login screen, lock screen, and desktop background

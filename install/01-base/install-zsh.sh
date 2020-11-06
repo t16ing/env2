@@ -20,9 +20,6 @@ sudo apt install -y powerline fonts-powerline
 echo "Install oh-my-zsh custom plugins"
 git clone https://github.com/lukechilds/zsh-nvm ~/.oh-my-zsh/custom/plugins/zsh-nvm
 
-echo "Install plugin manager"
-sudo apt install -y tmux-plugin-manager
-
 echo "To fix plugin thefuck error: No module named 'distutils.spawn'"
 echo "Refernce: https://github.com/platformio/platformio-vscode-ide/issues/1731"
 sudo apt install -y python3-distutils
