@@ -13,3 +13,6 @@ sudo apt install -y ack
 # required for ale
 sudo apt install -y pylint
 sudo apt install -y eslint
+
+# required for fzf
+sudo apt install -y ripgrep
