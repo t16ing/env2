@@ -1,15 +1,13 @@
 #!/bin/bash
 
-# required for ctrlp and tagbar
+# required for tagbar
 sudo apt-get install -y exuberant-ctags
 
-# required for ack.vim
-sudo apt install -y ack
-
-# required for python (ale) and javascript (tagbar-javascript)
+# required for python (ale), javascript (tagbar-javascript), and markdown
 sudo apt install -y pylint
 sudo apt install -y npm
 zsh -i -c 'npm install -g esctags eslint'
+zsh -i -c 'npm install -g instant-markdown-d'
 
 # required for fzf
 sudo apt install -y ripgrep
