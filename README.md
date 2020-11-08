@@ -8,11 +8,11 @@
 <!-- vim-markdown-toc GFM -->
 
 * [What is `env2`](#what-is-env2)
-    * [Screenshots](#screenshots)
-    * [Features](#features)
-    * [What Environment `env2` Manages](#what-environment-env2-manages)
-    * [Recommend Extra Environment](#recommend-extra-environment)
+* [Screenshots](#screenshots)
+* [Features](#features)
 * [How To Install `env2`](#how-to-install-env2)
+* [What Environment `env2` Manages](#what-environment-env2-manages)
+    * [Recommend Extra Environment](#recommend-extra-environment)
 * [Terminal Environment](#terminal-environment)
     * [Useful `bin` Utilities and Aliases](#useful-bin-utilities-and-aliases)
     * [Key Bindings](#key-bindings)
@@ -36,7 +36,6 @@
 * [Dependency](#dependency)
 * [Workarounds for Linux Distro and Desktop](#workarounds-for-linux-distro-and-desktop)
 * [How to Uninstall `env2`](#how-to-uninstall-env2)
-* [Backlogs](#backlogs)
 * [License](#license)
 
 <!-- vim-markdown-toc -->
@@ -49,38 +48,18 @@ It also includes special features and utilities.
 
 It helps me to maintain a consistent Desktop and Terminal for every fresh new installed Linux system.
 
-### Screenshots
+## Screenshots
 
 | Shell                                                                           | Desktop                                                                           |
 |---------------------------------------------------------------------------------|-----------------------------------------------------------------------------------|
 | <img src="https://i.imgur.com/4dCVQjI.png" alt="shell screenshot" width="480"/> | <img src="https://i.imgur.com/arBfCqH.png" alt="desktop screenshot" width="480"/> |
 
-### Features
+## Features
 
 - Sensible `zsh` and `tmux` configurations, aliases and keybindngs
 - `fail2cam` to trigger notification if login fails
 - Consistent shell customization
 - Consistent desktop customization
-
-### What Environment `env2` Manages
-
-| Environment          | Designed For |
-|----------------------|--------------|
-| Linux Distro         | Ubuntu 20.4  |
-| Desktop Environment  | Gnome        |
-| Shell                | zsh          |
-| Terminal Multiplexer | tmux         |
-
-### Recommend Extra Environment
-
-| Environment  | Recommend  | Configuration                       |
-|--------------|------------|-------------------------------------|
-| Editor       | vim/neovim | `https://github.com/t16ing/.vim`    |
-| File Manager | ranger     | `https://github.com/t16ing/.ranger` |
-
-- Use `install/05-optional/install-nvim.sh` to install neovim.
-- Use `install/02-develop/install-vimplugin.sh` to complete vim plugin dependency.
-- Use `install/05-optional/install-ranger.sh` to install ranger.
 
 ## How To Install `env2`
 
@@ -112,6 +91,26 @@ Use [sandbox](https://github.com/tarlety/docker-apps/tree/master/security/sandbo
 $ ./zss0 config image && ./zss0 config hostname && ./zss0 config xsp
 $ ./zss0 app up && ./zss0 app env2 && ./zss0 app ssh
 ```
+
+## What Environment `env2` Manages
+
+| Environment          | Designed For |
+|----------------------|--------------|
+| Linux Distro         | Ubuntu 20.4  |
+| Desktop Environment  | Gnome        |
+| Shell                | zsh          |
+| Terminal Multiplexer | tmux         |
+
+### Recommend Extra Environment
+
+| Environment  | Recommend  | Configuration                       |
+|--------------|------------|-------------------------------------|
+| Editor       | vim/neovim | `https://github.com/t16ing/.vim`    |
+| File Manager | ranger     | `https://github.com/t16ing/.ranger` |
+
+- Use `install/02-develop/install-vimplugin.sh` to complete vim plugin dependency.
+- Use `install/05-optional/install-nvim.sh` to install neovim.
+- Use `install/05-optional/install-ranger.sh` to install ranger.
 
 ## Terminal Environment
 
@@ -147,19 +146,18 @@ $ ./zss0 app up && ./zss0 app env2 && ./zss0 app ssh
 
 #### `tmux` session
 
-| Key                   | Action                    |
-|-----------------------|---------------------------|
-| `<prefix>c`           | Create a new session      |
-| `<prefix><c-n>,<c-l>` | Window switch to next     |
-| `<prefix><c-p>,<c-h>` | Window switch to previous |
-| `<prefix><tab>`       | Switch to last window     |
-| `<prefix><c-s>`       | Save session              |
-| `<prefix><c-r>`       | Load session              |
+| Key              | Action                |
+|------------------|-----------------------|
+| `<prefix>c`      | Create a new session  |
+| `<prefix><c-s>`  | Save session          |
+| `<prefix><c-r>`  | Load session          |
 
 #### `tmux` window
 
 | key               | Action                            |
 |-------------------|-----------------------------------|
+| `<prefix>n or p`  | Window nagigation                 |
+| `<prefix><tab>`   | Switch to last window             |
 | `<prefix>-`       | Split current window horizontally |
 | `<prefix>\|`      | Split current window vertically   |
 | `<prefix>h,j,k,l` | Move left,down,up,right           |
@@ -172,8 +170,7 @@ $ ./zss0 app up && ./zss0 app env2 && ./zss0 app ssh
 | Key               | Action                    |
 |-------------------|---------------------------|
 | `<prefix><enter>` | Enter copy mode (vi-mode) |
-| `<prefix>p or P`  | Choose buffer             |
-| `<prefix>b`       | List buffer               |
+| `<prefix>P`       | Choose buffer             |
 
 #### `tmux` misc
 
@@ -368,12 +365,6 @@ This is a snippet to clean up `env2`:
 $ rm -rf bin install README.md .tmux* .p10* .zsh* .pylintrc .git .oh-my-zsh*
 $ exit
 ```
-
-## Backlogs
-
-- Better online status notation.
-- Network benchmark available.
-- `wttr.in` connection robustness improvement.
 
 ## License
 
