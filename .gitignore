@@ -27,10 +27,7 @@
 .r*
 .s*
 .t*
-.vim/
-.vim_*
-.vimi*
-.vimrc.local
+.vi*
 .vo*
 .vs*
 .w*
