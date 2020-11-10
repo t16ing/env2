@@ -96,8 +96,12 @@ plugins+=(fzf)
 plugins+=(pipenv)
 plugins+=(thefuck)
 plugins+=(kubectl)
-plugins+=(zsh-autosuggestions)
-plugins+=(zsh-syntax-highlighting)
+[[ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]] \
+    && source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh \
+    || plugins+=(zsh-autosuggestions)
+[[ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] \
+    && source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh \
+    || plugins+=(zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
