@@ -82,7 +82,8 @@ setopt EXTENDED_HISTORY
 # Add wisely, as too many plugins slow down shell startup.
 plugins=()
 plugins+=(ssh-agent)
-plugins+=(gpg-agent)
+command -v gpg-agent > /dev/null \
+    && plugins+=(gpg-agent)
 plugins+=(autojump)
 export NVM_LAZY_LOAD=true
 export NVM_LAZY_LOAD_EXTRA_COMMANDS=('esctags eslint instant-markdown-d')
@@ -95,6 +96,8 @@ plugins+=(fzf)
 plugins+=(pipenv)
 plugins+=(thefuck)
 plugins+=(kubectl)
+plugins+=(zsh-autosuggestions)
+plugins+=(zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -113,7 +116,7 @@ source $ZSH/oh-my-zsh.sh
 # fi
 #
 # preferred nvim
-EDITOR=nvim
+command -v nvim > /dev/null && EDITOR=nvim || EDITOR=vim
 [[ -z "$DISPLAY" ]] && alias vi="$EDITOR -X" || alias vi="$EDITOR"
 
 # Compilation flags
@@ -236,10 +239,6 @@ bindkey '^f' autosuggest-accept
 
 # for color partial tab completions
 zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:t)(?)*==34=34}:${(s.:.)LS_COLORS}")';
-
-# plugins by apt install
-source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Login Messages for ./install/install-fail2cam.sh
 [[ -a /tmp/fail2cam-`hostname`-*.png ]] && ( echo "###FAIL2CAM WARNING###"; ls -al /tmp/fail2cam-`hostname`-*.png )
