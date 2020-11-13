@@ -78,11 +78,10 @@ $ install/01-base/install-zsh.sh
 $ exec zsh
 ```
 
-Step 3: enable tmux plugins (optional)
+Step 3: enable tmux plugins
 
 ```
-$ install/05-optional/install-tmux-plugins.sh
-$ tmux
+$ install/01-base/install-tmux-plugins.sh
 ```
 
 Use [sandbox](https://github.com/tarlety/docker-apps/tree/master/security/sandbox) to test [How To Install `env2`](#how-to-install-env2).
@@ -109,7 +108,7 @@ $ ./zss0 app up && ./zss0 app env2 && ./zss0 app ssh
 | File Manager | ranger     | `https://github.com/t16ing/.ranger` |
 
 - Use `install/02-develop/install-vimplugin.sh` to complete vim plugin dependency.
-- Use `install/05-optional/install-nvim.sh` to install neovim.
+- Use `install/02-develop/install-nvim.sh` to install neovim.
 - Use `install/05-optional/install-ranger.sh` to install ranger.
 
 ## Terminal Environment

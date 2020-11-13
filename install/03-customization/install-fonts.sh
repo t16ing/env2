@@ -10,7 +10,8 @@ echo "Install nerd fonts for vim nerdtree plugin."
 for URL in \
     https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Ubuntu.zip \
     https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip \
-    https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/SourceCodePro.zip
+    https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/SourceCodePro.zip \
+    https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Mononoki.zip
 do
     mkdir -p ~/.fonts/nerdfonts
     cd ~/.fonts/nerdfonts
