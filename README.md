@@ -20,7 +20,7 @@
         * [`zsh` command edit](#zsh-command-edit)
         * [`tmux` session](#tmux-session)
         * [`tmux` window](#tmux-window)
-        * [`tmux` copy mode](#tmux-copy-mode)
+        * [`tmux` production](#tmux-production)
         * [`tmux` misc](#tmux-misc)
     * [Sensible Shell Configuration](#sensible-shell-configuration)
         * [`zsh` prompt status](#zsh-prompt-status)
@@ -163,12 +163,13 @@ $ ./zss0 app up && ./zss0 app env2 && ./zss0 app ssh
 | `<prefix>``<`,`>` | Swap the window                   |
 | `<prefix>+`       | Maximize the window               |
 
-#### `tmux` copy mode
+#### `tmux` production
 
 | Key               | Action                    |
 |-------------------|---------------------------|
 | `<prefix><enter>` | Enter copy mode (vi-mode) |
 | `<prefix>P`       | Choose buffer             |
+| `<prefix>u`       | Open urlview              |
 
 #### `tmux` misc
 
