@@ -244,6 +244,9 @@ bindkey '^f' autosuggest-accept
 # for color partial tab completions
 zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:t)(?)*==34=34}:${(s.:.)LS_COLORS}")';
 
+# for fzf default command to ignore .git/* files
+export FZF_DEFAULT_COMMAND='rg --files'
+
 # Login Messages for ./install/install-fail2cam.sh
 [[ -a /tmp/fail2cam-`hostname`-*.png ]] && ( echo "###FAIL2CAM WARNING###"; ls -al /tmp/fail2cam-`hostname`-*.png )
 
