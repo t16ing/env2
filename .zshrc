@@ -99,9 +99,6 @@ plugins+=(kubectl)
 [[ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]] \
     && source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh \
     || plugins+=(zsh-autosuggestions)
-[[ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] \
-    && source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh \
-    || plugins+=(zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -259,6 +256,11 @@ export FZF_CTRL_T_OPTS="--preview \
     ) 2> /dev/null | head -500' \
     --preview-window=right:66%"
 export FZF_DEFAULT_OPTS="--height=80%"
+
+# zsh-syntax-highlighting must be last plugin
+[[ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] \
+    && source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh \
+    || source ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugin/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 
 # Login Messages for ./install/install-fail2cam.sh
 [[ -a /tmp/fail2cam-`hostname`-*.png ]] && ( echo "###FAIL2CAM WARNING###"; ls -al /tmp/fail2cam-`hostname`-*.png )

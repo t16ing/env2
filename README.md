@@ -36,6 +36,7 @@
 * [Dependency](#dependency)
 * [Workarounds for Linux Distro and Desktop](#workarounds-for-linux-distro-and-desktop)
 * [How to Uninstall `env2`](#how-to-uninstall-env2)
+* [TODO](#todo)
 * [License](#license)
 
 <!-- vim-markdown-toc -->
@@ -364,6 +365,10 @@ This is a snippet to clean up `env2`:
 $ rm -rf bin install README.md .tmux* .p10* .zsh* .pylintrc .git .oh-my-zsh*
 $ exit
 ```
+
+## TODO
+
+- Keep wallpapers managed.
 
 ## License
 
