@@ -7,14 +7,14 @@ mkdir -p ~/.config
 ln -s ~/.vim ~/.config/nvim
 
 # Install vim plugins
-vim +silent +VimEnter +PlugInstall +qall
+nvim +silent +VimEnter +PlugInstall +qall
 
 # required for tagbar
 sudo apt-get install -y exuberant-ctags
 
 # required for python (ale), javascript (tagbar-javascript), and markdown
 sudo apt install -y pylint
-zsh -i -c 'nvm install npm'
+sudo apt install -y npm
 zsh -i -c 'nvm install node'
 zsh -i -c 'npm install -g esctags eslint'
 zsh -i -c 'npm install -g instant-markdown-d'
