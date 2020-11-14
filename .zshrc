@@ -247,6 +247,19 @@ zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:
 # for fzf default command to ignore .git/* files
 export FZF_DEFAULT_COMMAND='rg --files'
 
+# for fzf preview configuration
+# example: /usr/share/doc/fzf/examples/key-bindings.zsh
+export FZF_CTRL_T_OPTS="--preview \
+    '(mimetype=\$(file --mime {}) ; \
+        [[ \$mimetype =~ directory ]] && tree -C -L 1 {} || \
+        [[ \$mimetype =~ binary ]] && xxd {} || \
+        highlight -O ansi -l {} 2> /dev/null || \
+        highlight -O ansi -l -S txt {} 2> /dev/null || \
+        cat {} \
+    ) 2> /dev/null | head -500' \
+    --preview-window=right:66%"
+export FZF_DEFAULT_OPTS="--height=80%"
+
 # Login Messages for ./install/install-fail2cam.sh
 [[ -a /tmp/fail2cam-`hostname`-*.png ]] && ( echo "###FAIL2CAM WARNING###"; ls -al /tmp/fail2cam-`hostname`-*.png )
 
