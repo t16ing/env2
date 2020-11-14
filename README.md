@@ -107,8 +107,7 @@ $ ./zss0 app up && ./zss0 app env2 && ./zss0 app ssh
 | Editor       | vim/neovim | `https://github.com/t16ing/.vim`    |
 | File Manager | ranger     | `https://github.com/t16ing/.ranger` |
 
-- Use `install/02-develop/install-vimplugin.sh` to complete vim plugin dependency.
-- Use `install/02-develop/install-nvim.sh` to install neovim.
+- Use `install/02-develop/install-vim-enhancement.sh` to install neovim and complete vim plugin dependency.
 - Use `install/05-optional/install-ranger.sh` to install ranger.
 
 ## Terminal Environment
