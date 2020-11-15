@@ -1,0 +1,6 @@
+[submodule "install/03-customization/install/03-customization/libxft2-patched"]
+	path = install/03-customization/install/03-customization/libxft2-patched
+	url = https://github.com/t16ing/libxft2-patched
+[submodule "install/03-customization/libxft2-patched"]
+	path = install/03-customization/libxft2-patched
+	url = https://github.com/t16ing/libxft2-patched
