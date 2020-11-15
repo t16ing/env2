@@ -100,6 +100,7 @@ plugins+=(kubectl)
     && source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh \
     || plugins+=(zsh-autosuggestions)
 
+export UPDATE_ZSH_DAYS=15
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -270,3 +271,6 @@ export FZF_DEFAULT_OPTS="--height=80%"
 
 # Powerlevel10k Personal Customization
 [[ ! -f ~/.p10k.local.zsh ]] || source ~/.p10k.local.zsh
+
+# Load local machine/environment specific rc file
+[[ ! -f ~/.zshrc.local ]] || source ~/.zshrc.local
