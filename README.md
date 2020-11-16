@@ -36,7 +36,6 @@
 * [Dependency](#dependency)
 * [Workarounds for Linux Distro and Desktop](#workarounds-for-linux-distro-and-desktop)
 * [How to Uninstall `env2`](#how-to-uninstall-env2)
-* [TODO](#todo)
 * [License](#license)
 
 <!-- vim-markdown-toc -->
@@ -328,7 +327,7 @@ Install scripts:
     `install/01-base/install-disable-nouveau.sh` is the script to help this.
     After GPU driver is disabled, the Gnome Desktop responds normally.
 
-2. The zip file coming from windows has unrecognized filename.
+2. The zip file from windows has unrecognized filename.
 
     Windows platform does not use unicode encoding for zip files.
     For those zip files comming from Windows Platform, the filename encoding will be incorrect.
@@ -345,18 +344,6 @@ Install scripts:
     `install/01-base/install-oom-workaround.sh` is the script to help this.
     This script changes OOM strategy; kernel simply kills the task triggered OOM. (vm.oom_kill_allocating_task=1)
 
-4. The nerd font is incorrect in vim nerdtree.
-
-    This happens sometimes while new Fonts are just installed.
-    `install/03-customization/install-fonts-fixnerd.sh` is the scipt to help this.
-
-5. While zsh session starts, there is always warning for `console output produced during zsh initialization follows`.
-
-    The zsh plugin `ssh-agent` used to ask password before prompt ready.
-    However, it is not compatible while zsh instant prompt feature is enabled.
-    `install/05-optional/install-zsh-askpass.sh` is the scipt to help this.
-    It installs a GUI for ssh password input.
-
 ## How to Uninstall `env2`
 
 This is a snippet to clean up `env2`:
@@ -365,10 +352,6 @@ This is a snippet to clean up `env2`:
 $ rm -rf bin install README.md .tmux* .p10* .zsh* .pylintrc .git .oh-my-zsh*
 $ exit
 ```
-
-## TODO
-
-- Keep wallpapers managed.
 
 ## License
 
