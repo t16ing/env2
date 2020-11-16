@@ -20,7 +20,7 @@ sudo sysctl -p
 sudo apt install devilspie
 mkdir ~/.devilspie
 
-for window_class in Code terminal Nautilus Qalculate
+for window_class in Code terminal Nautilus Qalculate screenkey st-256color
 do
 echo '
 (if (contains (window_class) "'${window_class}'")
