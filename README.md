@@ -152,22 +152,23 @@ $ ./zss0 app up && ./zss0 app env2 && ./zss0 app ssh
 
 #### `tmux` window
 
-| key               | Action                            |
-|-------------------|-----------------------------------|
-| `<prefix>n or p`  | Window nagigation                 |
-| `<prefix><tab>`   | Switch to last window             |
-| `<prefix>-`       | Split current window horizontally |
-| `<prefix>\|`      | Split current window vertically   |
-| `<prefix>h,j,k,l` | Move left,down,up,right           |
-| `<prefix>H,J,K,L` | Resize the window                 |
-| `<prefix>``<`,`>` | Swap the window                   |
-| `<prefix>+`       | Maximize the window               |
+| key                      | Action                            |
+|--------------------------|-----------------------------------|
+| `<prefix><c-j> or <c-k>` | Window nagigation                 |
+| `<prefix><tab>`          | Switch to last window             |
+| `<prefix>-`              | Split current window horizontally |
+| `<prefix>\|`             | Split current window vertically   |
+| `<prefix>h,j,k,l`        | Move left,down,up,right           |
+| `<prefix>H,J,K,L`        | Resize the window                 |
+| `<prefix>``<`,`>`        | Swap the window                   |
+| `<prefix>+`              | Maximize the window               |
 
 #### `tmux` production
 
 | Key               | Action                    |
 |-------------------|---------------------------|
 | `<prefix><enter>` | Enter copy mode (vi-mode) |
+| `<prefix>p`       | Paste from buffer         |
 | `<prefix>P`       | Choose buffer             |
 | `<prefix>u`       | Open urlview              |
 
