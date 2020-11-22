@@ -4,7 +4,7 @@
 # Hint: use gguc to Remote Checkout first
 
 # examples:
-# $ ggum (to merge current branch from remote)
+# $ ggum (default is to merge current branch)
 # $ ggum master
 # $ ggum develop
 

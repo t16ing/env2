@@ -1,26 +1,23 @@
 #!/bin/bash
 
-# bring the remote refs up to date in background, since this task takes long time
-# show pendings immediately; remote refs diffs may not show this time
+# bring the remote refs up to date
+# show pending of PUSH and PULL
 
 for TARGET in ${@:-./}
 do
     find ${TARGET} -type d -name ".git" 2>/dev/null | \
-        grep -v "$HOME/.vim" | \
-        grep -v "$HOME/.oh-my-zsh/" | \
-        grep -v "$HOME/.local/" | \
         while read dir ; \
         do sh -c \
             "cd $dir/../ && \
             echo \"(git)${dir//\.git/}\" && \
-            (git remote update 2>&1 > /dev/null &) && \
+            git remote update 2>&1 > /dev/null && \
             git status -s && ( \
-            [ \"\$(git rev-list --count @{upstream}..HEAD)\" -gt \"0\" ] && \
-            echo \"\e[31m***not yet PUSH***\e[0m\" ; \
-            [ -z \"\$(git remote show)\" ] && \
-            echo \"\e[31m***Local Repo***\e[0m\" ; \
-            [ \"\$(git rev-list --count HEAD..@{upstream})\" -gt \"0\" ] && \
-            echo \"\e[31m***PULL required***\e[0m\" \
+                [ \"\$(git rev-list --count @{upstream}..HEAD)\" -gt \"0\" ] && \
+                    echo \"\e[31m***not yet PUSH***\e[0m\" ; \
+                [ -z \"\$(git remote show)\" ] && \
+                    echo \"\e[31m***Local Repo***\e[0m\" ; \
+                [ \"\$(git rev-list --count HEAD..@{upstream})\" -gt \"0\" ] && \
+                    echo \"\e[31m***not yet PULL***\e[0m\" \
             )" \
             2>/dev/null ; \
         done
