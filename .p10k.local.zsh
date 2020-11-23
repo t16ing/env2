@@ -147,11 +147,6 @@ typeset -g POWERLEVEL9K_VI_INSERT_MODE_STRING=
 # Run `ifconfig` or `ip -4 a show` to see the names of all network interfaces.
 typeset -g POWERLEVEL9K_IP_INTERFACE='(e.*|w.*)'
 
-################################[ battery: internal battery ]#################################
-# Show battery in red when it's below this level and not connected to power supply.
-# Show the remaining time to charge/discharge.
-typeset -g POWERLEVEL9K_BATTERY_VERBOSE=true
-
 ####################################[ time: current time ]####################################
 # Format for the current time: 09:51:02. See `man 3 strftime`.
 typeset -g POWERLEVEL9K_TIME_FORMAT="%D{%H:%M:%S %Y-%m-%d}"
