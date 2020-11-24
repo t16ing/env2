@@ -155,16 +155,16 @@ $ ./zss0 app up && ./zss0 app env2 && ./zss0 app ssh
 
 #### `tmux` window
 
-| key                      | Action                            |
-|--------------------------|-----------------------------------|
-| `<prefix><c-j> or <c-k>` | Window nagigation                 |
-| `<prefix><tab>`          | Switch to last window             |
-| `<prefix>-`              | Split current window horizontally |
-| `<prefix>\|`             | Split current window vertically   |
-| `<prefix>h,j,k,l`        | Move left,down,up,right           |
-| `<prefix>H,J,K,L`        | Resize the window                 |
-| `<prefix>``<`,`>`        | Swap the window                   |
-| `<prefix>+`              | Maximize the window               |
+| key                        | Action                            |
+|----------------------------|-----------------------------------|
+| `<prefix>j or k`           | Window navigation                 |
+| `<prefix><tab>`            | Switch to last window             |
+| `<prefix>-`                | Split current window horizontally |
+| `<prefix>\|`               | Split current window vertically   |
+| `<prefix><arrow key>`      | Move left,down,up,right           |
+| `<prefix><ctrl+arrow key>` | Resize the window                 |
+| `<prefix>``<`,`>`          | Swap the window                   |
+| `<prefix>+`                | Maximize the window               |
 
 #### `tmux` production
 
