@@ -12,3 +12,4 @@ git config user.name ${USERID}
 git config user.email ${EMAIL}
 git config user.signingkey ${GPGKEY}
 git config commit.gpgsign true
+git config credential.helper store

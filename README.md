@@ -3,24 +3,24 @@
 
      ░█▀▀░█▀█░█░█░▀▀▄
      ░█▀▀░█░█░▀▄▀░▄▀░
-     ░▀▀▀░▀░▀░░▀░░▀▀▀ is My Way To Keep Two Environment Consistent
+ Use ░▀▀▀░▀░▀░░▀░░▀▀▀ to Keep Two Environment Consistent.
 
 <!-- vim-markdown-toc GFM -->
 
 * [What is `env2`](#what-is-env2)
-    * [Screenshots](#screenshots)
-    * [Features](#features)
-    * [What Environment `env2` Manages](#what-environment-env2-manages)
-    * [Recommend Extra Environment](#recommend-extra-environment)
+* [Screenshots](#screenshots)
+* [Features](#features)
 * [How To Install `env2`](#how-to-install-env2)
+* [Environments](#environments)
+    * [Recommend Extra Environment](#recommend-extra-environment)
 * [Terminal Environment](#terminal-environment)
-    * [Useful `bin` Utilities and Aliases](#useful-bin-utilities-and-aliases)
+    * [Extra `bin` Utilities and Aliases](#extra-bin-utilities-and-aliases)
     * [Key Bindings](#key-bindings)
         * [`zsh` finder](#zsh-finder)
         * [`zsh` command edit](#zsh-command-edit)
         * [`tmux` session](#tmux-session)
         * [`tmux` window](#tmux-window)
-        * [`tmux` copy mode](#tmux-copy-mode)
+        * [`tmux` production](#tmux-production)
         * [`tmux` misc](#tmux-misc)
     * [Sensible Shell Configuration](#sensible-shell-configuration)
         * [`zsh` prompt status](#zsh-prompt-status)
@@ -36,51 +36,30 @@
 * [Dependency](#dependency)
 * [Workarounds for Linux Distro and Desktop](#workarounds-for-linux-distro-and-desktop)
 * [How to Uninstall `env2`](#how-to-uninstall-env2)
-* [Backlogs](#backlogs)
 * [License](#license)
 
 <!-- vim-markdown-toc -->
 
 ## What is `env2`
 
-The `env2` is my personal configurations for for Linux Desktop and Terminal environment.
+The `env2` is my personal configurations for Linux Desktop and Shell Terminal environment.
 
-It also includes special features and utilities.
+It also includes extra features and utilities.
 
-It helps me to maintain a consistent Desktop and Terminal for every fresh new installed Linux system.
+It helps me to maintain a consistent Desktop and Terminal environment for every fresh new installed Linux system.
 
-### Screenshots
+## Screenshots
 
 | Shell                                                                           | Desktop                                                                           |
 |---------------------------------------------------------------------------------|-----------------------------------------------------------------------------------|
 | <img src="https://i.imgur.com/4dCVQjI.png" alt="shell screenshot" width="480"/> | <img src="https://i.imgur.com/arBfCqH.png" alt="desktop screenshot" width="480"/> |
 
-### Features
+## Features
 
 - Sensible `zsh` and `tmux` configurations, aliases and keybindngs
 - `fail2cam` to trigger notification if login fails
 - Consistent shell customization
 - Consistent desktop customization
-
-### What Environment `env2` Manages
-
-| Environment          | Designed For |
-|----------------------|--------------|
-| Linux Distro         | Ubuntu 20.4  |
-| Desktop Environment  | Gnome        |
-| Shell                | zsh          |
-| Terminal Multiplexer | tmux         |
-
-### Recommend Extra Environment
-
-| Environment  | Recommend  | Configuration                       |
-|--------------|------------|-------------------------------------|
-| Editor       | vim/neovim | `https://github.com/t16ing/.vim`    |
-| File Manager | ranger     | `https://github.com/t16ing/.ranger` |
-
-- Use `install/05-optional/install-nvim.sh` to install neovim.
-- Use `install/02-develop/install-vimplugin.sh` to complete vim plugin dependency.
-- Use `install/05-optional/install-ranger.sh` to install ranger.
 
 ## How To Install `env2`
 
@@ -99,11 +78,10 @@ $ install/01-base/install-zsh.sh
 $ exec zsh
 ```
 
-Step 3: enable tmux plugins (optional)
+Step 3: enable tmux plugins
 
 ```
-$ install/05-optional/install-tmux-plugins.sh
-$ tmux
+$ install/01-base/install-tmux-plugins.sh
 ```
 
 Use [sandbox](https://github.com/tarlety/docker-apps/tree/master/security/sandbox) to test [How To Install `env2`](#how-to-install-env2).
@@ -113,16 +91,38 @@ $ ./zss0 config image && ./zss0 config hostname && ./zss0 config xsp
 $ ./zss0 app up && ./zss0 app env2 && ./zss0 app ssh
 ```
 
+## Environments
+
+| Environment          | Designed for |
+|----------------------|--------------|
+| Linux Distro         | Ubuntu 20.4  |
+| Desktop Environment  | Gnome        |
+| Shell                | zsh          |
+| Terminal Multiplexer | tmux         |
+
+### Recommend Extra Environment
+
+| Environment       | Recommend | Configuration                       |
+|-------------------|-----------|-------------------------------------|
+| Editor            | neovim    | `https://github.com/t16ing/.vim`    |
+| File Manager      | ranger    | `https://github.com/t16ing/.ranger` |
+
+- Use `install/02-develop/install-vim-enhancement.sh` to install neovim and plugin dependency.
+- Use `install/05-optional/install-ranger.sh` to install ranger.
+
 ## Terminal Environment
 
-### Useful `bin` Utilities and Aliases
+### Extra `bin` Utilities and Aliases
 
 - `s`: start the day of shell
 - `ra`: ranger
-- `vi`: smart alias to vim or nvim
+- `vi`: smart alias for vim/nvim
 - `j`: smart jump to folder
 - `nvm`: npm and node.js environment management.
 - gg family: *G*it confi*G* utilities
+    - `ggmm`: switch to master or main branch
+    - `gginit`: configure user information and use store as default credential helper
+    - `ggls`: list all pending PULL and PUSH repositories
 
 ### Key Bindings
 
@@ -147,33 +147,33 @@ $ ./zss0 app up && ./zss0 app env2 && ./zss0 app ssh
 
 #### `tmux` session
 
-| Key                   | Action                    |
-|-----------------------|---------------------------|
-| `<prefix>c`           | Create a new session      |
-| `<prefix><c-n>,<c-l>` | Window switch to next     |
-| `<prefix><c-p>,<c-h>` | Window switch to previous |
-| `<prefix><tab>`       | Switch to last window     |
-| `<prefix><c-s>`       | Save session              |
-| `<prefix><c-r>`       | Load session              |
+| Key              | Action                |
+|------------------|-----------------------|
+| `<prefix>c`      | Create a new session  |
+| `<prefix><c-s>`  | Save session          |
+| `<prefix><c-r>`  | Load session          |
 
 #### `tmux` window
 
-| key               | Action                            |
-|-------------------|-----------------------------------|
-| `<prefix>-`       | Split current window horizontally |
-| `<prefix>\|`      | Split current window vertically   |
-| `<prefix>h,j,k,l` | Move left,down,up,right           |
-| `<prefix>H,J,K,L` | Resize the window                 |
-| `<prefix>``<`,`>` | Swap the window                   |
-| `<prefix>+`       | Maximize the window               |
+| key                        | Action                            |
+|----------------------------|-----------------------------------|
+| `<prefix>j or k`           | Window navigation                 |
+| `<prefix><tab>`            | Switch to last window             |
+| `<prefix>-`                | Split current window horizontally |
+| `<prefix>\|`               | Split current window vertically   |
+| `<prefix><arrow key>`      | Move left,down,up,right           |
+| `<prefix><ctrl+arrow key>` | Resize the window                 |
+| `<prefix>``<`,`>`          | Swap the window                   |
+| `<prefix>+`                | Maximize the window               |
 
-#### `tmux` copy mode
+#### `tmux` production
 
 | Key               | Action                    |
 |-------------------|---------------------------|
 | `<prefix><enter>` | Enter copy mode (vi-mode) |
-| `<prefix>p or P`  | Choose buffer             |
-| `<prefix>b`       | List buffer               |
+| `<prefix>p`       | Paste from buffer         |
+| `<prefix>P`       | Choose buffer             |
+| `<prefix>u`       | Open urlview              |
 
 #### `tmux` misc
 
@@ -195,7 +195,7 @@ $ ./zss0 app up && ./zss0 app env2 && ./zss0 app ssh
 #### `zsh` sensible
 
 - nerdfont-complete
-- vcs nerd icon
+- `vcs` nerd icon
 - dir writable icon
 - there is always an OK icon there if execution is OK.
 - it makes more informative to show all kinds of error status and exit code.
@@ -207,37 +207,37 @@ $ ./zss0 app up && ./zss0 app env2 && ./zss0 app ssh
 - show the battery remaining time.
 - show start time of past command.
 - full date-time format.
-- more history size and keep history date/time.
+- enlarge history size and keep history date/time.
 - `safe-paste` plugin to avoid accident running after paste command.
 
 #### `zsh` integration
 
-- ssh: ssh-agent run automatically.
-- gpg: gpg-agent run automatically.
-- pipenv: automatically enter pipenv after cd into folder.
-- kubectl: shows kubernetes context if `kubectl` is the execution command
-- command-not-found: what is the missing packages for the command.
+- ssh: ssh-agent run on startup.
+- gpg: gpg-agent run on startup.
+- pipenv: enter pipenv after cd into folder.
+- kubectl: shows kubernetes context if `kubectl` is the execution command.
+- command-not-found: show missing package for the command.
 
 #### `tmux` sensible
 
 - copy mode works both for primary and clipboard
 - force vi mode
-- address vi mode switching delay
+- address vi mode switching delay issue
 - sensible [keybindings](#key-bindings)
 - do not clear history
-- more history size
-- much clear pane border style
+- enlarge history size
+- much sensible pane border style
 - status line theme: Dracula
-- auto save and restore session status
+- auto save and restore session
 
 ## Desktop Environment
 
 ### Key Bindings
 
-| Key                   | Action                     |
-|-----------------------|----------------------------|
-| `<super><alt>d`       | Draw on the screen.        |
-| `<ctrl><alt>k`        | Toggle screenkey.          |
+| Key                   | Action                      |
+|-----------------------|-----------------------------|
+| `<super><alt>d`       | Draw on the screen.         |
+| `<ctrl><alt>k`        | Toggle screenkey.           |
 | `<ctrl><alt><shift>r` | Record a short screen cast. |
 
 ### Desktop Theme Customization
@@ -274,12 +274,12 @@ In a fresh new installed Linux Distro, packages and features can be enabled by t
 
 Sensible Linux Shell Applications:
 
-- `install/01-base/install-apps-base.sh` installs frequently system applications but not been installed by default.
+- `install/01-base/install-apps-base.sh` installs most used system applications but not been installed by default.
 - `install/05-optional/install-console-apps.sh` installs other optional console applications.
 
 Sensible Linux Desktop Applications:
 
-- `install/01-base/...` installs frequently used desktop applications:
+- `install/01-base/...` installs most used desktop applications.
 - `install/05-optional/install-gui-apps.sh` installs optional GUI applications.
 
 Security enhancement:
@@ -297,16 +297,17 @@ Misc:
 `install/01-base/install-fail2cam.sh`
 
 If login fails, fail2cam can take the picture and send a notification to you.
-It requires Telegram bot token and chatid.
+
+It requires a well-configured Telegram bot.
 
 ## Fonts
 
 - cns11643
 - powerline font
-- nerd fonts for Ubuntu, Hack, Source Code Pro
+- nerd fonts: Ubuntu, Hack, Source Code Pro, Mononoki
+- emoji fonts: Noto
 
 Nerd Font and Powerline Font is required for tmux, zsh, and vim powerline.
-Recommend Hack Nerd Font.
 
 Install scripts:
 - `install/03-customization/install-fonts.sh`
@@ -331,7 +332,7 @@ Install scripts:
     `install/01-base/install-disable-nouveau.sh` is the script to help this.
     After GPU driver is disabled, the Gnome Desktop responds normally.
 
-2. The zip file coming from windows has unrecognized filename.
+2. The zip file from windows has unrecognized filename.
 
     Windows platform does not use unicode encoding for zip files.
     For those zip files comming from Windows Platform, the filename encoding will be incorrect.
@@ -348,18 +349,6 @@ Install scripts:
     `install/01-base/install-oom-workaround.sh` is the script to help this.
     This script changes OOM strategy; kernel simply kills the task triggered OOM. (vm.oom_kill_allocating_task=1)
 
-4. The nerd font is incorrect in vim nerdtree.
-
-    This happens sometimes while new Fonts are just installed.
-    `install/03-customization/install-fonts-fixnerd.sh` is the scipt to help this.
-
-5. While zsh session starts, there is always warning for `console output produced during zsh initialization follows`.
-
-    The zsh plugin `ssh-agent` used to ask password before prompt ready.
-    However, it is not compatible while zsh instant prompt feature is enabled.
-    `install/05-optional/install-zsh-askpass.sh` is the scipt to help this.
-    It installs a GUI for ssh password input.
-
 ## How to Uninstall `env2`
 
 This is a snippet to clean up `env2`:
@@ -368,12 +357,6 @@ This is a snippet to clean up `env2`:
 $ rm -rf bin install README.md .tmux* .p10* .zsh* .pylintrc .git .oh-my-zsh*
 $ exit
 ```
-
-## Backlogs
-
-- Better online status notation.
-- Network benchmark available.
-- `wttr.in` connection robustness improvement.
 
 ## License
 

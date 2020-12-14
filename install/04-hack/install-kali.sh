@@ -1,12 +1,15 @@
 #!/bin/bash
 
 echo "Installing kali tools..."
-sudo apt install wireshark -y
-sudo apt install ettercap ettercap-graphical -y
-sudo apt install driftnet -y
-sudo apt install dsniff -y
-sudo apt install macchanger -y
 
-echo "Installing kali tools for WIFI..."
-sudo apt install kismet -y
-sudo apt install aircrack-ng -y
+echo "Use install-kali-wireshark-local-build.sh instead to install latest wireshark."
+#sudo apt install wireshark -y
+
+echo "Use ettercap for intranet MITM..."
+sudo apt install ettercap ettercap-graphical -y
+
+echo "Use driftnet for picture sniff..."
+sudo apt install driftnet -y
+
+echo "Use dsniff for password sniff and traffic MITM..."
+sudo apt install dsniff -y

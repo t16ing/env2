@@ -6,7 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:$HOME/local/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:$HOME/local/bin:$HOME/.local/bin:$HOME/local/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -82,10 +82,11 @@ setopt EXTENDED_HISTORY
 # Add wisely, as too many plugins slow down shell startup.
 plugins=()
 plugins+=(ssh-agent)
-plugins+=(gpg-agent)
+command -v gpg-agent > /dev/null \
+    && plugins+=(gpg-agent)
 plugins+=(autojump)
-export NVM_COMPLETION=true
 export NVM_LAZY_LOAD=true
+export NVM_LAZY_LOAD_EXTRA_COMMANDS=('esctags eslint instant-markdown-d')
 plugins+=(zsh-nvm)
 plugins+=(vi-mode)
 plugins+=(command-not-found)
@@ -95,7 +96,11 @@ plugins+=(fzf)
 plugins+=(pipenv)
 plugins+=(thefuck)
 plugins+=(kubectl)
+[[ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]] \
+    && source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh \
+    || plugins+=(zsh-autosuggestions)
 
+export UPDATE_ZSH_DAYS=15
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -113,7 +118,7 @@ source $ZSH/oh-my-zsh.sh
 # fi
 #
 # preferred nvim
-EDITOR=nvim
+command -v nvim > /dev/null && EDITOR=nvim || EDITOR=vim
 [[ -z "$DISPLAY" ]] && alias vi="$EDITOR -X" || alias vi="$EDITOR"
 
 # Compilation flags
@@ -237,9 +242,26 @@ bindkey '^f' autosuggest-accept
 # for color partial tab completions
 zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:t)(?)*==34=34}:${(s.:.)LS_COLORS}")';
 
-# plugins by apt install
-source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# for fzf default command to ignore .git/* files
+export FZF_DEFAULT_COMMAND='rg --files'
+
+# for fzf preview configuration
+# example: /usr/share/doc/fzf/examples/key-bindings.zsh
+export FZF_CTRL_T_OPTS="--preview \
+    '(mimetype=\$(file --mime {}) ; \
+        [[ \$mimetype =~ directory ]] && tree -C -L 1 {} || \
+        [[ \$mimetype =~ binary ]] && xxd {} || \
+        highlight -O ansi -l {} 2> /dev/null || \
+        highlight -O ansi -l -S txt {} 2> /dev/null || \
+        cat {} \
+    ) 2> /dev/null | head -500' \
+    --preview-window=right:66%"
+export FZF_DEFAULT_OPTS="--height=80%"
+
+# zsh-syntax-highlighting must be last plugin
+[[ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] \
+    && source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh \
+    || source ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugin/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 
 # Login Messages for ./install/install-fail2cam.sh
 [[ -a /tmp/fail2cam-`hostname`-*.png ]] && ( echo "###FAIL2CAM WARNING###"; ls -al /tmp/fail2cam-`hostname`-*.png )
@@ -249,3 +271,6 @@ source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Powerlevel10k Personal Customization
 [[ ! -f ~/.p10k.local.zsh ]] || source ~/.p10k.local.zsh
+
+# Load local machine/environment specific rc file
+[[ ! -f ~/.zshrc.local ]] || source ~/.zshrc.local

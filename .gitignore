@@ -1,6 +1,7 @@
 .A*
 .I*
 .T*
+.R*
 .X*
 .a*
 .b*
@@ -14,6 +15,7 @@
 .go*
 .gr*
 .gt*
+.ip*
 .ic*
 .j*
 .k*
@@ -25,9 +27,7 @@
 .r*
 .s*
 .t*
-.vim/
-.vim_*
-.vimi*
+.vi*
 .vo*
 .vs*
 .w*
@@ -43,6 +43,7 @@
 *.bak
 *.flv
 *.webm
+s*
 A*/
 Vir*/
 D*/
@@ -56,3 +57,5 @@ store/
 src/
 tmp/
 trash/
+clouddrive
+cloudfiles/
