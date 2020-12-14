@@ -9,4 +9,4 @@ deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
 EOF
 
 sudo apt update -y
-sudo apt install -y google-chrome 
+sudo apt install -y google-chrome-stable
