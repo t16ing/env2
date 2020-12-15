@@ -261,7 +261,7 @@ export FZF_DEFAULT_OPTS="--height=80%"
 # zsh-syntax-highlighting must be last plugin
 [[ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] \
     && source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh \
-    || source ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugin/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
+    || source ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 
 # Login Messages for ./install/install-fail2cam.sh
 [[ -a /tmp/fail2cam-`hostname`-*.png ]] && ( echo "###FAIL2CAM WARNING###"; ls -al /tmp/fail2cam-`hostname`-*.png )
