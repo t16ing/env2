@@ -11,8 +11,8 @@
 * [Screenshots](#screenshots)
 * [Features](#features)
 * [How To Install `env2`](#how-to-install-env2)
-* [Environments](#environments)
-    * [Recommend Extra Environment](#recommend-extra-environment)
+* [Compatibility](#compatibility)
+    * [Advanced Environments](#advanced-environments)
 * [Terminal Environment](#terminal-environment)
     * [Extra `bin` Utilities and Aliases](#extra-bin-utilities-and-aliases)
     * [Key Bindings](#key-bindings)
@@ -30,7 +30,7 @@
 * [Desktop Environment](#desktop-environment)
     * [Key Bindings](#key-bindings-1)
     * [Desktop Theme Customization](#desktop-theme-customization)
-* [Take a Look at Install Scripts](#take-a-look-at-install-scripts)
+* [Optional Install Scripts](#optional-install-scripts)
     * [Feature: `fail2cam`](#feature-fail2cam)
 * [Fonts](#fonts)
 * [Dependency](#dependency)
@@ -46,7 +46,7 @@ The `env2` is my personal configurations for Linux Desktop and Shell Terminal en
 
 It also includes extra features and utilities.
 
-It helps me to maintain a consistent Desktop and Terminal environment for every fresh new installed Linux system.
+It maintains a consistent Desktop and Terminal environment for every fresh new installed Linux system.
 
 ## Screenshots
 
@@ -56,10 +56,10 @@ It helps me to maintain a consistent Desktop and Terminal environment for every 
 
 ## Features
 
-- Sensible `zsh` and `tmux` configurations, aliases and keybindngs
-- `fail2cam` to trigger notification if login fails
-- Consistent shell customization
-- Consistent desktop customization
+- Sensible `zsh` and `tmux` configurations, aliases and key bindings.
+- `fail2cam` to trigger notification if login fails.
+- Consistent shell customization.
+- Consistent desktop customization.
 
 ## How To Install `env2`
 
@@ -91,16 +91,16 @@ $ ./zss0 config image && ./zss0 config hostname && ./zss0 config xsp
 $ ./zss0 app up && ./zss0 app env2 && ./zss0 app ssh
 ```
 
-## Environments
+## Compatibility
 
-| Environment          | Designed for |
+| Environment          | Recommend |
 |----------------------|--------------|
 | Linux Distro         | Ubuntu 20.4  |
 | Desktop Environment  | Gnome        |
 | Shell                | zsh          |
 | Terminal Multiplexer | tmux         |
 
-### Recommend Extra Environment
+### Advanced Environments
 
 | Environment       | Recommend | Configuration                       |
 |-------------------|-----------|-------------------------------------|
@@ -194,20 +194,19 @@ $ ./zss0 app up && ./zss0 app env2 && ./zss0 app ssh
 
 #### `zsh` sensible
 
-- nerdfont-complete
-- `vcs` nerd icon
-- dir writable icon
-- there is always an OK icon there if execution is OK.
-- it makes more informative to show all kinds of error status and exit code.
-- execution for 1 second is long enough to wait; show execution time in ms unit.
-- customized background job icon and show the background jobs number.
-- vi-mode default is INSERT mode, so hide the INSERT string.
-- move network bandwidth information to tmux status line.
-- extra ip interface name (e.\* or w.\*).
-- show the battery remaining time.
-- show start time of past command.
-- full date-time format.
-- enlarge history size and keep history date/time.
+- Support nerdfont-complete for powerlevel.
+- Support nerd icons (ex: `vcs` and dir writable) for powerlevel.
+- There is always an OK icon there if execution is OK.
+- More informative to show all kinds of error status and exit code.
+- Show execution time if longer than 1 second. Show in ms unit.
+- Customized background job icon and show the background jobs number.
+- Default INSERT vi-mode; therefore hide the INSERT string.
+- Move network bandwidth information to tmux status line.
+- Sense ip with more interface name (e.\* or w.\*).
+- Show the battery remaining time.
+- Show start time of past command.
+- Full date-time format.
+- Enlarge history size and keep history date/time.
 - `safe-paste` plugin to avoid accident running after paste command.
 
 #### `zsh` integration
@@ -223,10 +222,10 @@ $ ./zss0 app up && ./zss0 app env2 && ./zss0 app ssh
 - copy mode works both for primary and clipboard
 - force vi mode
 - address vi mode switching delay issue
-- sensible [keybindings](#key-bindings)
+- sensible [key bindings](#key-bindings)
 - do not clear history
 - enlarge history size
-- much sensible pane border style
+- sensible pane border style
 - status line theme: Dracula
 - auto save and restore session
 
@@ -234,11 +233,11 @@ $ ./zss0 app up && ./zss0 app env2 && ./zss0 app ssh
 
 ### Key Bindings
 
-| Key                   | Action                      |
-|-----------------------|-----------------------------|
-| `<super><alt>d`       | Draw on the screen.         |
-| `<ctrl><alt>k`        | Toggle screenkey.           |
-| `<ctrl><alt><shift>r` | Record a short screen cast. |
+| Key                   | Action                                                 |
+|-----------------------|--------------------------------------------------------|
+| `<super><alt>d`       | Draw on the screen. `ctrl+number` to change pen color. |
+| `<ctrl><alt>k`        | Toggle screenkey.                                      |
+| `<ctrl><alt><shift>r` | Record a short screen cast.                            |
 
 ### Desktop Theme Customization
 
@@ -253,14 +252,14 @@ Customizations:
 - Wallpapers for login screen, lock screen, and desktop background
 - Transparent Background
 
-Install scripts does the customization:
+Install these scripts for customization:
 - `install/01-base/install-gnome-shell-extension.sh`
 - `install/02-develop/install-vscode-and-others-transparent.sh`
 - `install/03-customization/install-variety.sh`
 - `install/03-customization/install-mac-style.sh`
 - `install/03-customization/install-mac-style-patch-nautilus-icon.sh`
 
-## Take a Look at Install Scripts
+## Optional Install Scripts
 
 In a fresh new installed Linux Distro, packages and features can be enabled by these install scripts:
 
@@ -269,15 +268,15 @@ In a fresh new installed Linux Distro, packages and features can be enabled by t
 | `install/01-base/*`          | almost required for most conditions              |
 | `install/02-develop/*`       | for development, editor, and runtime environment |
 | `install/03-customization/*` | fonts installation; desktop theme customization  |
-| `install/04-hack/*`          | optional: install hacker tools                   |
+| `install/04-hack/*`          | hacker tools                                     |
 | `install/05-optional/*`      | other install scripts depends on necessary       |
 
-Sensible Linux Shell Applications:
+Recommend Linux Shell Applications:
 
 - `install/01-base/install-apps-base.sh` installs most used system applications but not been installed by default.
 - `install/05-optional/install-console-apps.sh` installs other optional console applications.
 
-Sensible Linux Desktop Applications:
+Recommend Linux Desktop Applications:
 
 - `install/01-base/...` installs most used desktop applications.
 - `install/05-optional/install-gui-apps.sh` installs optional GUI applications.
@@ -296,9 +295,9 @@ Misc:
 
 `install/01-base/install-fail2cam.sh`
 
-If login fails, fail2cam can take the picture and send a notification to you.
+If login fails, fail2cam takes the picture and sends a notification to you.
 
-It requires a well-configured Telegram bot.
+It requires a configured Telegram bot API token.
 
 ## Fonts
 
@@ -337,7 +336,7 @@ Install scripts:
     Windows platform does not use unicode encoding for zip files.
     For those zip files comming from Windows Platform, the filename encoding will be incorrect.
     `install/01-base/install-fix-unzip-encoding-issue.sh` is the script to help this.
-    It let system uses CP950 for zip and uses '7z' instead of p7zip.
+    It lets system use CP950 for zip and uses '7z' instead of p7zip.
 
 3. System crashes (hard to respond and hard drive led blinks) due to OOM.
 
