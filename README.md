@@ -157,7 +157,7 @@ $ ./zss0 app up && ./zss0 app env2 && ./zss0 app ssh
 
 | key                        | Action                            |
 |----------------------------|-----------------------------------|
-| `<prefix>j or k`           | Window navigation                 |
+| `<prefix><c-j> or <c-k>`   | Window navigation                 |
 | `<prefix><tab>`            | Switch to last window             |
 | `<prefix>-`                | Split current window horizontally |
 | `<prefix>\|`               | Split current window vertically   |
