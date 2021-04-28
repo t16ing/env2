@@ -85,8 +85,6 @@ plugins+=(ssh-agent)
 command -v gpg-agent > /dev/null \
     && plugins+=(gpg-agent)
 plugins+=(autojump)
-export NVM_LAZY_LOAD=true
-export NVM_LAZY_LOAD_EXTRA_COMMANDS=('esctags eslint instant-markdown-d')
 plugins+=(zsh-nvm)
 plugins+=(vi-mode)
 plugins+=(command-not-found)
