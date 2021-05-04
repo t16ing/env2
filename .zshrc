@@ -94,6 +94,7 @@ plugins+=(fzf)
 plugins+=(pipenv)
 plugins+=(thefuck)
 plugins+=(kubectl)
+plugins+=(cargo)
 [[ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]] \
     && source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh \
     || plugins+=(zsh-autosuggestions)
