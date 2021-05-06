@@ -18,11 +18,11 @@ cd packages/backend/bindings/node
 yarn
 cd -
 
-cd packags/desktop
+cd packages/desktop
 yarn build
 yarn compile:linux
+cp out/firefly-desktop-1.1.0.AppImage ~/local/opt/iota/bin/firefly-desktop
 cd -
 
 mkdir -p ~/local/opt/iota/bin
-cp out/firefly-desktop-1.1.0.AppImage ~/local/opt/iota/bin/firefly-desktop
 
