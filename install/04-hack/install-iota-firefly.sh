@@ -1,11 +1,15 @@
 #!/bin/bash
 
+## Dev dependencies
+sudo apt install clang libsecret-1-dev libssl-dev libusb-1.0-0-dev libudev-dev
+
+## Rust is required
+curl https://sh.rustup.rs -sSf | sh
+
+## build and install firefly
 mkdir -p ~/local/opt/iota/src
 cd ~/local/opt/iota/src
 git clone https://github.com/iotaledger/firefly
-
-curl https://sh.rustup.rs -sSf | sh ## Rust is required
-sudo apt install clang libsecret-1-dev libssl-dev libusb-1.0-0-dev libudev-dev ## Dev dependencies
 
 cd firefly
 yarn
