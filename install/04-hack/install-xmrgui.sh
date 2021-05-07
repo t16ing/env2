@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mkdir ~/local/opt/xmr/src
+mkdir -p ~/local/opt/xmr/src
 cd ~/local/opt/xmr/src
 git clone --branch master --recursive https://github.com/monero-project/monero-gui.git
 git checkout ea01a536ce5d0b332358619585469e5ca5f4de0d
