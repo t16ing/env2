@@ -1,0 +1,15 @@
+#!/bin/bash
+
+FILEPATH="$(realpath $1)"
+APPNAME="$(basename "${FILEPATH}")"
+
+cat << EOF | tee "${HOME}/.local/share/applications/${APPNAME}.desktop"
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=${APPNAME}
+Comment=${APPNAME}
+Exec=${FILEPATH}
+Categories=Utility;
+EOF
+

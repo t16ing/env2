@@ -32,6 +32,7 @@
 .zo*
 .zsh-*
 .zsh_*
+.zshenv*
 .zshrc.*
 *.swp
 *.log
@@ -43,6 +44,7 @@ s*
 A*/
 Vir*/
 D*/
+M*/
 P*/
 Q*/
 S*/
