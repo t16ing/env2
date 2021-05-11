@@ -1,0 +1,21 @@
+#!/bin/bash
+
+FILEPATH="$(sudo realpath $1)"
+APPNAME="$(basename "${FILEPATH}")"
+
+cat << EOF | sudo tee "/etc/systemd/system/${APPNAME}.service"
+[Unit]
+Description=${APPNAME} service
+After=network.target
+StartLimitIntervalSec=0
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=root
+ExecStart=${FILEPATH}
+
+[Install]
+WantedBy=multi-user.target
+EOF
+

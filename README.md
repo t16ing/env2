@@ -3,7 +3,7 @@
 
      ░█▀▀░█▀█░█░█░▀▀▄
      ░█▀▀░█░█░▀▄▀░▄▀░
- Use ░▀▀▀░▀░▀░░▀░░▀▀▀ to Keep Two Environment Consistent.
+ Use ░▀▀▀░▀░▀░░▀░░▀▀▀ to Keep All Environment Consistent.
 
 <!-- vim-markdown-toc GFM -->
 
@@ -11,7 +11,7 @@
 * [Screenshots](#screenshots)
 * [Features](#features)
 * [How To Install `env2`](#how-to-install-env2)
-* [Compatibility](#compatibility)
+* [Compatbile Environments](#compatbile-environments)
     * [Advanced Environments](#advanced-environments)
 * [Terminal Environment](#terminal-environment)
     * [Extra `bin` Utilities and Aliases](#extra-bin-utilities-and-aliases)
@@ -20,7 +20,7 @@
         * [`zsh` command edit](#zsh-command-edit)
         * [`tmux` session](#tmux-session)
         * [`tmux` window](#tmux-window)
-        * [`tmux` production](#tmux-production)
+        * [`tmux` editing](#tmux-editing)
         * [`tmux` misc](#tmux-misc)
     * [Sensible Shell Configuration](#sensible-shell-configuration)
         * [`zsh` prompt status](#zsh-prompt-status)
@@ -42,7 +42,7 @@
 
 ## What is `env2`
 
-The `env2` is my personal configurations for Linux Desktop and Shell Terminal environment.
+The `env2` is my personal configurations for Linux Gnome Desktop and Shell Terminal environment.
 
 It also includes extra features and utilities.
 
@@ -78,34 +78,34 @@ $ install/01-base/install-zsh.sh
 $ exec zsh
 ```
 
-Step 3: enable tmux plugins
+Step 3: install tmux plugins
 
 ```
 $ install/01-base/install-tmux-plugins.sh
 ```
 
-Use [sandbox](https://github.com/tarlety/docker-apps/tree/master/security/sandbox) to test [How To Install `env2`](#how-to-install-env2).
+Use [sandbox](https://github.com/tarlety/docker-apps/tree/master/security/sandbox) to try [How To Install `env2`](#how-to-install-env2):
 
 ```
 $ ./zss0 config image && ./zss0 config hostname && ./zss0 config xsp
 $ ./zss0 app up && ./zss0 app env2 && ./zss0 app ssh
 ```
 
-## Compatibility
+## Compatbile Environments
 
-| Environment          | Recommend |
-|----------------------|--------------|
-| Linux Distro         | Ubuntu 20.4  |
-| Desktop Environment  | Gnome        |
-| Shell                | zsh          |
-| Terminal Multiplexer | tmux         |
+| Environment          | Recommend Version |
+|----------------------|-------------------|
+| Linux Distro         | Ubuntu 20.4       |
+| Desktop Environment  | Gnome 3.30        |
+| Shell                | zsh 5.8           |
+| Terminal Multiplexer | tmux 3.0          |
 
 ### Advanced Environments
 
-| Environment       | Recommend | Configuration                       |
-|-------------------|-----------|-------------------------------------|
-| Editor            | neovim    | `https://github.com/t16ing/.vim`    |
-| File Manager      | ranger    | `https://github.com/t16ing/.ranger` |
+| Environment  | Recommend Version | Configuration                       |
+|--------------|-------------------|-------------------------------------|
+| Editor       | neovim 0.4.3      | `https://github.com/t16ing/.vim`    |
+| File Manager | ranger 1.9.3      | `https://github.com/t16ing/.ranger` |
 
 - Use `install/02-develop/install-vim-enhancement.sh` to install neovim and plugin dependency.
 - Use `install/05-optional/install-ranger.sh` to install ranger.
@@ -123,6 +123,9 @@ $ ./zss0 app up && ./zss0 app env2 && ./zss0 app ssh
     - `ggmm`: switch to master or main branch
     - `gginit`: configure user information and use store as default credential helper
     - `ggls`: list all pending PULL and PUSH repositories
+- mk family:
+    - `mkapplink`: make a executable as a gnome desktop application.
+    - `mksrcv`: make a executable as a service.
 
 ### Key Bindings
 
@@ -155,30 +158,31 @@ $ ./zss0 app up && ./zss0 app env2 && ./zss0 app ssh
 
 #### `tmux` window
 
-| key                        | Action                            |
-|----------------------------|-----------------------------------|
-| `<prefix><c-j> or <c-k>`   | Window navigation                 |
-| `<prefix><tab>`            | Switch to last window             |
-| `<prefix>-`                | Split current window horizontally |
-| `<prefix>\|`               | Split current window vertically   |
-| `<prefix><arrow key>`      | Move left,down,up,right           |
-| `<prefix><ctrl+arrow key>` | Resize the window                 |
-| `<prefix>``<`,`>`          | Swap the window                   |
-| `<prefix>+`                | Maximize the window               |
+| key                        | Action                             |
+|----------------------------|------------------------------------|
+| `<prefix><c-j> or <c-k>`   | Window navigation                  |
+| `<prefix><tab>`            | Switch to last window              |
+| `<prefix>-`                | Split current window horizontally  |
+| `<prefix>\|`               | Split current window vertically    |
+| `<prefix><arrow key>`      | Move left,down,up,right            |
+| `<prefix><ctrl+arrow key>` | Resize the window                  |
+| `<prefix>``<`,`>`          | Swap the window                    |
+| `<prefix>+`                | Maximize the window                |
+| `<prefix>q`                | Show window id to choose to focus. |
 
-#### `tmux` production
+#### `tmux` editing
 
 | Key               | Action                    |
 |-------------------|---------------------------|
 | `<prefix><enter>` | Enter copy mode (vi-mode) |
 | `<prefix>p`       | Paste from buffer         |
 | `<prefix>P`       | Choose buffer             |
-| `<prefix>u`       | Open urlview              |
 
 #### `tmux` misc
 
 | Key         | Action                    |
 |-------------|---------------------------|
+| `<prefix>u` | Open urlview              |
 | `<prefix>e` | Edit .tmux.conf.local     |
 | `<prefix>r` | Reload tmux configuration |
 | `<prefix>z` | Toggle status line        |
