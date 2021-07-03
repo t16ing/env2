@@ -1,0 +1,22 @@
+#!/bin/bash
+
+GH_USERID="${1}"
+
+GPGKEYS="$(curl -s "https://api.github.com/users/${GH_USERID}/gpg_keys")"
+GPGKEYS_NUM="$(echo "${GPGKEYS}" | jq length)"
+
+i=0
+while [ $i -ne ${GPGKEYS_NUM} ]
+do
+    echo "${GPGKEYS}" | jq -r '.['$i'].raw_key' | gpg --import
+    i=$(($i+1))
+done
+
+i=0
+while [ $i -ne ${GPGKEYS_NUM} ]
+do
+    KEYID="$(echo "${GPGKEYS}" | jq -r '.['$i'].key_id')"
+    FULLKEY="$(gpg -k "${KEYID}" | head -2 | tail -1)"
+    echo "${FULLKEY}:6:"
+    i=$(($i+1))
+done | gpg --import-ownertrust
