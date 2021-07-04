@@ -32,3 +32,6 @@ mkdir -p "${DOG_PREFIX}/src" && cd "${DOG_PREFIX}/src" && \
     ./configure LDFLAGS="-L${BDB_PREFIX}/lib/" CPPFLAGS="-I${BDB_PREFIX}/include/" "--prefix=${DOG_PREFIX}" && \
     make install
 
+## instlal dogecoin-qt
+ln -s "${DOG_PREFIX}/bin/dogecoin-qt" "${HOME}/local/bin/dogecoin-qt"
+
