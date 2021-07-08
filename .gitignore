@@ -39,7 +39,6 @@
 *.bak
 *.flv
 *.webm
-buf
 s*
 A*/
 Vir*/
@@ -57,3 +56,5 @@ tmp/
 trash/
 clouddrive
 cloudfiles/
+buf
+todo
