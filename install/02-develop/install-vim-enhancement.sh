@@ -27,3 +27,6 @@ sudo apt install -y ccls
 
 # configure environment dependency
 echo "let g:coc_node_path='$(ls $HOME/.nvm/versions/node/*/bin/node | tail -1)'" >> ~/.vimrc.local
+
+# frontend development
+sudp apt install -y tidy
