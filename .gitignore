@@ -51,6 +51,7 @@ S*/
 go/
 snap/
 local/
+nltk_data/
 store/
 src/
 tmp/
