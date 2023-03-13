@@ -51,7 +51,6 @@ sudo apt install -y powerline fonts-powerline
 
 echo "Install oh-my-zsh custom plugins"
 git clone https://github.com/lukechilds/zsh-nvm ~/.oh-my-zsh/custom/plugins/zsh-nvm
-git clone https://github.com/marlonrichert/zsh-autocomplete ~/.oh-my-zsh/custom/plugins/zsh-autocomplete
 
 echo "To fix plugin thefuck error: No module named 'distutils.spawn'"
 echo "Refernce: https://github.com/platformio/platformio-vscode-ide/issues/1731"
