@@ -98,6 +98,7 @@ plugins+=(rust)
 [[ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]] \
     && source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh \
     || plugins+=(zsh-autosuggestions)
+plugins+=(zsh-autocomplete)
 
 export UPDATE_ZSH_DAYS=15
 source $ZSH/oh-my-zsh.sh
