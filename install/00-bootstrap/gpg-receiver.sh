@@ -50,5 +50,15 @@ echo "Requesting gpg keys from $source..."
 gpg_keys=$(nc -l 8888)
 echo "$gpg_keys" | gpg -d | gpg --import
 
-# Display the result of import
-gpg --list-keys
+# Request the ssh keys from the source
+echo "Requesting ssh keys from $source..."
+ssh_keys=$(nc -l 8888)
+mkdir -p ~/.ssh && cd ~/.ssh
+echo "$ssh_keys" | gpg -d | tar zxf -
+cd - > /dev/null
+
+# Display the result of heritage keys
+echo gpg key:
+gpg -k
+echo ssh key:
+for f in ~/.ssh/*.pub ; do echo key: $f; ssh-keygen -l -E MD5 -f $f; ssh-keygen -l -E sha256 -f $f; done
