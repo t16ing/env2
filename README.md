@@ -19,6 +19,7 @@
         * [`zsh` finder](#zsh-finder)
         * [`zsh` command edit](#zsh-command-edit)
         * [`tmux` session](#tmux-session)
+        * [`tmux` pane](#tmux-pane)
         * [`tmux` window](#tmux-window)
         * [`tmux` editing](#tmux-editing)
         * [`tmux` misc](#tmux-misc)
@@ -155,6 +156,15 @@ $ ./zss0 app up && ./zss0 app env2 && ./zss0 app ssh
 | `<prefix>c`      | Create a new session  |
 | `<prefix><c-s>`  | Save session          |
 | `<prefix><c-r>`  | Load session          |
+
+#### `tmux` pane
+
+| Key                      | Action                            |
+|--------------------------|-----------------------------------|
+| `<prefix><arrow keys>`   | go to left, right, top, down pane |
+| `<prefix>o`              | go to next pane                   |
+| `<prefix>;`              | go to last pane                   |
+| `<prefix><c-arrow keys>` | resize pane                       |
 
 #### `tmux` window
 
