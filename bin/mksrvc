@@ -12,7 +12,7 @@ StartLimitIntervalSec=0
 Type=simple
 Restart=always
 RestartSec=1
-User=root
+User=$(whoami)
 ExecStart=${FILEPATH}
 
 [Install]
