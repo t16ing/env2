@@ -3,14 +3,14 @@
 PREFIX="${HOME}/local/opt/"
 
 ## Dependency Build Instructions: Ubuntu & Debian
-sudo apt-get install build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils
-sudo apt-get install libboost-all-dev
-sudo apt-get install libminiupnpc-dev
-sudo apt-get install libzmq3-dev
+sudo apt-get install -y build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils
+sudo apt-get install -y libboost-all-dev
+sudo apt-get install -y libminiupnpc-dev
+sudo apt-get install -y libzmq3-dev
 
 ## Dependencies for the GUI: Ubuntu & Debian
-sudo apt-get install libqt5gui5 libqt5core5a libqt5dbus5 qttools5-dev qttools5-dev-tools libprotobuf-dev protobuf-compiler
-sudo apt-get install libqrencode-dev
+sudo apt-get install -y libqt5gui5 libqt5core5a libqt5dbus5 qttools5-dev qttools5-dev-tools libprotobuf-dev protobuf-compiler
+sudo apt-get install -y libqrencode-dev
 
 ## libdb5.1    | Berkeley DB      | Wallet storage (only needed when wallet enabled)
 LIBDB_PREFIX="${PREFIX}/libdb"
@@ -31,4 +31,7 @@ mkdir -p "${DOG_PREFIX}/src" && cd "${DOG_PREFIX}/src" && \
     ./autogen.sh && \
     ./configure LDFLAGS="-L${BDB_PREFIX}/lib/" CPPFLAGS="-I${BDB_PREFIX}/include/" "--prefix=${DOG_PREFIX}" && \
     make install
+
+## instlal dogecoin-qt
+ln -s "${DOG_PREFIX}/bin/dogecoin-qt" "${HOME}/local/bin/dogecoin-qt"
 
