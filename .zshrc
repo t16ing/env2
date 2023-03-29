@@ -94,7 +94,6 @@ plugins+=(fzf)
 plugins+=(pipenv)
 plugins+=(thefuck)
 plugins+=(kubectl)
-plugins+=(rust)
 [[ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]] \
     && source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh \
     || plugins+=(zsh-autosuggestions)
@@ -132,14 +131,6 @@ command -v nvim > /dev/null && EDITOR=nvim || EDITOR=vim
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ls='ls --color=tty --group-directories-first'
-function ra {
-    temp_file="$(mktemp -t "ranger_cd.XXXXXXXXXX")"
-    ranger --choosedir="$temp_file" -- "${@:-$PWD}"
-    if chosen_dir="$(cat -- "$temp_file")" && [ -n "$chosen_dir" ] && [ "$chosen_dir" != "$PWD" ]; then
-        cd -- "$chosen_dir"
-    fi
-    rm -f -- "$temp_file"
-}
 function s {
     case $(($RANDOM % 4)) in
     0)
