@@ -1,5 +1,7 @@
 #!/bin/bash
 
+## [ref] https://itsfoss.com/face-unlock-ubuntu/
+
 SKIP_PASSWORD=${1:-skip_password}
 
 ## Install howdy package

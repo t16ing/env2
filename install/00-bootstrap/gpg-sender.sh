@@ -35,10 +35,15 @@ if [[ $answer == "y" ]]; then
   echo "Sending all gpg keys to $destination..."
   encrypted_gpg_keys=$(gpg --armor --export-secret-keys | gpg --armor --encrypt --trust-model always --recipient $FINGERPRINT)
   echo "$encrypted_gpg_keys" | nc -w 2 $destination_ip 8888
+  # Waiting for Destination Ready
+  echo "Press Enter if $destination is ready and requesting for ssh keys (enter):"
+  read wait
   # Encrypt SSH keys and Send to Destination
   echo "Sending all ssh keys to $destination..."
   encrypted_ssh_keys=$(cd ~/.ssh && tar -zcf - * | gpg --encrypt --armor --trust-model always --recipient $FINGERPRINT)
   echo "$encrypted_ssh_keys" | nc -w 2 $destination_ip 8888
+  # Sensitive Data Has Been Translated, Delete Destination's GPG Public Key
+  gpg --delete-keys $FINGERPRINT
 else
   echo "Aborting transfer."
 fi
