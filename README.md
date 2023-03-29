@@ -279,8 +279,7 @@ In a fresh new installed Linux Distro, packages and features can be enabled by t
 | `install/01-base/*`          | almost required for most conditions              |
 | `install/02-develop/*`       | for development, editor, and runtime environment |
 | `install/03-customization/*` | fonts installation; desktop theme customization  |
-| `install/04-hack/*`          | hacker tools                                     |
-| `install/05-optional/*`      | other install scripts depends on necessary       |
+| `install/04-optional/*`      | other install scripts depends on necessary       |
 
 Noticable security enhancement:
 

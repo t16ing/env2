@@ -3,7 +3,7 @@
 # show input keys on screen, useful for screen recording
 
 git clone https://github.com/t16ing/screenkey ~/local/opt/screenkey
-ln -s ~/local/opt/screenkey/screenkey ~/local/bin/screenkey
+mkdir -p ~/local/bin && ln -s ~/local/opt/screenkey/screenkey ~/local/bin/screenkey
 
 # add screenkey to plank and Gnome keyboard shortcuts
 
