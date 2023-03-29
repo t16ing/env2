@@ -1,9 +1,9 @@
 #!/bin/bash
 
+# [ref] https://www.google.com/linuxrepositories/
+
 # install google gpg key
-wget -qO- https://packages.cloud.google.com/apt/doc/apt-key.gpg > packages.google.gpg
-sudo install -D -o root -g root -m 644 packages.google.gpg /etc/apt/trusted.gpg.d/packages.google.gpg
-rm -f packages.google.gpg
+wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 
 # install google chrome repository
 cat << EOF | sudo tee /etc/apt/sources.list.d/google-chrome.list
