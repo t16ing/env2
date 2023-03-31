@@ -23,7 +23,6 @@
   * [Key Bindings](#key-bindings-1)
   * [Desktop Theme Customization](#desktop-theme-customization)
 * [Optional Install Scripts](#optional-install-scripts)
-  * [Feature: `fail2cam`](#feature-fail2cam)
 * [Fonts](#fonts)
 * [External Resources](#external-resources)
 * [How to Uninstall `env2`](#how-to-uninstall-env2)
@@ -48,7 +47,6 @@ It maintains a consistent Desktop and Terminal environment for every fresh new i
 ## Features
 
 - Sensible `zsh` and `tmux` configurations, aliases and key bindings.
-- `fail2cam` to trigger notification if login fails.
 - Consistent shell customization.
 - Consistent desktop customization.
 
@@ -253,7 +251,6 @@ gg family: *G*it confi*G* utilities:
 | Key                   | Action                                                 |
 |-----------------------|--------------------------------------------------------|
 | `<super><alt>d`       | Draw on the screen. `ctrl+number` to change pen color. |
-| `<ctrl><alt>k`        | Toggle screenkey.                                      |
 | `<ctrl><alt><shift>r` | Record a short screen cast.                            |
 
 ### Desktop Theme Customization
@@ -281,20 +278,6 @@ In a fresh new installed Linux Distro, packages and features can be enabled by t
 | `install/03-customization/*` | fonts installation; desktop theme customization  |
 | `install/04-optional/*`      | other install scripts depends on necessary       |
 
-Noticable security enhancement:
-
-- `fail2cam`
-- `howdy`
-- `gotp`
-
-### Feature: `fail2cam`
-
-`install/01-base/install-fail2cam.sh`
-
-If login fails, fail2cam takes the picture and sends a notification to you.
-
-It requires a Telegram bot API token.
-
 ## Fonts
 
 - cns11643
@@ -313,14 +296,11 @@ Install scripts:
 - [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh)
 - [powerlevel10k](https://github.com/romkatv/powerlevel10k)
 - [zsh-nvm](https://github.com/lukechilds/zsh-nvm)
-- [screenkey](https://github.com/t16ing/screenkey)
 - [vscode](https://code.visualstudio.com/docs/setup/linux)
 - [albert](https://github.com/albertlauncher/albert)
 - [nerd fonts](https://github.com/ryanoasis/nerd-fonts)
 - [Google Noto Font](https://noto-website-2.storage.googleapis.com/pkgs/Noto-hinted.zip)
-- [IOTA firefly](https://github.com/iotaledger/firefly)
 - [Brave Browser](https://brave.com/linux/#release-channel-installation)
-- [Howdy](https://github.com/boltgolt/howdy)
 
 ## How to Uninstall `env2`
 
