@@ -8,7 +8,7 @@ sudo apt install -y tmux-plugin-manager \
     && ln -s /usr/share/tmux-plugin-manager ~/.tmux/plugins/tpm
 
 echo "Install tmux plugins dependency"
-sudo apt install -y xclip
+sudo apt install -y xclip xsel
 
 echo "Install tmux plugins"
 ~/.tmux/plugins/tpm/scripts/install_plugins.sh

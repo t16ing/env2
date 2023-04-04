@@ -252,20 +252,24 @@ gg family: *G*it confi*G* utilities:
 |-----------------------|--------------------------------------------------------|
 | `<super><alt>d`       | Draw on the screen. `ctrl+number` to change pen color. |
 | `<ctrl><alt><shift>r` | Record a short screen cast.                            |
+| `<ctrl><alt>t`        | Open Terminal                                          |
+| `<ctrl><alt>r`        | Open Launcher                                          |
+| `<ctrl><alt>e`        | Open File Explorer                                     |
+| `<super>d`            | Hide all Windows                                       |
+| `<super><up>`         | Maximize Window                                        |
+| `<super><down>`       | Hide Window                                            |
 
 ### Desktop Theme Customization
 
 Customizations:
 
-- Dock: Gnome Dock
-- Spotlight: Albert
+- Launcher: Gnome Dock
+- Chinese Input
 - Wallpapers for login screen, lock screen, and desktop background
-- Window Transparency
 
 Install these scripts for customization:
-- `install/03-customization/install-albert.sh`
-- `install/03-customization/install-variety.sh`
-- `install/03-customization/install-install-window-transparency.sh`
+- `install-chinese-input.sh`
+- `install-wallpaper.sh`
 
 ## Optional Install Scripts
 
@@ -288,7 +292,7 @@ In a fresh new installed Linux Distro, packages and features can be enabled by t
 Nerd Font and Powerline Font is required for tmux, zsh, and vim powerline.
 
 Install scripts:
-- `install/03-customization/install-fonts.sh`
+- `install-fonts.sh`
 
 ## External Resources
 
@@ -297,10 +301,10 @@ Install scripts:
 - [powerlevel10k](https://github.com/romkatv/powerlevel10k)
 - [zsh-nvm](https://github.com/lukechilds/zsh-nvm)
 - [vscode](https://code.visualstudio.com/docs/setup/linux)
-- [albert](https://github.com/albertlauncher/albert)
 - [nerd fonts](https://github.com/ryanoasis/nerd-fonts)
 - [Google Noto Font](https://noto-website-2.storage.googleapis.com/pkgs/Noto-hinted.zip)
 - [Brave Browser](https://brave.com/linux/#release-channel-installation)
+- [Edge](https://packages.microsoft.com/repos/edge)
 
 ## How to Uninstall `env2`
 
